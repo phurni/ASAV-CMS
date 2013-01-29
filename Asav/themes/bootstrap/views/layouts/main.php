@@ -14,45 +14,38 @@
 
 <body>
 
-<?php $this->widget('bootstrap.widgets.TbNavbar', array(
+<?php
+$this->widget('bootstrap.widgets.TbNavbar', array(
     'type'=>'inverse', // null or 'inverse'
-    'brand'=>'ASAV Int',
-    'brandUrl'=>'#',
+    'brand'=>$this->pageTitle,
+    'brandUrl'=>'.',
     'collapse'=>true, // requires bootstrap-responsive.css
     'items'=>array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
-                array('label'=>'Home', 'url'=>'#', 'active'=>true),
-                array('label'=>'Link', 'url'=>'#'),
-                array('label'=>'Dropdown', 'url'=>'#', 'items'=>array(
-                    array('label'=>'Action', 'url'=>'#'),
-                    array('label'=>'Another action', 'url'=>'#'),
-                    array('label'=>'Something else here', 'url'=>'#'),
-                    '---',
-                    array('label'=>'NAV HEADER'),
-                    array('label'=>'Separated link', 'url'=>'#'),
-                    array('label'=>'One more separated link', 'url'=>'#'),
+                array('label'=>'Home', 'url'=>'.', 'active'=>true),
+                array('label'=>'Parrainer un enfant', 'url'=>'#'),
+                array('label'=>'Comment nous soutenir', 'url'=>'#', 'items'=>array(
+                    array('label'=>'Parrainage', 'url'=>'#'),
+                    array('label'=>'Bénévolat', 'url'=>'#'),
+                    array('label'=>'Devenir membre', 'url'=>'#'),
+                	array('label'=>'Équipement', 'url'=>'#'),
                 )),
+            	array('label'=>'Contact', 'url'=>'#'),
             ),
         ),
-        '<form class="navbar-search pull-left" action=""><input type="text" class="search-query span2" placeholder="Search"></form>',
+        '<form class="navbar-search pull-left" action=""><input type="text" class="search-query span2" placeholder="Rechercher"></form>',
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'htmlOptions'=>array('class'=>'pull-right'),
             'items'=>array(
-                array('label'=>'Link', 'url'=>'#'),
-                array('label'=>'Dropdown', 'url'=>'#', 'items'=>array(
-                    array('label'=>'Action', 'url'=>'#'),
-                    array('label'=>'Another action', 'url'=>'#'),
-                    array('label'=>'Something else here', 'url'=>'#'),
-                    '---',
-                    array('label'=>'Separated link', 'url'=>'#'),
-                )),
+				array('label'=>'Webmail', 'url'=>'#'),
             ),
         ),
     ),
-)); ?>
+));
+?>
 
 <div class="container" id="page">
 
@@ -67,9 +60,8 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+		Copyright &copy; <?php echo date('Y') . ' ' . $this->pageTitle; ?>.<br/>
+		All Rights Reserved.
 	</div><!-- footer -->
 
 </div><!-- page -->
