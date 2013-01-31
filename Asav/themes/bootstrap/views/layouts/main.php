@@ -32,15 +32,10 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
                     array('label'=>'Devenir membre', 'url'=>'#'),
                 	array('label'=>'Équipement', 'url'=>'#'),
                 )),
+            	array('label'=>'Contact', 'url'=>'#'),
             ),
         ),
         '<form class="navbar-search pull-left" action=""><input type="text" class="search-query span2" placeholder="Rechercher"></form>',
-		array(
-			'class'=>'bootstrap.widgets.TbMenu',
-			'items'=>array(
-				array('label'=>'Contact', 'url'=>'#'),
-			)
-		),
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'htmlOptions'=>array('class'=>'pull-right'),
