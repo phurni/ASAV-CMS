@@ -12,6 +12,7 @@
  * @property integer $Genre
  *
  * The followings are the available model relations:
+ * @property Childmessages[] $childmessages
  * @property Genres $genre
  * @property Users $sponsor
  * @property Media[] $medias
@@ -63,9 +64,10 @@ class Child extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'childmessages' => array(self::HAS_MANY, 'Childmessages', 'Child'),
 			'genre' => array(self::BELONGS_TO, 'Genres', 'Genre'),
 			'sponsor' => array(self::BELONGS_TO, 'Users', 'Sponsor'),
-			'media' => array(self::HAS_MANY, 'Media', 'Child'),
+			'medias' => array(self::HAS_MANY, 'Media', 'Child'),
 			'relationships' => array(self::HAS_MANY, 'Relationships', 'Child'),
 			'reports' => array(self::HAS_MANY, 'Reports', 'Child'),
 		);

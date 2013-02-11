@@ -1,23 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "genres".
+ * This is the model class for table "staffboard".
  *
- * The followings are the available columns in table 'genres':
+ * The followings are the available columns in table 'staffboard':
  * @property integer $Id
- * @property string $Name
+ * @property integer $Author
+ * @property string $Title
+ * @property string $Content
+ * @property string $DateCreated
  *
  * The followings are the available model relations:
- * @property Children[] $childrens
- * @property People[] $peoples
- * @property Users[] $users
+ * @property Media[] $medias
+ * @property Users $author
  */
-class Genre extends CActiveRecord
+class StaffBoard extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Genre the static model class
+	 * @return StaffBoard the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -29,7 +31,7 @@ class Genre extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'genres';
+		return 'staffboard';
 	}
 
 	/**
@@ -40,11 +42,12 @@ class Genre extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Name', 'required'),
-			array('Name', 'length', 'max'=>50),
+			array('Title, Content, DateCreated', 'required'),
+			array('Author', 'numerical', 'integerOnly'=>true),
+			array('Title', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('Id, Name', 'safe', 'on'=>'search'),
+			array('Id, Author, Title, Content, DateCreated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,9 +59,8 @@ class Genre extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'childrens' => array(self::HAS_MANY, 'Children', 'Genre'),
-			'peoples' => array(self::HAS_MANY, 'People', 'Genre'),
-			'users' => array(self::HAS_MANY, 'Users', 'Genre'),
+			'medias' => array(self::HAS_MANY, 'Media', 'StaffBoard'),
+			'author' => array(self::BELONGS_TO, 'Users', 'Author'),
 		);
 	}
 
@@ -69,7 +71,10 @@ class Genre extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'Name' => 'Name',
+			'Author' => 'Author',
+			'Title' => 'Title',
+			'Content' => 'Content',
+			'DateCreated' => 'Date Created',
 		);
 	}
 
@@ -85,7 +90,10 @@ class Genre extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('Id',$this->Id);
-		$criteria->compare('Name',$this->Name,true);
+		$criteria->compare('Author',$this->Author);
+		$criteria->compare('Title',$this->Title,true);
+		$criteria->compare('Content',$this->Content,true);
+		$criteria->compare('DateCreated',$this->DateCreated,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

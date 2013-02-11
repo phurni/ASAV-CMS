@@ -19,9 +19,11 @@
  * @property string $Salt
  *
  * The followings are the available model relations:
+ * @property Childmessages[] $childmessages
  * @property Children[] $childrens
  * @property Media[] $medias
  * @property Reports[] $reports
+ * @property Staffboard[] $staffboards
  * @property Countries $country
  * @property Genres $genre
  */
@@ -75,9 +77,11 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'children' => array(self::HAS_MANY, 'Children', 'Sponsor'),
-			'media' => array(self::HAS_MANY, 'Media', 'Author'),
+			'childmessages' => array(self::HAS_MANY, 'Childmessages', 'Author'),
+			'childrens' => array(self::HAS_MANY, 'Children', 'Sponsor'),
+			'medias' => array(self::HAS_MANY, 'Media', 'Author'),
 			'reports' => array(self::HAS_MANY, 'Reports', 'Author'),
+			'staffboards' => array(self::HAS_MANY, 'Staffboard', 'Author'),
 			'country' => array(self::BELONGS_TO, 'Countries', 'Country'),
 			'genre' => array(self::BELONGS_TO, 'Genres', 'Genre'),
 		);

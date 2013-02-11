@@ -1,23 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "genres".
+ * This is the model class for table "reportstatus".
  *
- * The followings are the available columns in table 'genres':
+ * The followings are the available columns in table 'reportstatus':
  * @property integer $Id
- * @property string $Name
+ * @property string $Status
  *
  * The followings are the available model relations:
- * @property Children[] $childrens
- * @property People[] $peoples
- * @property Users[] $users
+ * @property Reports[] $reports
  */
-class Genre extends CActiveRecord
+class Reportstatus extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Genre the static model class
+	 * @return Reportstatus the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -29,7 +27,7 @@ class Genre extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'genres';
+		return 'reportstatus';
 	}
 
 	/**
@@ -40,11 +38,11 @@ class Genre extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Name', 'required'),
-			array('Name', 'length', 'max'=>50),
+			array('Status', 'required'),
+			array('Status', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('Id, Name', 'safe', 'on'=>'search'),
+			array('Id, Status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,9 +54,7 @@ class Genre extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'childrens' => array(self::HAS_MANY, 'Children', 'Genre'),
-			'peoples' => array(self::HAS_MANY, 'People', 'Genre'),
-			'users' => array(self::HAS_MANY, 'Users', 'Genre'),
+			'reports' => array(self::HAS_MANY, 'Reports', 'Status'),
 		);
 	}
 
@@ -69,7 +65,7 @@ class Genre extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'Name' => 'Name',
+			'Status' => 'Status',
 		);
 	}
 
@@ -85,7 +81,7 @@ class Genre extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('Id',$this->Id);
-		$criteria->compare('Name',$this->Name,true);
+		$criteria->compare('Status',$this->Status,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
