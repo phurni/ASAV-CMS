@@ -7,6 +7,8 @@
  * @property integer $Id
  * @property integer $Author
  * @property integer $Child
+ * @property integer $ChildMessage
+ * @property integer $StaffBoard
  * @property string $Path
  * @property string $Title
  * @property string $Description
@@ -14,8 +16,10 @@
  * @property string $Modified
  *
  * The followings are the available model relations:
- * @property Children $child
  * @property Users $author
+ * @property Children $child
+ * @property Childmessages $childMessage
+ * @property Staffboard $staffBoard
  */
 class Media extends CActiveRecord
 {
@@ -45,13 +49,13 @@ class Media extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Child, Path, Title, Created', 'required'),
-			array('Author, Child', 'numerical', 'integerOnly'=>true),
+			array('Path, Title, Created', 'required'),
+			array('Author, Child, ChildMessage, StaffBoard', 'numerical', 'integerOnly'=>true),
 			array('Path, Title', 'length', 'max'=>100),
 			array('Description, Modified', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('Id, Author, Child, Path, Title, Description, Created, Modified', 'safe', 'on'=>'search'),
+			array('Id, Author, Child, ChildMessage, StaffBoard, Path, Title, Description, Created, Modified', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,8 +67,10 @@ class Media extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'child' => array(self::BELONGS_TO, 'Children', 'Child'),
 			'author' => array(self::BELONGS_TO, 'Users', 'Author'),
+			'child' => array(self::BELONGS_TO, 'Children', 'Child'),
+			'childMessage' => array(self::BELONGS_TO, 'Childmessages', 'ChildMessage'),
+			'staffBoard' => array(self::BELONGS_TO, 'Staffboard', 'StaffBoard'),
 		);
 	}
 
@@ -77,6 +83,8 @@ class Media extends CActiveRecord
 			'Id' => 'ID',
 			'Author' => 'Author',
 			'Child' => 'Child',
+			'ChildMessage' => 'Child Message',
+			'StaffBoard' => 'Staff Board',
 			'Path' => 'Path',
 			'Title' => 'Title',
 			'Description' => 'Description',
@@ -99,6 +107,8 @@ class Media extends CActiveRecord
 		$criteria->compare('Id',$this->Id);
 		$criteria->compare('Author',$this->Author);
 		$criteria->compare('Child',$this->Child);
+		$criteria->compare('ChildMessage',$this->ChildMessage);
+		$criteria->compare('StaffBoard',$this->StaffBoard);
 		$criteria->compare('Path',$this->Path,true);
 		$criteria->compare('Title',$this->Title,true);
 		$criteria->compare('Description',$this->Description,true);

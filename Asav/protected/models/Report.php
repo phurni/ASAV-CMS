@@ -7,13 +7,17 @@
  * @property integer $Id
  * @property integer $Author
  * @property integer $Child
- * @property string $ActionsPlanned
+ * @property integer $Status
  * @property string $Day
+ * @property string $ActionsNutricient
+ * @property string $ActionsSchcool
+ * @property string $ActionsOther
  * @property string $NoteNutricient
  * @property string $NoteSchool
  * @property string $NoteOther
  *
  * The followings are the available model relations:
+ * @property Reportstatus $status
  * @property Children $child
  * @property Users $author
  */
@@ -45,12 +49,12 @@ class Report extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Child, Day, NoteNutricient, NoteSchool', 'required'),
-			array('Author, Child', 'numerical', 'integerOnly'=>true),
-			array('ActionsPlanned, NoteOther', 'safe'),
+			array('Child, Status, Day, NoteNutricient, NoteSchool', 'required'),
+			array('Author, Child, Status', 'numerical', 'integerOnly'=>true),
+			array('ActionsNutricient, ActionsSchcool, ActionsOther, NoteOther', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('Id, Author, Child, ActionsPlanned, Day, NoteNutricient, NoteSchool, NoteOther', 'safe', 'on'=>'search'),
+			array('Id, Author, Child, Status, Day, ActionsNutricient, ActionsSchcool, ActionsOther, NoteNutricient, NoteSchool, NoteOther', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,6 +66,7 @@ class Report extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'status' => array(self::BELONGS_TO, 'Reportstatus', 'Status'),
 			'child' => array(self::BELONGS_TO, 'Children', 'Child'),
 			'author' => array(self::BELONGS_TO, 'Users', 'Author'),
 		);
@@ -76,8 +81,11 @@ class Report extends CActiveRecord
 			'Id' => 'ID',
 			'Author' => 'Author',
 			'Child' => 'Child',
-			'ActionsPlanned' => 'Actions Planned',
+			'Status' => 'Status',
 			'Day' => 'Day',
+			'ActionsNutricient' => 'Actions Nutricient',
+			'ActionsSchcool' => 'Actions Schcool',
+			'ActionsOther' => 'Actions Other',
 			'NoteNutricient' => 'Note Nutricient',
 			'NoteSchool' => 'Note School',
 			'NoteOther' => 'Note Other',
@@ -98,8 +106,11 @@ class Report extends CActiveRecord
 		$criteria->compare('Id',$this->Id);
 		$criteria->compare('Author',$this->Author);
 		$criteria->compare('Child',$this->Child);
-		$criteria->compare('ActionsPlanned',$this->ActionsPlanned,true);
+		$criteria->compare('Status',$this->Status);
 		$criteria->compare('Day',$this->Day,true);
+		$criteria->compare('ActionsNutricient',$this->ActionsNutricient,true);
+		$criteria->compare('ActionsSchcool',$this->ActionsSchcool,true);
+		$criteria->compare('ActionsOther',$this->ActionsOther,true);
 		$criteria->compare('NoteNutricient',$this->NoteNutricient,true);
 		$criteria->compare('NoteSchool',$this->NoteSchool,true);
 		$criteria->compare('NoteOther',$this->NoteOther,true);
