@@ -6,6 +6,14 @@ class ChildrenController extends Controller
 	{
 		$this->render('index');
 	}
+	
+	public function actionGallery()
+	{
+		$dataProvider=new CActiveDataProvider('Child');
+		$this->render('gallery',array(
+				'dataProvider'=>$dataProvider,
+		));
+	}
 
 	// Uncomment the following methods and override them if needed
 	/*
