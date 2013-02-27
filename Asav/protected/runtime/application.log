@@ -683,3 +683,46 @@ Stack trace:
 REQUEST_URI=/Asav/Asav/children/2
 HTTP_REFERER=http://localhost:81/Asav/Asav/children/gallery
 ---
+2013/02/27 13:33:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[42000] [1049] Unknown database 'asav'' in J:\wamp\www\ASAV\YiiFramework\db\CDbConnection.php:382
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\db\CDbConnection.php(331): CDbConnection->open()
+#1 J:\wamp\www\ASAV\YiiFramework\db\CDbConnection.php(309): CDbConnection->setActive(true)
+#2 J:\wamp\www\ASAV\YiiFramework\base\CModule.php(388): CDbConnection->init()
+#3 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(431): CModule->getComponent('db')
+#4 J:\wamp\www\ASAV\YiiFramework\db\ar\CActiveRecord.php(624): CApplication->getDb()
+#5 J:\wamp\www\ASAV\YiiFramework\db\ar\CActiveRecord.php(2311): CActiveRecord->getDbConnection()
+#6 J:\wamp\www\ASAV\YiiFramework\db\ar\CActiveRecord.php(388): CActiveRecordMetaData->__construct(Object(Person))
+#7 J:\wamp\www\ASAV\YiiFramework\web\CActiveDataProvider.php(75): CActiveRecord::model('Person')
+#8 J:\wamp\www\ASAV\Asav\protected\controllers\ExamplePeopleController.php(125): CActiveDataProvider->__construct('Person')
+#9 J:\wamp\www\ASAV\YiiFramework\web\actions\CInlineAction.php(50): ExamplePeopleController->actionIndex()
+#10 J:\wamp\www\ASAV\YiiFramework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#11 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#12 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilter.php(41): CFilterChain->run()
+#13 J:\wamp\www\ASAV\YiiFramework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#14 J:\wamp\www\ASAV\YiiFramework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#15 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#16 J:\wamp\www\ASAV\YiiFramework\web\CController.php(292): CFilterChain->run()
+#17 J:\wamp\www\ASAV\YiiFramework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(283): CController->run('')
+#19 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('examplePeople')
+#20 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#21 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/ASAV/Asav/examplePeople
+---
+2013/02/27 13:36:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Impossible de résoudre la requête « children ».' in J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php:287
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('children')
+#1 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/ASAV/Asav/children
+---
+2013/02/27 13:36:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Impossible de résoudre la requête « gallery ».' in J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php:287
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('gallery')
+#1 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/ASAV/Asav/gallery
+---
