@@ -14,7 +14,31 @@ $this->menu=array(
 
 <h1>people</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
+<?php
+/*
+$this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
-)); ?>
+));
+*/
+
+$this->widget('bootstrap.widgets.TbGridView', array(
+    'type'=>'striped bordered condensed',
+    'dataProvider'=>$dataProvider,
+    'template'=>"{summary}{items}{pager}",
+	'summaryText'=>'Displaying {start}-{end} of {count} results.',
+    'columns'=>array(
+		array('name'=>'Id', 'header'=>'#'),
+        array('name'=>'Firstname', 'header'=>'Prénom'),
+        array('name'=>'Lastname', 'header'=>'Nom'),
+		array('name'=>'genre.Name', 'header'=>'Genre'),
+		array('name'=>'country.Name', 'header'=>'Pays'),
+        array('name'=>'Address', 'header'=>'Adresse'),
+        array(
+            'class'=>'bootstrap.widgets.TbButtonColumn',
+            'htmlOptions'=>array('style'=>'width: 50px'),
+        ),
+    ),
+));
+
+?>

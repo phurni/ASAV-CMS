@@ -17,7 +17,7 @@
 <?php
 $this->widget('bootstrap.widgets.TbNavbar', array(
     'type'=>'inverse', // null or 'inverse'
-    'brand'=>$this->pageTitle,
+    'brand'=> Yii::app()->name,
     'brandUrl'=>'.',
     'collapse'=>true, // requires bootstrap-responsive.css
     'items'=>array(
@@ -25,12 +25,15 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
                 array('label'=>'Home', 'url'=>'.', 'active'=>true),
+            	array('label'=>'Exemple', 'url'=>'#', 'items'=>array(
+            			array('label'=>'view', 'url'=>'examplePeople'),
+            	)),
                 array('label'=>'Parrainer un enfant', 'url'=>'#'),
                 array('label'=>'Comment nous soutenir', 'url'=>'#', 'items'=>array(
                     array('label'=>'Parrainage', 'url'=>'#'),
-                    array('label'=>'BÃ©nÃ©volat', 'url'=>'#'),
+                    array('label'=>'Bénévolat', 'url'=>'#'),
                     array('label'=>'Devenir membre', 'url'=>'#'),
-                	array('label'=>'Ã‰quipement', 'url'=>'#'),
+                	array('label'=>'Équipement', 'url'=>'#'),
                 )),
             	array('label'=>'Contact', 'url'=>'#'),
             ),
