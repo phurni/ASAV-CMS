@@ -10,7 +10,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Country')); ?>:</b>
-	<?php echo CHtml::encode($data->Country); ?>
+	<?php echo CHtml::encode($data->country->Name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Genre')); ?>:</b>

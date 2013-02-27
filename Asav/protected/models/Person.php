@@ -62,8 +62,8 @@ class Person extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'country' => array(self::BELONGS_TO, 'Countries', 'Country'),
-			'genre' => array(self::BELONGS_TO, 'Genres', 'Genre'),
+			'country' => array(self::BELONGS_TO, 'Country', 'Country'),
+			'genre' => array(self::BELONGS_TO, 'Genre', 'Genre'),
 			'relationships' => array(self::HAS_MANY, 'Relationships', 'Person'),
 		);
 	}
@@ -102,7 +102,10 @@ class Person extends CActiveRecord
 		$criteria->compare('Address',$this->Address,true);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+	        'criteria'=>$criteria,
+			'pagination' => array(
+				'pageSize' => 25,
+			),
+	));
 	}
 }
