@@ -28,16 +28,11 @@ $this->widget('bootstrap.widgets.TbGridView', array(
     'template'=>"{summary}{items}{pager}",
 	'summaryText'=>'Displaying {start}-{end} of {count} results.',
     'columns'=>array(
-		array('name'=>'Id', 'header'=>'#'),
         array('name'=>'Firstname', 'header'=>'Prénom'),
         array('name'=>'Lastname', 'header'=>'Nom'),
     	array('name'=>'sponsor.Firstname', 'header'=>'Parrain'),
     	array('name'=>'Birthday', 'header'=>'Birthday'),
     	array('name'=>'genre.Name', 'header'=>'Genre'),
-    	
-		/*array('name'=>'genre.Name', 'header'=>'Genre'),
-		array('name'=>'country.Name', 'header'=>'Pays'),
-        array('name'=>'Address', 'header'=>'Adresse'),*/
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
             'htmlOptions'=>array('style'=>'width: 50px'),
