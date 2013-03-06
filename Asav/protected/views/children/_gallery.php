@@ -3,13 +3,13 @@
 /* @var $data Child */
 ?>
 
-<div class="view center">
+<div class="view center ChildrenGalleryElement">
 
 	<!-- Picture -->
 	<?php 
 	echo Chtml::link(
 		CHtml::image(
-			CHtml::encode($data->picture->Path),
+			isset($data->picture) ? CHtml::encode($data->picture->Path) : '../images/noimage.png',
 			CHtml::encode($data->Firstname .' '. $data->Lastname),
 			array('width' => '200')
 		),

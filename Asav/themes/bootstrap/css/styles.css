@@ -1,3 +1,48 @@
+/*
+ * NAMING CONVENTION STYLE
+ *
+ * Thanks to follow this naming rule:
+ * .[ControllerName][YourComponent]
+ */
+
+/* General */
 #page {
-    padding-top: 60px;
+	padding-top: 60px;
+}
+
+.center {
+	text-align: center;
+}
+
+.clear {
+	display: none;
+	clear: both;
+}
+
+/* Children: Gallery */
+.ChildrenGalleryElement {
+	display: inline-block;
+	border: 1px solid #DDDDDD;
+	width: 300px;
+	margin-left: 40px;
+	margin-right: 40px;
+	margin-bottom: 40px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.ChildrenGalleryElement:hover {
+	-webkit-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.1);
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-transition: all 100ms ease-in-out;
+	-ms-transition: all 100ms ease-in-out;
+	-o-transition: all 100ms ease-in-out;
+	transition: all 100ms ease-in-out;
+}
+
+.ChildrenGalleryElement img {
+	margin: 10px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
 }
