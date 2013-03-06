@@ -67,6 +67,7 @@ class Child extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'childmessages' => array(self::HAS_MANY, 'Childmessages', 'Child'),
+			'picture' => array(self::BELONGS_TO, 'Media', 'Picture'),
 			'genre' => array(self::BELONGS_TO, 'Genres', 'Genre'),
 			'sponsor' => array(self::BELONGS_TO, 'Users', 'Sponsor'),
 			'picture' => array(self::BELONGS_TO, 'Media', 'Picture'),

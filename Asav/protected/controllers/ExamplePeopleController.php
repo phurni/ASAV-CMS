@@ -122,9 +122,11 @@ class ExamplePeopleController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Person');
+		$model=new Person('search');
+		
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			//'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 
