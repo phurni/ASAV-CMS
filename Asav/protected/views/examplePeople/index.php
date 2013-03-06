@@ -24,7 +24,6 @@ $this->widget('zii.widgets.CListView', array(
 
 $this->widget('bootstrap.widgets.TbGridView', array(
     'type'=>'striped bordered condensed',
-//$this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider'=>$model->search(),
 	'filter'=>null,
     'template'=>"{summary}{items}{pager}",
