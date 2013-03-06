@@ -91,21 +91,37 @@ class Person extends CActiveRecord
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
-
+		
+		$sort = new CSort();
+		$sort->attributes = array(
+			'genre'=>array(
+				'asc'=>'genre.Name ASC',
+				'desc'=>'genre.Name DESC',
+			),
+			'country'=>array(
+				'asc'=>'country.Name ASC',
+				'desc'=>'country.Name DESC',
+			),
+			'*',
+		);
+		
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('Id',$this->Id);
-		$criteria->compare('Country',$this->Country);
-		$criteria->compare('Genre',$this->Genre);
+		$criteria->compare('Country.Name',$this->Country);
+		$criteria->compare('genre.Name',$this->genre); 
 		$criteria->compare('Firstname',$this->Firstname,true);
 		$criteria->compare('Lastname',$this->Lastname,true);
 		$criteria->compare('Address',$this->Address,true);
+		
+		$criteria->with = array('genre', 'country');
 
 		return new CActiveDataProvider($this, array(
 	        'criteria'=>$criteria,
 			'pagination' => array(
 				'pageSize' => 25,
 			),
+			'sort'=>$sort,
 	));
 	}
 }
