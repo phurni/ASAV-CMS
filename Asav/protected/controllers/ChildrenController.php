@@ -4,7 +4,13 @@ class ChildrenController extends Controller
 {
 	public function actionIndex()
 	{
-		$this->render('index');
+		
+		
+		$dataProvider=new CActiveDataProvider('Child');
+		$this->render('index',array(
+				'dataProvider'=>$dataProvider,
+		));
+		
 	}
 	
 	public function actionGallery()
@@ -14,6 +20,8 @@ class ChildrenController extends Controller
 				'dataProvider'=>$dataProvider,
 		));
 	}
+	
+
 
 	// Uncomment the following methods and override them if needed
 	/*
@@ -42,3 +50,4 @@ class ChildrenController extends Controller
 	}
 	*/
 }
+
