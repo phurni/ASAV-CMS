@@ -6,7 +6,6 @@
  * The followings are the available columns in table 'children':
  * @property integer $Id
  * @property integer $Sponsor
- * @property integer $Picture
  * @property string $Firstname
  * @property string $Lastname
  * @property string $Birthday
@@ -16,7 +15,6 @@
  * @property Childmessages[] $childmessages
  * @property Genres $genre
  * @property Users $sponsor
- * @property Media $picture
  * @property Media[] $medias
  * @property Relationships[] $relationships
  * @property Reports[] $reports
@@ -50,11 +48,11 @@ class Child extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('Firstname, Lastname, Birthday, Genre', 'required'),
-			array('Sponsor, Picture, Genre', 'numerical', 'integerOnly'=>true),
+			array('Sponsor, Genre', 'numerical', 'integerOnly'=>true),
 			array('Firstname, Lastname', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('Id, Sponsor, Picture, Firstname, Lastname, Birthday, Genre', 'safe', 'on'=>'search'),
+			array('Id, Sponsor, Firstname, Lastname, Birthday, Genre', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,9 +65,8 @@ class Child extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'childmessages' => array(self::HAS_MANY, 'Childmessages', 'Child'),
-			'picture' => array(self::BELONGS_TO, 'Media', 'Picture'),
-			'genre' => array(self::BELONGS_TO, 'Genres', 'Genre'),
-			'sponsor' => array(self::BELONGS_TO, 'Users', 'Sponsor'),
+			'genre' => array(self::BELONGS_TO, 'Genre', 'Genre'),
+			'sponsor' => array(self::BELONGS_TO, 'User', 'Sponsor'),
 			'medias' => array(self::HAS_MANY, 'Media', 'Child'),
 			'relationships' => array(self::HAS_MANY, 'Relationships', 'Child'),
 			'reports' => array(self::HAS_MANY, 'Reports', 'Child'),
@@ -84,7 +81,6 @@ class Child extends CActiveRecord
 		return array(
 			'Id' => 'ID',
 			'Sponsor' => 'Sponsor',
-			'Picture' => 'Picture',
 			'Firstname' => 'Firstname',
 			'Lastname' => 'Lastname',
 			'Birthday' => 'Birthday',
@@ -105,7 +101,6 @@ class Child extends CActiveRecord
 
 		$criteria->compare('Id',$this->Id);
 		$criteria->compare('Sponsor',$this->Sponsor);
-		$criteria->compare('Picture',$this->Picture);
 		$criteria->compare('Firstname',$this->Firstname,true);
 		$criteria->compare('Lastname',$this->Lastname,true);
 		$criteria->compare('Birthday',$this->Birthday,true);
