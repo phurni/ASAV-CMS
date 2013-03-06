@@ -24,15 +24,16 @@ $this->widget('zii.widgets.CListView', array(
 
 $this->widget('bootstrap.widgets.TbGridView', array(
     'type'=>'striped bordered condensed',
-    'dataProvider'=>$dataProvider,
+    'dataProvider'=>$model->search(),
+	'filter'=>null,
     'template'=>"{summary}{items}{pager}",
 	'summaryText'=>'Displaying {start}-{end} of {count} results.',
     'columns'=>array(
 		array('name'=>'Id', 'header'=>'#'),
         array('name'=>'Firstname', 'header'=>'Prénom'),
         array('name'=>'Lastname', 'header'=>'Nom'),
-		array('name'=>'genre.Name', 'header'=>'Genre'),
-		array('name'=>'country.Name', 'header'=>'Pays'),
+		array('name'=>'genre', 'value'=>'$data->genre->Name'),
+		array('name'=>'country', 'value'=>'$data->country->Name'),
         array('name'=>'Address', 'header'=>'Adresse'),
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',

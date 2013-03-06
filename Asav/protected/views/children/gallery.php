@@ -2,7 +2,9 @@
 /* @var $this ChildrenController */
 
 $this->breadcrumbs=array(
-	'Children',
+	'Enfants'=>array('index'),
+	'Trombinoscope',
+		
 );
 ?>
 <h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
@@ -11,3 +13,5 @@ $this->breadcrumbs=array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_gallery',
 )); ?>
+
+<div class="clear" />
