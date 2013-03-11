@@ -94,20 +94,38 @@ class Child extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
+		$sort = new CSort();
+		$sort->attributes = array(
+			'genre'=>array(
+				'asc'=>'genre.Name ASC',
+				'desc'=>'genre.Name DESC',
+			),
+			'sponsor'=>array(
+				'asc'=>'sponsor.Firstname, sponsor.Lastname ASC',
+				'desc'=>'sponsor.Firstname, sponsor.Lastname DESC',
+			),
+			'*',
+		);
+		
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('Id',$this->Id);
-		$criteria->compare('Sponsor',$this->Sponsor);
+		$criteria->compare('sponsor.Fullname',$this->Sponsor);
 		$criteria->compare('Firstname',$this->Firstname,true);
 		$criteria->compare('Lastname',$this->Lastname,true);
 		$criteria->compare('Birthday',$this->Birthday,true);
-		$criteria->compare('Genre',$this->Genre);
-
+		$criteria->compare('genre.Name',$this->Genre);
+		
+		$criteria->with = array('genre','sponsor');
+		
+		
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+	        'criteria'=>$criteria,
+			'pagination' => array(
+				'pageSize' => 25,
+			),
+			'sort'=>$sort,
 		));
 	}
 }
+
