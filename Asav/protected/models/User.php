@@ -29,6 +29,12 @@
  */
 class User extends CActiveRecord
 {
+	
+	public function getFullname(){
+		return $this->Firstname . " " . $this->Lastname;
+	}
+	
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -134,8 +140,9 @@ class User extends CActiveRecord
 		$criteria->compare('Password',$this->Password,true);
 		$criteria->compare('Salt',$this->Salt,true);
 
+		
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+				'criteria'=>$criteria,
 		));
 	}
 }
