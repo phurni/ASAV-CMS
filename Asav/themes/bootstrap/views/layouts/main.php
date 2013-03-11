@@ -63,7 +63,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y') . ' ' . $this->pageTitle; ?>.<br/>
+		Copyright &copy; <?php echo date('Y') . ' ' . Yii::app()->name; ?>.<br/>
 		All Rights Reserved.
 	</div><!-- footer -->
 
