@@ -89,9 +89,6 @@ class Person extends CActiveRecord
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-		
 		$sort = new CSort();
 		$sort->attributes = array(
 			'genre'=>array(
@@ -108,7 +105,7 @@ class Person extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('Id',$this->Id);
-		$criteria->compare('Country.Name',$this->Country);
+		$criteria->compare('country.Name',$this->Country);
 		$criteria->compare('genre.Name',$this->genre); 
 		$criteria->compare('Firstname',$this->Firstname,true);
 		$criteria->compare('Lastname',$this->Lastname,true);
@@ -122,6 +119,6 @@ class Person extends CActiveRecord
 				'pageSize' => 25,
 			),
 			'sort'=>$sort,
-	));
+		));
 	}
 }
