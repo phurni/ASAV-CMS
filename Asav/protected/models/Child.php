@@ -21,11 +21,11 @@
  */
 class Child extends CActiveRecord
 {
-	/**
-	 * Returns the static model of the specified AR class.
-	 * @param string $className active record class name.
-	 * @return Child the static model class
-	 */
+	//ajout de la concaténation pour avoir le nom et prénom dans une variable
+	public function getFullname(){
+		return $this->Firstname . " " . $this->Lastname;
+	}
+	
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
