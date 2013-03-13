@@ -31,7 +31,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
     'columns'=>array(
         array('name'=>'Firstname', 'header'=>'Prénom'),
         array('name'=>'Lastname', 'header'=>'Nom'),
-    	array('name'=>'sponsor', 'value'=>'$data->sponsor->Fullname'),
+    	array('name'=>'sponsor', 'value'=>'($data->sponsor ? $data->sponsor->Fullname : "")'),
     	array('name'=>'Birthday', 'header'=>'Date de naissance'),
     	array('name'=>'genre', 'value'=>'$data->genre->Name'),
         array(
