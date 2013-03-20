@@ -51,7 +51,7 @@ class Media extends CActiveRecord
 		return array(
 			array('Path, Title, Created', 'required'),
 			array('Author, Child, ChildMessage, StaffBoard', 'numerical', 'integerOnly'=>true),
-			array('Path, Title', 'length', 'max'=>100),
+			array('Title', 'length', 'max'=>100),
 			array('Description, Modified', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -90,6 +90,7 @@ class Media extends CActiveRecord
 			'Description' => 'Description',
 			'Created' => 'Created',
 			'Modified' => 'Modified',
+			'UploadedFile' => 'UploadedFile',
 		);
 	}
 
@@ -118,5 +119,22 @@ class Media extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	/**
+	 * Generates a random name for files.
+	 */
+	public function generateRandomName()
+	{
+		// Declare variables
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		// Set the start of the random string with the timestamp
+		$randomString = time() . '_';
+		// Add 4 random digits
+		for ($i = 0 ; $i < 4 ; $i++) {
+			$randomString .= $characters[rand(0, strlen($characters) - 1)];
+		}
+		// Return the string
+		return $randomString;
 	}
 }
