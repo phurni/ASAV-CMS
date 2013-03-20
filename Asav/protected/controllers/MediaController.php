@@ -62,16 +62,36 @@ class MediaController extends Controller
 	 */
 	public function actionCreateForChild()
 	{
+		//echo '>>>>>'. Yii::app()->params['custom']['uploadPath'];
 		$model=new Media;
-
+		$lol = $model->generateRandomName();
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		//$this->performAjaxValidation($model);
 
 		if(isset($_POST['Media']))
 		{
 			$model->attributes=$_POST['Media'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->Id));
+			// Set the created date
+			$model->Created = date('Y-m-d');
+			// Set the owner of the file
+			//$model->Author = Yii::app()->user->Id;
+			$model->Author = 2;
+			// Get the uploade file
+			$uploadedFile = CUploadedFile::getInstance($model,'UploadedFile');
+			// Check if something has been uploaded
+			if($uploadedFile)
+			{
+				// Set the path of the file
+				$model->Path = $uploadedFile->getTempName();
+				echo '>>' . $model->Path;
+				if($model->save())
+				{
+					//Save the file
+					$uploadedFile->saveAs('assets/uploads/'. $uploadedFile->name);
+					// Normal redirection to the media entry
+					$this->redirect(array('view','id'=>$model->Id));
+				}
+			}
 		}
 
 		$this->render('createforchild',array(

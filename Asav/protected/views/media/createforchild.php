@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Ajouter un media pour un enfant</h1>
+<h1>Ajouter un media lié à un enfant</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_formforchild', array('model'=>$model)); ?>
