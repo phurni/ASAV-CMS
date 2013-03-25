@@ -15,9 +15,14 @@
 	<?php echo $form->textFieldRow($model, 'Title', array('maxlength'=>100)); ?>
 	
 	<div class="row-fluid">
+		<!-- Combobox for child -->
 		<span class="span6">
-			<?php echo $form->textFieldRow($model,'Child'); ?>
+			<?php
+			$children = CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
+			echo $form->dropDownListRow($model, 'Child', $children);
+			?>
 		</span>
+		<!-- Upload file -->
 		<span class="span6">
 			<?php echo $form->labelEx($model,'Fichier à charger'); ?>
 			<span class="fileUploadContainer">
