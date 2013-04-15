@@ -24,16 +24,16 @@ $this->widget('zii.widgets.CListView', array(
 
 $this->widget('bootstrap.widgets.TbGridView', array(
     'type'=>'striped bordered condensed',
-    'dataProvider'=>$model->search(),
+    'dataProvider'=>$dp,
 	'filter'=>null,
     'template'=>"{summary}{items}{pager}",
 	'summaryText'=>'Displaying {start}-{end} of {count} results.',
     'columns'=>array(
         array('name'=>'Firstname', 'header'=>'Prénom'),
         array('name'=>'Lastname', 'header'=>'Nom'),
-    	array('name'=>'sponsor', 'value'=>'($data->sponsor ? $data->sponsor->Fullname : "")'),
+    	array('name'=>'Sponsor', 'value'=>'($data->sponsor ? $data->sponsor->FullName : "")'),
     	array('name'=>'Birthday', 'header'=>'Date de naissance'),
-    	array('name'=>'genre', 'value'=>'$data->genre->Name'),
+    	array('name'=>'Genre', 'value'=>'$data->genre->Name'),
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
             'htmlOptions'=>array('style'=>'width: 50px'),

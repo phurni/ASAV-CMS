@@ -55,6 +55,7 @@ return array(
 					'caseSensitive'=>false
 				),
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+				'sponsors/<sponsor:\d+>/children' => 'children',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
