@@ -18,7 +18,7 @@ $this->menu=array(
 ?>
 
 
-<h1>Rapport : <?php echo CHtml::encode($model->Id);?></h1>
+<h1>Rapport : #<?php echo CHtml::encode($model->Id);?></h1>
 <?php 
 $children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
 $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');

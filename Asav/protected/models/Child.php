@@ -85,9 +85,9 @@ class Child extends CActiveRecord
 		return array(
 			'Id' => 'ID',
 			'Sponsor' => 'Sponsor',
-			'Firstname' => 'Firstname',
-			'Lastname' => 'Lastname',
-			'Birthday' => 'Birthday',
+			'Firstname' => 'Prénom',
+			'Lastname' => 'Nom',
+			'Birthday' => 'Date de naissance',
 			'Genre' => 'Genre',
 		);
 	}
