@@ -11,44 +11,61 @@
 	'enableAjaxValidation'=>false,
 	'htmlOptions'=>array('class'=>"wideFields"),
 ));
+
+$sponsors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
+$genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+<div class="row-fluid">	
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'Sponsor'); ?>
-		<?php echo $form->textField($model,'Sponsor'); ?>
-		<?php echo $form->error($model,'Sponsor'); ?>
-	</div>
 
-	<div class="row">
+	<div class="span4">
 		<?php echo $form->labelEx($model,'Firstname'); ?>
-		<?php echo $form->textField($model,'Firstname',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'Firstname'); ?>
 		<?php echo $form->error($model,'Firstname'); ?>
 	</div>
 
-	<div class="row">
+	<div class="span4">
 		<?php echo $form->labelEx($model,'Lastname'); ?>
-		<?php echo $form->textField($model,'Lastname',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'Lastname'); ?>
 		<?php echo $form->error($model,'Lastname'); ?>
 	</div>
+	
+	<div class="span4">
+		<?php echo $form->dropDownListRow($model,'Sponsor',$sponsors); ?>
+		<?php echo $form->error($model,'Sponsor'); ?>
+	</div>
+</div>
+<div class="row-fluid">	
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'Birthday'); ?>
-		<?php echo $form->textField($model,'Birthday'); ?>
-		<?php echo $form->error($model,'Birthday'); ?>
+	<div class="span3">
+	<?php echo $form->labelEx($model,'Birthday'); ?>
+	<?php $this->widget('zii.widgets.jui.CJuiDatePicker',array(
+		'name'=>'tmp-Day',
+		// additional javascript options for the date picker plugin
+		'options'=>array(
+				'showAnim'=>'fold',
+				'dateFormat' => 'dd mm yy',
+				'altFormat' => 'yy-mm-dd',
+				'altField' => "#Child_Birthday",
+		),
+		'model'=>$model,
+		'value'=>$model->Birthday,
+	)); ?>
+	<?php echo $form->textField($model,'Birthday', array('style'=>"display:none")); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'Genre'); ?>
-		<?php echo $form->textField($model,'Genre'); ?>
+	<div class="span2">
+		
+		<?php echo $form->dropDownListRow($model,'Genre',$genres); ?>
 		<?php echo $form->error($model,'Genre'); ?>
 	</div>
-
+</div>
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
