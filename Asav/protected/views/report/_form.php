@@ -16,7 +16,7 @@ $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
 $status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
 ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Les champs avec <span class="required">*</span> sont requis.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 	<div class="row-fluid">	

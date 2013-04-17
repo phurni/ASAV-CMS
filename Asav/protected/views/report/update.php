@@ -3,9 +3,9 @@
 /* @var $model Report */
 
 $this->breadcrumbs=array(
-	'Reports'=>array('index'),
+	'Rapports'=>array('index'),
 	$model->Id=>array('view','id'=>$model->Id),
-	'Update',
+	'Modification',
 );
 
 $this->menu=array(

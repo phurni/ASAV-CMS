@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Reports',
+	'Rapports',
 );
 
 $this->menu=array(
@@ -11,7 +11,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Reports</h1>
+<h1>Rapports</h1>
 
 <?php 
 /* $this->widget('zii.widgets.CListView', array(
