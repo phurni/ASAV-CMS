@@ -94,5 +94,10 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'asav@omesis.net',
+		'custom' =>array(
+				// Upload folder path
+				'uploadPath' => 'assets/uploads/'
+		),
 	),
+	
 );

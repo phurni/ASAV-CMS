@@ -67,8 +67,8 @@ class Report extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'status' => array(self::BELONGS_TO, 'Reportstatus', 'Status'),
-			'child' => array(self::BELONGS_TO, 'Children', 'Child'),
-			'author' => array(self::BELONGS_TO, 'Users', 'Author'),
+			'child' => array(self::BELONGS_TO, 'Child', 'Child'),
+			'author' => array(self::BELONGS_TO, 'User', 'Author'),
 		);
 	}
 
@@ -117,6 +117,7 @@ class Report extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+				
 		));
 	}
 }
