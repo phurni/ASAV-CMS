@@ -4,7 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+
 
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'report-form',
@@ -19,6 +19,7 @@ $status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
 	<p class="note">Les champs avec <span class="required">*</span> sont requis.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+<div class="form">	
 	<div class="row-fluid">	
 
 
@@ -103,6 +104,6 @@ $status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
 	</div>
 
 <?php $this->endWidget(); ?>
-
+	</div>
 </div><!-- form -->
 
