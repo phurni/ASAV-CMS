@@ -24,12 +24,9 @@
 		<!-- Upload file -->
 		<span class="span6">
 			<?php echo $form->labelEx($model,'Path'); ?>
-			<span class="fileUploadContainer">
-				<?php echo $form->fileField($model,'Path', 
-						array('class'=>'fileUploadComponent',
-							  'style'=>'font-size: 28px',
-							  'onchange'=>'javascript:document.getElementById(\'file\').value = this.value')); ?>
-				<input id="file" type="text" class="fileUploadCustom validate" placeholder="Joindre un fichier..." />
+			<span>
+				<?php echo $form->fileField($model,'Path', array('id' => 'file')); ?>
+				<input type="text" id="textFile" class="validate" placeholder="Joindre un fichier..." style="display: none;cursor: pointer; background-color: white;" readonly="readonly" />
 			</span>
 		</span>
 	</div>
@@ -40,7 +37,7 @@
 		<?php echo $form->error($model,'Description'); ?>
 
 	<div class="buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Sauver', array('class'=>'btn')); ?>
 	</div>
 	
 	<script type="text/javascript">
@@ -67,6 +64,36 @@
 
 			return isValid;
 		};
+
+		/*
+			Executed when the page is fully loaded.
+		*/
+		$(function() {
+			// Customize the file upload component
+			with($("#file"))
+			{
+				css('display', 'none');
+				change(function() {$("#textFile").val($(this).val())});
+				//attr('onchéange', :$("#textFile").value = this.value');
+			}
+			with($("#textFile"))
+			{
+				css('display', 'inline');
+				keypress(function(e) {
+					// Check if the pressed key is a \n or a \t
+					var code = e.keyCode || e.which;
+					if(code == 13 || code == 32)
+					{
+						e.preventDefault();
+						$("#file").click();
+						
+					}
+				});
+				click(function() {
+					$("#file").click();
+				});
+			}
+		});
 	</script>
 
 <?php $this->endWidget(); ?>
