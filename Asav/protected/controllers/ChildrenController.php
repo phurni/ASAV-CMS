@@ -4,6 +4,9 @@ class ChildrenController extends Controller
 {
 	public function actionIndex($sponsor = null)
 	{
+		if(isset(yii::app()->user)){
+		}
+		$sponsor = yii::app()->user->id;
 		$criteria=new CDbCriteria;
 		if($sponsor != '')
 			$criteria->addCondition('Sponsor='.$sponsor);
