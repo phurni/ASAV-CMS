@@ -79,7 +79,7 @@ class Report extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'Author' => 'Autheur',
+			'Author' => 'Auteur',
 			'Child' => 'Enfant',
 			'Status' => 'Status',
 			'Day' => 'Date',
