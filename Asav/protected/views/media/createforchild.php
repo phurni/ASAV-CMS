@@ -4,12 +4,11 @@
 
 $this->breadcrumbs=array(
 	'Média'=>array('index'),
-	'Ajouter un media',
+	'Ajouter un média',
 );
 
 $this->menu=array(
-	array('label'=>'Liste des media', 'url'=>array('index')),
-	array('label'=>'Manage Média', 'url'=>array('admin')),
+	array('label'=>'Liste des média', 'url'=>array('index')),
 );
 ?>
 
