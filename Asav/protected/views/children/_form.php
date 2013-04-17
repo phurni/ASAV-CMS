@@ -1,30 +1,26 @@
 <?php
-/* @var $this ExamplePeopleController */
-/* @var $model Person */
+/* @var $this ChildController */
+/* @var $model Child */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'person-form',
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+	'id'=>'report-form',
 	'enableAjaxValidation'=>false,
-)); ?>
+	'htmlOptions'=>array('class'=>"wideFields"),
+));
+?>
 
-	<p class="note">Les champs avec <span class="required">*</span> sont requis.</p>
+	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Country'); ?>
-		<?php echo $form->textField($model,'Country'); ?>
-		<?php echo $form->error($model,'Country'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Genre'); ?>
-		<?php echo $form->textField($model,'Genre'); ?>
-		<?php echo $form->error($model,'Genre'); ?>
+		<?php echo $form->labelEx($model,'Sponsor'); ?>
+		<?php echo $form->textField($model,'Sponsor'); ?>
+		<?php echo $form->error($model,'Sponsor'); ?>
 	</div>
 
 	<div class="row">
@@ -40,9 +36,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Address'); ?>
-		<?php echo $form->textField($model,'Address',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'Address'); ?>
+		<?php echo $form->labelEx($model,'Birthday'); ?>
+		<?php echo $form->textField($model,'Birthday'); ?>
+		<?php echo $form->error($model,'Birthday'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'Genre'); ?>
+		<?php echo $form->textField($model,'Genre'); ?>
+		<?php echo $form->error($model,'Genre'); ?>
 	</div>
 
 	<div class="row buttons">

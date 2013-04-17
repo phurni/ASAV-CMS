@@ -1,14 +1,13 @@
 <?php
-/* @var $this ExamplePeopleController */
+/* @var $this ChildrenController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Liste des enfants',
+	'Enfants',
 );
 
 $this->menu=array(
-	array('label'=>'Create Child', 'url'=>array('create')),
-	array('label'=>'Manage Child', 'url'=>array('admin')),
+	array('label'=>'Créer Enfant', 'url'=>array('create')),
 );
 ?>
 

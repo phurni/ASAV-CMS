@@ -3,16 +3,16 @@
 /* @var $model Report */
 
 $this->breadcrumbs=array(
-	'Reports'=>array('index'),
-	'Create',
+	'Rapports'=>array('index'),
+	'Création',
 );
 
 $this->menu=array(
-	array('label'=>'List Report', 'url'=>array('index')),
-	array('label'=>'Manage Report', 'url'=>array('admin')),
+	array('label'=>'Liste des Rapports', 'url'=>array('index')),
+	
 );
 ?>
 
-<h1>Create Report</h1>
+<h1>Créer un Rapport</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

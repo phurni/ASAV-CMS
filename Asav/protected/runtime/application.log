@@ -9094,3 +9094,176 @@ Stack trace:
 REQUEST_URI=/ASAV/Asav/children/1
 HTTP_REFERER=http://localhost/ASAV/Asav/children
 ---
+2013/04/17 09:55:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Le système ne peut trouver l'action « children » demandée.' in J:\wamp\www\ASAV\YiiFramework\web\CController.php:484
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\web\CController.php(271): CController->missingAction('children')
+#1 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(283): CController->run('children')
+#2 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('report/children')
+#3 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/ASAV/Asav/report/children
+---
+2013/04/17 10:05:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Le système ne peut trouver l'action « update » demandée.' in J:\wamp\www\ASAV\YiiFramework\web\CController.php:484
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\web\CController.php(271): CController->missingAction('update')
+#1 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(283): CController->run('update')
+#2 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('children/update')
+#3 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/ASAV/Asav/children/update/1
+HTTP_REFERER=http://localhost/ASAV/Asav/children
+---
+2013/04/17 10:08:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Le système ne peut trouver l'action « create » demandée.' in J:\wamp\www\ASAV\YiiFramework\web\CController.php:484
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\web\CController.php(271): CController->missingAction('create')
+#1 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(283): CController->run('create')
+#2 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('children/create')
+#3 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/ASAV/Asav/children/create
+---
+2013/04/17 10:09:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Le système ne peut trouver l'action « view » demandée.' in J:\wamp\www\ASAV\YiiFramework\web\CController.php:484
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\web\CController.php(271): CController->missingAction('view')
+#1 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(283): CController->run('view')
+#2 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('children/view')
+#3 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/ASAV/Asav/children/1
+HTTP_REFERER=http://localhost/ASAV/Asav/children/
+---
+2013/04/17 10:09:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Le système ne peut trouver l'action « update » demandée.' in J:\wamp\www\ASAV\YiiFramework\web\CController.php:484
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\web\CController.php(271): CController->missingAction('update')
+#1 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(283): CController->run('update')
+#2 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('children/update')
+#3 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/ASAV/Asav/children/update/1
+HTTP_REFERER=http://localhost/ASAV/Asav/children/
+---
+2013/04/17 10:10:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Le système ne peut trouver l'action « update » demandée.' in J:\wamp\www\ASAV\YiiFramework\web\CController.php:484
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\web\CController.php(271): CController->missingAction('update')
+#1 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(283): CController->run('update')
+#2 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('children/update')
+#3 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/ASAV/Asav/children/update/1
+HTTP_REFERER=http://localhost/ASAV/Asav/children/
+---
+2013/04/17 10:11:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Le système ne peut trouver l'action « update » demandée.' in J:\wamp\www\ASAV\YiiFramework\web\CController.php:484
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\web\CController.php(271): CController->missingAction('update')
+#1 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(283): CController->run('update')
+#2 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('children/update')
+#3 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/ASAV/Asav/children/update/1
+HTTP_REFERER=http://localhost/ASAV/Asav/children/
+---
+2013/04/17 11:39:08 [error] [exception.CException] exception 'CException' with message 'La propriété « Report.Sponsor » est indéfinie.' in J:\wamp\www\ASAV\YiiFramework\base\CComponent.php:131
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\db\ar\CActiveRecord.php(144): CComponent->__get('Sponsor')
+#1 J:\wamp\www\ASAV\YiiFramework\web\helpers\CHtml.php(2158): CActiveRecord->__get('Sponsor')
+#2 J:\wamp\www\ASAV\YiiFramework\web\helpers\CHtml.php(1887): CHtml::resolveValue(Object(Report), 'Sponsor')
+#3 J:\wamp\www\ASAV\YiiFramework\web\helpers\CHtml.php(1217): CHtml::activeInputField('text', Object(Report), 'Sponsor', Array)
+#4 J:\wamp\www\ASAV\YiiFramework\web\widgets\CActiveForm.php(658): CHtml::activeTextField(Object(Report), 'Sponsor', Array)
+#5 J:\wamp\www\ASAV\Asav\protected\views\children\_form.php(22): CActiveForm->textField(Object(Report), 'Sponsor')
+#6 J:\wamp\www\ASAV\YiiFramework\web\CBaseController.php(127): require('J:\wamp\www\ASA...')
+#7 J:\wamp\www\ASAV\YiiFramework\web\CBaseController.php(96): CBaseController->renderInternal('J:\wamp\www\ASA...', Array, true)
+#8 J:\wamp\www\ASAV\YiiFramework\web\CController.php(870): CBaseController->renderFile('J:\wamp\www\ASA...', Array, true)
+#9 J:\wamp\www\ASAV\Asav\protected\views\children\update.php(21): CController->renderPartial('_form', Array)
+#10 J:\wamp\www\ASAV\YiiFramework\web\CBaseController.php(127): require('J:\wamp\www\ASA...')
+#11 J:\wamp\www\ASAV\YiiFramework\web\CBaseController.php(96): CBaseController->renderInternal('J:\wamp\www\ASA...', Array, true)
+#12 J:\wamp\www\ASAV\YiiFramework\web\CController.php(870): CBaseController->renderFile('J:\wamp\www\ASA...', Array, true)
+#13 J:\wamp\www\ASAV\YiiFramework\web\CController.php(783): CController->renderPartial('update', Array, true)
+#14 J:\wamp\www\ASAV\Asav\protected\controllers\ChildrenController.php(92): CController->render('update', Array)
+#15 [internal function]: ChildrenController->actionUpdate('1')
+#16 J:\wamp\www\ASAV\YiiFramework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ChildrenController), Array)
+#17 J:\wamp\www\ASAV\YiiFramework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ChildrenController), Object(ReflectionMethod), Array)
+#18 J:\wamp\www\ASAV\YiiFramework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#19 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#20 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilter.php(41): CFilterChain->run()
+#21 J:\wamp\www\ASAV\YiiFramework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#22 J:\wamp\www\ASAV\YiiFramework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#23 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#24 J:\wamp\www\ASAV\YiiFramework\web\CController.php(292): CFilterChain->run()
+#25 J:\wamp\www\ASAV\YiiFramework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(283): CController->run('update')
+#27 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('children/update')
+#28 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#29 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/ASAV/Asav/children/update/1
+HTTP_REFERER=http://localhost/ASAV/Asav/children
+---
+2013/04/17 11:50:17 [error] [exception.CException] exception 'CException' with message 'ChildrenController ne peut trouver la vue « update ».' in J:\wamp\www\ASAV\YiiFramework\web\CController.php:879
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\web\CController.php(783): CController->renderPartial('update', Array, true)
+#1 J:\wamp\www\ASAV\Asav\protected\controllers\ChildrenController.php(92): CController->render('update', Array)
+#2 [internal function]: ChildrenController->actionUpdate('1')
+#3 J:\wamp\www\ASAV\YiiFramework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ChildrenController), Array)
+#4 J:\wamp\www\ASAV\YiiFramework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ChildrenController), Object(ReflectionMethod), Array)
+#5 J:\wamp\www\ASAV\YiiFramework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 J:\wamp\www\ASAV\YiiFramework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 J:\wamp\www\ASAV\YiiFramework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 J:\wamp\www\ASAV\YiiFramework\web\CController.php(292): CFilterChain->run()
+#12 J:\wamp\www\ASAV\YiiFramework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(283): CController->run('update')
+#14 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('children/update')
+#15 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/ASAV/Asav/children/update/1
+HTTP_REFERER=http://localhost/ASAV/Asav/children/index
+---
+2013/04/17 11:52:38 [error] [exception.CException] exception 'CException' with message 'ChildrenController ne peut trouver la vue « update ».' in J:\wamp\www\ASAV\YiiFramework\web\CController.php:879
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\web\CController.php(783): CController->renderPartial('update', Array, true)
+#1 J:\wamp\www\ASAV\Asav\protected\controllers\ChildrenController.php(92): CController->render('update', Array)
+#2 [internal function]: ChildrenController->actionUpdate('1')
+#3 J:\wamp\www\ASAV\YiiFramework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(ChildrenController), Array)
+#4 J:\wamp\www\ASAV\YiiFramework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(ChildrenController), Object(ReflectionMethod), Array)
+#5 J:\wamp\www\ASAV\YiiFramework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#7 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 J:\wamp\www\ASAV\YiiFramework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#9 J:\wamp\www\ASAV\YiiFramework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#11 J:\wamp\www\ASAV\YiiFramework\web\CController.php(292): CFilterChain->run()
+#12 J:\wamp\www\ASAV\YiiFramework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(283): CController->run('update')
+#14 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('children/update')
+#15 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#16 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/ASAV/Asav/children/update/1
+HTTP_REFERER=http://localhost/ASAV/Asav/children/index
+---
+2013/04/17 11:56:48 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Vous n'êtes pas autorisé à effectuer cette action.' in J:\wamp\www\ASAV\YiiFramework\web\auth\CAccessControlFilter.php:170
+Stack trace:
+#0 J:\wamp\www\ASAV\YiiFramework\web\auth\CAccessControlFilter.php(133): CAccessControlFilter->accessDenied(Object(CWebUser), 'Vous n'??tes pa...')
+#1 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 J:\wamp\www\ASAV\YiiFramework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 J:\wamp\www\ASAV\YiiFramework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 J:\wamp\www\ASAV\YiiFramework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 J:\wamp\www\ASAV\YiiFramework\web\CController.php(292): CFilterChain->run()
+#6 J:\wamp\www\ASAV\YiiFramework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(283): CController->run('gallery')
+#8 J:\wamp\www\ASAV\YiiFramework\web\CWebApplication.php(142): CWebApplication->runController('children/galler...')
+#9 J:\wamp\www\ASAV\YiiFramework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 J:\wamp\www\ASAV\Asav\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/ASAV/Asav/children/gallery
+---
