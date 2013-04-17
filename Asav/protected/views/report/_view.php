@@ -1,55 +1,90 @@
 <?php
 /* @var $this ReportController */
-/* @var $data Report */
+/* @var $model Report */
+/* @var $form CActiveForm */
 ?>
 
-<div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->Id), array('view', 'id'=>$data->Id)); ?>
-	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Author')); ?>:</b>
-	<?php echo CHtml::encode($data->Author); ?>
-	<br />
+<?php 
+$children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
+$authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
+$status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
+?>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Child')); ?>:</b>
-	<?php echo CHtml::encode($data->Child); ?>
-	<br />
+	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Status')); ?>:</b>
-	<?php echo CHtml::encode($data->Status); ?>
-	<br />
+	<?php echo $form->errorSummary($model); ?>
+	<div class="row-fluid">	
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Day')); ?>:</b>
-	<?php echo CHtml::encode($data->Day); ?>
-	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ActionsNutricient')); ?>:</b>
-	<?php echo CHtml::encode($data->ActionsNutricient); ?>
-	<br />
+	<div class="span4">
+		<?php echo $form->dropDownListRow($model,'Author',$authors); ?>
+		<?php echo $form->error($model,'Author'); ?>
+	</div>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ActionsSchcool')); ?>:</b>
-	<?php echo CHtml::encode($data->ActionsSchcool); ?>
-	<br />
+	<div class="span4">
+		
+		<?php echo $form->dropDownListRow($model,'Child',$children);?>
+		<?php echo $form->error($model,'Child'); ?>
+	</div>	
 
-	 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ActionsOther')); ?>:</b>
-	<?php echo CHtml::encode($data->ActionsOther); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('NoteNutricient')); ?>:</b>
-	<?php echo CHtml::encode($data->NoteNutricient); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('NoteSchool')); ?>:</b>
-	<?php echo CHtml::encode($data->NoteSchool); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('NoteOther')); ?>:</b>
-	<?php echo CHtml::encode($data->NoteOther); ?>
-	<br />
-
-	 
-
+	<div class="span2">
+		<?php echo $form->labelEx($model,'Day'); ?>
+		<?php echo CHtml::encode($model,'Day'); ?>
+		<?php echo $form->error($model,'Day'); ?>
+		
+	</div>
+	
+	<div class="span2">
+		<?php //echo $form->textField($model,'Status'); ?>
+		<?php echo $form->dropDownListRow($model,'Status',$status); ?>
+		<?php echo $form->error($model,'Status'); ?>
+	</div>
 </div>
+<div class="row-fluid">	
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'ActionsNutricient'); ?>
+		<?php echo $form->textArea($model,'ActionsNutricient', array('class' => 'ReportsCreateBigField'),array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'ActionsNutricient'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'ActionsSchcool'); ?>
+		<?php echo $form->textArea($model,'ActionsSchcool', array('class' => 'ReportsCreateBigField'),array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'ActionsSchcool'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'ActionsOther'); ?>
+		<?php echo $form->textArea($model,'ActionsOther', array('class' => 'ReportsCreateBigField'),array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'ActionsOther'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'NoteNutricient'); ?>
+		<?php echo $form->textArea($model,'NoteNutricient', array('class' => 'ReportsCreateBigField'),array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'NoteNutricient'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'NoteSchool'); ?>
+		<?php echo $form->textArea($model,'NoteSchool', array('class' => 'ReportsCreateBigField'),array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'NoteSchool'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'NoteOther'); ?>
+		<?php echo $form->textArea($model,'NoteOther', array('class' => 'ReportsCreateBigField'),array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'NoteOther'); ?>
+	</div>
+
+	<div class="row buttons">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	</div>
+
+<?php $this->endWidget(); ?>
+
+</div><!-- form -->
+

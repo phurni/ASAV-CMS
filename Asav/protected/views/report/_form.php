@@ -19,7 +19,7 @@ $status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-<div class="row-fluid">	
+	<div class="row-fluid">	
 
 
 	<div class="span4">
@@ -31,12 +31,25 @@ $status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
 		
 		<?php echo $form->dropDownListRow($model,'Child',$children);?>
 		<?php echo $form->error($model,'Child'); ?>
-	</div>	
+	</div>
+	
 
+	
 	<div class="span2">
-		<?php echo $form->labelEx($model,'Day'); ?>
-		<?php echo $form->textField($model,'Day'); ?>
-		<?php echo $form->error($model,'Day'); ?>
+	<?php echo $form->labelEx($model,'Day'); ?>
+	<?php $this->widget('zii.widgets.jui.CJuiDatePicker',array(
+		'name'=>'tmp-Day',
+		// additional javascript options for the date picker plugin
+		'options'=>array(
+				'showAnim'=>'fold',
+				'dateFormat' => 'dd mm yy',
+				'altFormat' => 'yy-mm-dd',
+				'altField' => "#Report_Day",
+		),
+		'model'=>$model,
+		'value'=>$model->Day,
+	)); ?>
+	<?php echo $form->textField($model,'Day', array('style'=>"display:none")); ?>
 	</div>
 	
 	<div class="span2">
@@ -44,12 +57,10 @@ $status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
 		<?php echo $form->dropDownListRow($model,'Status',$status); ?>
 		<?php echo $form->error($model,'Status'); ?>
 	</div>
+<?php 
+?>
 </div>
 <div class="row-fluid">	
-
-
-
-
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'ActionsNutricient'); ?>
@@ -88,7 +99,7 @@ $status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -79,16 +79,16 @@ class Report extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'Author' => 'Author',
-			'Child' => 'Child',
+			'Author' => 'Autheur',
+			'Child' => 'Enfant',
 			'Status' => 'Status',
-			'Day' => 'Day',
-			'ActionsNutricient' => 'Actions Nutricient',
-			'ActionsSchcool' => 'Actions Schcool',
-			'ActionsOther' => 'Actions Other',
-			'NoteNutricient' => 'Note Nutricient',
-			'NoteSchool' => 'Note School',
-			'NoteOther' => 'Note Other',
+			'Day' => 'Date',
+			'ActionsNutricient' => 'Actions nutritions',
+			'ActionsSchcool' => 'Actions école',
+			'ActionsOther' => 'Actions divers',
+			'NoteNutricient' => 'Notes nutritions',
+			'NoteSchool' => 'Notes école',
+			'NoteOther' => 'Notes divers',
 		);
 	}
 

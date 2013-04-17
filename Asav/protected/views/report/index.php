@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Report', 'url'=>array('create')),
+	array('label'=>'Créer Rapport', 'url'=>array('create')),
 );
 ?>
 
