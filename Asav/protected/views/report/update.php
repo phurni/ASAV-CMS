@@ -3,9 +3,9 @@
 /* @var $model Report */
 
 $this->breadcrumbs=array(
-	'Reports'=>array('index'),
+	'Rapports'=>array('index'),
 	$model->Id=>array('view','id'=>$model->Id),
-	'Update',
+	'Modifier',
 );
 
 $this->menu=array(
@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Report <?php echo $model->Id; ?></h1>
+<h1>Modifier Rapport <?php echo $model->Id; ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

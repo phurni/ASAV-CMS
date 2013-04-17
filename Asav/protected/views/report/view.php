@@ -4,7 +4,7 @@
 /* @var $form CActiveForm */
 
 $this->breadcrumbs=array(
-		'Reports'=>array('index'),
+		'Rapports'=>array('index'),
 		$model->Id,
 );
 

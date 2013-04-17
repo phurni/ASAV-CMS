@@ -62,12 +62,8 @@ class MediaController extends Controller
 	 */
 	public function actionCreateForChild()
 	{
-		//echo '>>>>>'. Yii::app()->params['custom']['uploadPath'];
 		$model=new Media;
 		$lol = $model->generateRandomName();
-		// Uncomment the following line if AJAX validation is needed
-		//$this->performAjaxValidation($model);
-
 		if(isset($_POST['Media']))
 		{
 			$model->attributes=$_POST['Media'];
@@ -77,17 +73,18 @@ class MediaController extends Controller
 			//$model->Author = Yii::app()->user->Id;
 			$model->Author = 2;
 			// Get the uploade file
-			$uploadedFile = CUploadedFile::getInstance($model,'UploadedFile');
-			// Check if something has been uploaded
-			if($uploadedFile)
+			$model->Path = CUploadedFile::getInstance($model,'Path');
+			if($model->validate())
 			{
-				// Set the path of the file
-				$model->Path = $uploadedFile->getTempName();
-				echo '>>' . $model->Path;
+				// Create the path of the file
+				$folderName = $model->generateRandomName();
+				$path = Yii::app()->params['custom']['uploadPath'] . $folderName;
+				mkdir($path);
+				//Save the file
+				$model->Path->saveAs($path .'/'. $model->Path->name);
+				$model->Path = $folderName . '/'. $model->Path->name;
 				if($model->save())
 				{
-					//Save the file
-					$uploadedFile->saveAs('assets/uploads/'. $uploadedFile->name);
 					// Normal redirection to the media entry
 					$this->redirect(array('view','id'=>$model->Id));
 				}
