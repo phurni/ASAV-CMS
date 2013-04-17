@@ -24,7 +24,7 @@ class Child extends CActiveRecord
 	public function getFullname(){
 		return $this->Firstname . " " . $this->Lastname;
 	}
-	
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -110,7 +110,7 @@ class Child extends CActiveRecord
 			),
 			'*',
 		);
-		
+
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('Id',$this->Id);
@@ -119,10 +119,10 @@ class Child extends CActiveRecord
 		$criteria->compare('Lastname',$this->Lastname,true);
 		$criteria->compare('Birthday',$this->Birthday,true);
 		$criteria->compare('genre.Name',$this->Genre);
-		
+
 		$criteria->with = array('genre','sponsor');
-		
-		
+
+
 		return new CActiveDataProvider($this, array(
 	        'criteria'=>$criteria,
 			'pagination' => array(
@@ -132,4 +132,3 @@ class Child extends CActiveRecord
 		));
 	}
 }
-

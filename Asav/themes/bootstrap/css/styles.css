@@ -2,7 +2,7 @@
  * NAMING CONVENTION STYLE
  *
  * Thanks to follow this naming rule:
- * .[ControllerName][YourComponent]
+ * .[ControllerName][ActionName][YourComponent]
  */
 
 /* General */
@@ -75,4 +75,10 @@
 	margin: 10px;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
+}
+
+.ReportsCreateBigField
+{
+	width :650px;
+}
 }
