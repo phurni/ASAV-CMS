@@ -64,7 +64,19 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 		<?php echo $form->dropDownListRow($model,'Genre',$genres); ?>
 		<?php echo $form->error($model,'Genre'); ?>
 	</div>
-</div>
+	
+			<span class="span6">
+			<?php echo $form->labelEx($model,'Photo'); ?>
+			<span class="fileUploadContainer">
+				<?php echo $form->fileField($model,'UploadedFile', 
+						array('class'=>'fileUploadComponent',
+							  'style'=>'font-size: 28px',
+							  'onchange'=>'javascript:document.getElementById(\'file\').value = this.value')); ?>
+				<input id="file" type="text" class="fileUploadCustom" placeholder="Joindre un fichier..." />
+			</span>
+		</span>
+	
+</div> <!-- END form -->
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer'); ?>
 	</div>

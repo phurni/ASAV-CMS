@@ -21,6 +21,7 @@ $this->menu=array(
 
 <?php 
 $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
+
 ?>
 
 
@@ -69,6 +70,12 @@ $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
 		<?php echo CHtml::encode($model->genre->Name); ?>		
 		</div>
 		
+		<div class="span4">
+		<b>
+		<?php echo CHtml::encode($model->getAttributeLabel('Media')); ?>:
+		</b>
+		<?php echo CHtml::image(isset($model->picture) ? CHtml::encode($model->picture->Path) : '../images/noimage.png'); ?>		
+		</div>
 
 	
 	</div>
