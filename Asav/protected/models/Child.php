@@ -101,29 +101,29 @@ class Child extends CActiveRecord
 	{
 		$sort = new CSort();
 		$sort->attributes = array(
-			'genre'=>array(
+			'Genre'=>array(
 				'asc'=>'genre.Name ASC',
 				'desc'=>'genre.Name DESC',
 			),
-			'sponsor'=>array(
+			'Sponsor'=>array(
 				'asc'=>'sponsor.Firstname, sponsor.Lastname ASC',
 				'desc'=>'sponsor.Firstname, sponsor.Lastname DESC',
 			),
 			'*',
 		);
-
-		$criteria=new CDbCriteria;
-
-		$criteria->compare('Id',$this->Id);
-		$criteria->compare('sponsor.Fullname',$this->Sponsor);
-		$criteria->compare('Firstname',$this->Firstname,true);
-		$criteria->compare('Lastname',$this->Lastname,true);
-		$criteria->compare('Birthday',$this->Birthday,true);
-		$criteria->compare('genre.Name',$this->Genre);
-
+		
+		$criteria=new CDbCriteria;		
+		
+		$criteria->compare('t.Id',$this->Id);
+		$criteria->compare('sponsor.Fullname',$this->sponsor);
+		$criteria->compare('t.Firstname',$this->Firstname,true);
+		$criteria->compare('t.Lastname',$this->Lastname,true);
+		$criteria->compare('t.Birthday',$this->Birthday,true);
+		$criteria->compare('genre.Name',$this->genre);
+		
 		$criteria->with = array('genre','sponsor');
-
-
+		
+		
 		return new CActiveDataProvider($this, array(
 	        'criteria'=>$criteria,
 			'pagination' => array(

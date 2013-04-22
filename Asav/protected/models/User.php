@@ -61,7 +61,7 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Country, Genre, Firstname, Lastname, Birthday, Address, Username, Password, Salt', 'required'),
+			array('Country, Genre, Firstname, Lastname, Birthday, Address, Username, Password, Salt', 'required', 'on'=>'create'),
 			array('Country, Genre, ZipCode', 'numerical', 'integerOnly'=>true),
 			array('Firstname, Lastname, Email', 'length', 'max'=>100),
 			array('Address', 'length', 'max'=>255),
@@ -88,8 +88,8 @@ class User extends CActiveRecord
 			'medias' => array(self::HAS_MANY, 'Media', 'Author'),
 			'reports' => array(self::HAS_MANY, 'Reports', 'Author'),
 			'staffboards' => array(self::HAS_MANY, 'Staffboard', 'Author'),
-			'country' => array(self::BELONGS_TO, 'Countries', 'Country'),
-			'genre' => array(self::BELONGS_TO, 'Genres', 'Genre'),
+			'country' => array(self::BELONGS_TO, 'Country', 'Country'),
+			'genre' => array(self::BELONGS_TO, 'Genre', 'Genre'),
 		);
 	}
 
@@ -139,8 +139,38 @@ class User extends CActiveRecord
 		$criteria->compare('Username',$this->Username,true);
 		$criteria->compare('Password',$this->Password,true);
 		$criteria->compare('Salt',$this->Salt,true);
+		
+		$criteria->with = array('genre', 'country');
 
 		
+		return new CActiveDataProvider($this, array(
+				'criteria'=>$criteria,
+		));
+	}
+	public function sponsor()
+	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+	
+		$criteria=new CDbCriteria;
+	
+		$criteria->compare('Id',$this->Id);
+		$criteria->compare('Country',$this->Country);
+		$criteria->compare('Genre',$this->Genre);
+		$criteria->compare('Firstname',$this->Firstname,true);
+		$criteria->compare('Lastname',$this->Lastname,true);
+		$criteria->compare('Birthday',$this->Birthday,true);
+		$criteria->compare('Address',$this->Address,true);
+		$criteria->compare('ZipCode',$this->ZipCode);
+		$criteria->compare('Town',$this->Town,true);
+		$criteria->compare('Email',$this->Email,true);
+		$criteria->compare('Username',$this->Username,true);
+		$criteria->compare('Password',$this->Password,true);
+		$criteria->compare('Salt',$this->Salt,true);
+	
+		$criteria->with = array('genre', 'country');
+	
+	
 		return new CActiveDataProvider($this, array(
 				'criteria'=>$criteria,
 		));

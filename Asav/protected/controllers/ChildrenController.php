@@ -2,21 +2,21 @@
 
 class ChildrenController extends Controller
 {
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-	public $layout='//layouts/column2';
-	
-	/**
-	 * @return array action filters
-	 */
-	
-	public function actionIndex()
+	public function actionIndex($sponsor = null)
 	{
-		$model=new Child('search');
+		if(isset(yii::app()->user)){
+		}
+		$sponsor = yii::app()->user->id;
+		$criteria=new CDbCriteria;
+		if($sponsor != '')
+			$criteria->addCondition('Sponsor='.$sponsor);
+		
+		$model = new Child('search');
+		
+		$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+		
 		$this->render('index',array(
-				'model'=>$model,
+				'dp'=>$dp,
 		));		
 	}
 	
@@ -34,13 +34,13 @@ class ChildrenController extends Controller
 				'accessControl', // perform access control for CRUD operations
 				'postOnly + delete', // we only allow deletion via POST request
 		);
-	}
-	
+}
+
 	public function accessRules()
 	{
 		return array(
 				array('allow',  // allow all users to perform 'index' and 'view' actions
-						'actions'=>array('index','view'),
+						'actions'=>array('index','view', 'gallery'),
 						'users'=>array('*'),
 				),
 				array('allow', // allow authenticated user to perform 'create' and 'update' actions

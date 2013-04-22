@@ -31,9 +31,9 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
                 array('label'=>'Parrainer un enfant', 'url'=>'#'),
                 array('label'=>'Comment nous soutenir', 'url'=>'#', 'items'=>array(
                     array('label'=>'Parrainage', 'url'=>'#'),
-                    array('label'=>'Bénévolat', 'url'=>'#'),
+                    array('label'=>'BÃ©nÃ©volat', 'url'=>'#'),
                     array('label'=>'Devenir membre', 'url'=>'#'),
-                	array('label'=>'Équipement', 'url'=>'#'),
+                	array('label'=>'Ã‰quipement', 'url'=>'#'),
                 )),
             	array('label'=>'Contact', 'url'=>'#'),
             ),
@@ -44,6 +44,8 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             'htmlOptions'=>array('class'=>'pull-right'),
             'items'=>array(
 				array('label'=>'Webmail', 'url'=>'#'),
+				array('label'=>'Login', 'url'=>array('/site/login'), 'itemOptions'=> array('id'=>'sign_in'), 'active'=>false, 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Logout', 'url'=>array('/site/logout'), 'itemOptions'=> array('id'=>'sign_in'), 'active'=>false, 'visible'=>!Yii::app()->user->isGuest)
             ),
         ),
     ),

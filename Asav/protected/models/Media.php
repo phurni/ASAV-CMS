@@ -23,6 +23,8 @@
  */
 class Media extends CActiveRecord
 {
+	//public $uploadedFile;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -81,16 +83,16 @@ class Media extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'Author' => 'Author',
-			'Child' => 'Child',
-			'ChildMessage' => 'Child Message',
+			'Author' => 'Auteur',
+			'Child' => 'Enfant',
+			'ChildMessage' => 'ChildMessage',
 			'StaffBoard' => 'Staff Board',
-			'Path' => 'Path',
-			'Title' => 'Title',
+			'Path' => 'Fichier à charger',
+			'Title' => 'Titre',
 			'Description' => 'Description',
-			'Created' => 'Created',
-			'Modified' => 'Modified',
-			'UploadedFile' => 'UploadedFile',
+			'Created' => 'Créé',
+			'Modified' => 'Modifié',
+			'UploadedFile' => 'Chargé',
 		);
 	}
 
