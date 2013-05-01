@@ -25,7 +25,7 @@
 		<span class="span6">
 			<?php echo $form->labelEx($model,'Path'); ?>
 			<span>
-				<?php echo $form->fileField($model,'Path', array('id' => 'file')); ?>
+				<?php echo $form->fileField($model,'File', array('id' => 'File')); ?>
 				<input type="text" id="textFile" class="validate" placeholder="Joindre un fichier..." style="display: none;cursor: pointer; background-color: white;" readonly="readonly" />
 			</span>
 		</span>
@@ -70,7 +70,7 @@
 		*/
 		$(function() {
 			// Customize the file upload component
-			with($("#file"))
+			with($("#File"))
 			{
 				css('display', 'none');
 				change(function() {$("#textFile").val($(this).val())});
@@ -85,12 +85,12 @@
 					if(code == 13 || code == 32)
 					{
 						e.preventDefault();
-						$("#file").click();
+						$("#File").click();
 						
 					}
 				});
 				click(function() {
-					$("#file").click();
+					$("#File").click();
 				});
 			}
 		});
