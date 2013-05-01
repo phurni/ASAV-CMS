@@ -77,18 +77,6 @@ $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
 		</div>
 	</div>
 </div>
-<<<<<<< .mine
-<?php
-	//echo CHtml::encode($model->reports);
 
 
 
-?>
-=======
-
-
-
-
-
-
->>>>>>> .theirs
