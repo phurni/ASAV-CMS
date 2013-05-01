@@ -47,7 +47,7 @@ $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('Sponsor')); ?>:
 		</b>
-		<?php echo CHtml::encode($model->sponsor->Fullname); ?>		
+		<?php echo CHtml::encode(($model->sponsor ? $model->sponsor->Fullname : "")); ?>		
 		</div>
 		
 		
