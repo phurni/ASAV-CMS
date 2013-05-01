@@ -23,7 +23,7 @@
  */
 class Media extends CActiveRecord
 {
-	//public $uploadedFile;
+	public $File;
 	
 	/**
 	 * Returns the static model of the specified AR class.
@@ -58,6 +58,7 @@ class Media extends CActiveRecord
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('Id, Author, Child, ChildMessage, StaffBoard, Path, Title, Description, Created, Modified', 'safe', 'on'=>'search'),
+			array('File', 'file', 'types'=>'jpg, gif, png, sql'),
 		);
 	}
 
@@ -121,6 +122,29 @@ class Media extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	/**
+	 * The method is executed before the validation.
+	 * It uploads the file stored in the member var 'File'.
+	 * 
+	 * @see CModel::beforeValidate()
+	 */
+	protected function beforeValidate(){
+
+		// Get the uploade file
+		if(isset($this->File))
+		{
+			// Create the path of the file
+			$folderName = $this->generateRandomName();
+			$path = Yii::app()->params['custom']['uploadPath'] . $folderName;
+			mkdir($path);
+			//Save the file
+			$this->File->saveAs($path .'/'. $this->File->name);
+			$this->Path = $folderName . '/'. $this->File->name;
+		}
+		
+		return parent::beforeValidate();
 	}
 	
 	/**
