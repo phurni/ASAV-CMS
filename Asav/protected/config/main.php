@@ -56,6 +56,7 @@ return array(
 				),
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'sponsors/<sponsor:\d+>/children' => 'children',
+				'children/<child:\d+>/reportsbychild' => 'report/reportsbychild',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
