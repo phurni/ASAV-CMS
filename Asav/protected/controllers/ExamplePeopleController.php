@@ -2,6 +2,75 @@
 
 class ExamplePeopleController extends Controller
 {
+	public function actionIndex()
+	{
+		// Get the Id of the logged user
+		$id = yii::app()->user->id;
+		/**
+		 * Available data in [yii::app()->user]
+		 * 	-	id
+		 * 	-	name
+		 */
+	
+	
+	
+		// Get the fullname of the logged user
+		$fullname = yii::app()->user->user->Fullname;
+		/**
+		 * Available data in [yii::app()->user->user]
+		 * 	All properties of the model [User]
+		 */
+	
+	
+		if(yii::app()->user->hasState("user") && yii::app()->user->user->group->Id == 1){
+			$sponsor = yii::app()->user->id;
+		}
+	
+	
+		// Data 1
+		$model=new Person('search');
+		// Data 2
+		$item = Child::model()->findbyPk(2);
+	
+		/**
+		 * Send multiple data to the view
+		*/
+		$this->render('index',array(
+				'model'=>$model,
+				'item'=>$item,
+				'id'=>$id,
+				'name'=>$fullname,
+		));
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Specifies the access control rules.
 	 * This method is used by the 'accessControl' filter.
@@ -100,16 +169,7 @@ class ExamplePeopleController extends Controller
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new Person('search');
-		$this->render('index',array(
-			'model'=>$model,
-		));
-	}
+	
 
 	/**
 	 * Manages all models.
