@@ -20,14 +20,30 @@ $this->menu=array(
 
 <h1>Rapport : #<?php echo CHtml::encode($model->Id);?></h1>
 <?php 
-$children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
-$authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
-$status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
+//$children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
+//$authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
+//$status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
+//$type=CHtml::listData(Reporttype::model()->findAll(), 'Id', 'Name');
 ?>
 <div class="wideFields">
 	
-
-
+<div class="row-fluid">	
+	<div class="span4">
+		<b>
+		<?php echo CHtml::encode($model->getAttributeLabel('Status')); ?>:
+		</b>
+		<?php echo CHtml::encode($model->status->Status); ?>		
+		</div>
+		
+		<div class="span4">
+		<b>
+		<?php echo CHtml::encode($model->getAttributeLabel('Type')); ?>:
+		</b>
+		<?php echo CHtml::encode($model->type->Name); ?>			
+		</div>
+	</div>
+	
+	
 	<div class="row-fluid">	
 
 		<div class="span4">
@@ -44,19 +60,16 @@ $status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
 		<?php echo CHtml::encode($model->child->Fullname); ?>		
 		</div>
 		
-		<div class="span2">
+		<div class="span4">
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('Date')); ?>:
 		</b>
 		<?php echo CHtml::encode($model->Day); ?>		
 		</div>
 		
-		<div class="span2">
-		<b>
-		<?php echo CHtml::encode($model->getAttributeLabel('Status')); ?>:
-		</b>
-		<?php echo CHtml::encode($model->status->Status); ?>		
-		</div>
+		
+		
+		
 	</div>
 	<div class="row-fluid">
 		<p>

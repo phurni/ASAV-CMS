@@ -71,6 +71,7 @@ class Child extends CActiveRecord
 			'childmessages' => array(self::HAS_MANY, 'Childmessages', 'Child'),
 			'genre' => array(self::BELONGS_TO, 'Genre', 'Genre'),
 			'sponsor' => array(self::BELONGS_TO, 'User', 'Sponsor'),
+			'picture' => array(self::BELONGS_TO, 'Media', 'Picture'),
 			'medias' => array(self::HAS_MANY, 'Media', 'Child'),
 			'relationships' => array(self::HAS_MANY, 'Relationships', 'Child'),
 			'reports' => array(self::HAS_MANY, 'Reports', 'Child'),
