@@ -14,25 +14,29 @@
 $children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
 $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
 $status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
+$type=CHtml::listData(Reporttypes::model()->findAll(), 'Id', 'Name');
 ?>
 
 	<p class="note">Les champs avec <span class="required">*</span> sont requis.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 <div class="form">	
+
 	<div class="row-fluid">	
 
 
-	<div class="span4">
+	<div class="span3">
 		<?php echo $form->dropDownListRow($model,'Author',$authors); ?>
 		<?php echo $form->error($model,'Author'); ?>
 	</div>
 
-	<div class="span4">
+	<div class="span3">
 		
 		<?php echo $form->dropDownListRow($model,'Child',$children);?>
 		<?php echo $form->error($model,'Child'); ?>
 	</div>
+	
+
 	
 
 	
@@ -57,6 +61,12 @@ $status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
 		<?php //echo $form->textField($model,'Status'); ?>
 		<?php echo $form->dropDownListRow($model,'Status',$status); ?>
 		<?php echo $form->error($model,'Status'); ?>
+	</div>
+	
+	<div class="span2">
+		
+		<?php echo $form->dropDownListRow($model,'Type',$type); ?>
+		<?php echo $form->error($model,'Type'); ?>
 	</div>
 <?php 
 ?>
@@ -98,6 +108,8 @@ $status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
 		<?php echo $form->textArea($model,'NoteOther', array('class' => 'ReportsCreateBigField'),array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'NoteOther'); ?>
 	</div>
+	
+
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer'); ?>

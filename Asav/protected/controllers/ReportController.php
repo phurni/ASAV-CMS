@@ -28,7 +28,7 @@ class ReportController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','reportsbychild'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -132,6 +132,33 @@ class ReportController extends Controller
 				'model'=>$model,
 		));
 	}
+	
+	
+	
+	
+	public function actionReportsbychild($child)
+	{
+		$criteria=new CDbCriteria;
+		$criteria->addCondition('Child='.$child);
+		
+		$model = new Report('search');
+		
+		$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+		$item = Child::model()->findbyPk($child);
+		
+		$this->render('reportsbychild',array(
+				'dp'=>$dp,
+				'child'=>$item,
+		));		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * Manages all models.
