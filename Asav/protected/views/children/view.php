@@ -21,7 +21,6 @@ $this->menu=array(
 
 <?php 
 $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
-
 ?>
 
 
@@ -76,31 +75,5 @@ $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
 		</b>
 		<?php echo CHtml::image(isset($model->picture) ? CHtml::encode($model->picture->Path) : '../images/noimage.png'); ?>		
 		</div>
-
-	
 	</div>
 </div>
-<?php
-	//echo CHtml::encode($model->reports);
-
-
-$this->widget('bootstrap.widgets.TbGridView', array(
-    'type'=>'striped bordered condensed',
-    'dataProvider'=>$model->search(),
-	'filter'=>null,
-    'template'=>"{summary}{items}{pager}",
-	'summaryText'=>'Displaying {start}-{end} of {count} results.',
-    'columns'=>array(
-		
-		array('name'=>'Author','header'=>'Autheur', 'value'=>'($data->author ? $data->author->Fullname : "") '),
-    
-    	array('name'=>'Status', 'header'=>'Status', 'value'=>'$data->status->Status'),
-    	array('name'=>'Day', 'header'=>'Date'),
-       
-        array(
-            'class'=>'bootstrap.widgets.TbButtonColumn',
-            'htmlOptions'=>array('style'=>'width: 50px'),
-        ),
-    ),
-));
-?>
