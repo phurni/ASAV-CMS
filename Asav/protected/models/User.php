@@ -7,6 +7,7 @@
  * @property integer $Id
  * @property integer $Country
  * @property integer $Genre
+ * @property integer $Group
  * @property string $Firstname
  * @property string $Lastname
  * @property string $Birthday
@@ -26,6 +27,7 @@
  * @property Staffboard[] $staffboards
  * @property Countries $country
  * @property Genres $genre
+ * @property Groups $group
  */
 class User extends CActiveRecord
 {
@@ -61,8 +63,8 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Country, Genre, Firstname, Lastname, Birthday, Address, Username, Password, Salt', 'required', 'on'=>'create'),
-			array('Country, Genre, ZipCode', 'numerical', 'integerOnly'=>true),
+			array('Country, Genre, Group, Firstname, Lastname, Birthday, Address, Username, Password, Salt', 'required', 'on'=>'create'),
+			array('Country, Genre, Group, ZipCode', 'numerical', 'integerOnly'=>true),
 			array('Firstname, Lastname, Email', 'length', 'max'=>100),
 			array('Address', 'length', 'max'=>255),
 			array('Town', 'length', 'max'=>60),
@@ -71,7 +73,7 @@ class User extends CActiveRecord
 			array('Salt', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('Id, Country, Genre, Firstname, Lastname, Birthday, Address, ZipCode, Town, Email, Username, Password, Salt', 'safe', 'on'=>'search'),
+			array('Id, Country, Genre, Group, Firstname, Lastname, Birthday, Address, ZipCode, Town, Email, Username, Password, Salt', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -90,6 +92,7 @@ class User extends CActiveRecord
 			'staffboards' => array(self::HAS_MANY, 'Staffboard', 'Author'),
 			'country' => array(self::BELONGS_TO, 'Country', 'Country'),
 			'genre' => array(self::BELONGS_TO, 'Genre', 'Genre'),
+			'group' => array(self::BELONGS_TO, 'Group', 'Group'),
 		);
 	}
 
@@ -102,6 +105,7 @@ class User extends CActiveRecord
 			'Id' => 'ID',
 			'Country' => 'Country',
 			'Genre' => 'Genre',
+			'Group' => 'Group',
 			'Firstname' => 'Firstname',
 			'Lastname' => 'Lastname',
 			'Birthday' => 'Birthday',
@@ -129,6 +133,7 @@ class User extends CActiveRecord
 		$criteria->compare('Id',$this->Id);
 		$criteria->compare('Country',$this->Country);
 		$criteria->compare('Genre',$this->Genre);
+		$criteria->compare('Group',$this->Group);
 		$criteria->compare('Firstname',$this->Firstname,true);
 		$criteria->compare('Lastname',$this->Lastname,true);
 		$criteria->compare('Birthday',$this->Birthday,true);
@@ -157,6 +162,7 @@ class User extends CActiveRecord
 		$criteria->compare('Id',$this->Id);
 		$criteria->compare('Country',$this->Country);
 		$criteria->compare('Genre',$this->Genre);
+		$criteria->compare('Group',$this->Group);
 		$criteria->compare('Firstname',$this->Firstname,true);
 		$criteria->compare('Lastname',$this->Lastname,true);
 		$criteria->compare('Birthday',$this->Birthday,true);
