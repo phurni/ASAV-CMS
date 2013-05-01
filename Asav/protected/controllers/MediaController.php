@@ -63,7 +63,6 @@ class MediaController extends Controller
 	public function actionCreateForChild()
 	{
 		$model=new Media;
-		$lol = $model->generateRandomName();
 		if(isset($_POST['Media']))
 		{
 			$model->attributes=$_POST['Media'];
@@ -73,16 +72,9 @@ class MediaController extends Controller
 			//$model->Author = Yii::app()->user->Id;
 			$model->Author = 2;
 			// Get the uploade file
-			$model->Path = CUploadedFile::getInstance($model,'Path');
+			$model->File = CUploadedFile::getInstance($model,'File');
 			if($model->validate())
 			{
-				// Create the path of the file
-				$folderName = $model->generateRandomName();
-				$path = Yii::app()->params['custom']['uploadPath'] . $folderName;
-				mkdir($path);
-				//Save the file
-				$model->Path->saveAs($path .'/'. $model->Path->name);
-				$model->Path = $folderName . '/'. $model->Path->name;
 				if($model->save())
 				{
 					// Normal redirection to the media entry
