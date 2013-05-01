@@ -8,6 +8,7 @@
  * @property integer $Author
  * @property integer $Child
  * @property integer $Status
+ * @property string $Type
  * @property string $Day
  * @property string $ActionsNutricient
  * @property string $ActionsSchcool
@@ -15,9 +16,11 @@
  * @property string $NoteNutricient
  * @property string $NoteSchool
  * @property string $NoteOther
+ * 
  *
  * The followings are the available model relations:
  * @property Reportstatus $status
+ * @property Reporttypes $type
  * @property Children $child
  * @property Users $author
  */
@@ -50,11 +53,11 @@ class Report extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('Child, Status, Day, NoteNutricient, NoteSchool', 'required'),
-			array('Author, Child, Status', 'numerical', 'integerOnly'=>true),
+			array('Author, Child, Status,Type', 'numerical', 'integerOnly'=>true),
 			array('ActionsNutricient, ActionsSchcool, ActionsOther, NoteOther', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('Id, Author, Child, Status, Day, ActionsNutricient, ActionsSchcool, ActionsOther, NoteNutricient, NoteSchool, NoteOther', 'safe', 'on'=>'search'),
+			array('Id, Author, Child, Status, Type, Day, ActionsNutricient, ActionsSchcool, ActionsOther, NoteNutricient, NoteSchool, NoteOther', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,6 +72,7 @@ class Report extends CActiveRecord
 			'status' => array(self::BELONGS_TO, 'Reportstatus', 'Status'),
 			'child' => array(self::BELONGS_TO, 'Child', 'Child'),
 			'author' => array(self::BELONGS_TO, 'User', 'Author'),
+			'type' => array(self::BELONGS_TO,'Reporttypes', 'Type')
 		);
 	}
 
@@ -82,6 +86,7 @@ class Report extends CActiveRecord
 			'Author' => 'Auteur',
 			'Child' => 'Enfant',
 			'Status' => 'Status',
+			'Type' => 'Type',
 			'Day' => 'Date',
 			'ActionsNutricient' => 'Actions nutritions',
 			'ActionsSchcool' => 'Actions école',
@@ -107,6 +112,7 @@ class Report extends CActiveRecord
 		$criteria->compare('Author',$this->Author);
 		$criteria->compare('Child',$this->Child);
 		$criteria->compare('Status',$this->Status);
+		$criteria->compare('Type',$this->Type);
 		$criteria->compare('Day',$this->Day,true);
 		$criteria->compare('ActionsNutricient',$this->ActionsNutricient,true);
 		$criteria->compare('ActionsSchcool',$this->ActionsSchcool,true);
