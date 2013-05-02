@@ -15,7 +15,10 @@ class ExamplePeopleController extends Controller
 	
 	
 		// Get the fullname of the logged user
-		$fullname = yii::app()->user->user->Fullname;
+		$fullname = "invité";
+		if(isset(yii::app()->user->user)){
+			$fullname = yii::app()->user->user->Fullname;
+		}
 		/**
 		 * Available data in [yii::app()->user->user]
 		 * 	All properties of the model [User]
