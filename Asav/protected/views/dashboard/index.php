@@ -1,37 +1,33 @@
 <?php
-/* @var $this ReportController */
-/* @var $dataProvider CActiveDataProvider */
+/* @var $this DashboardController */
 
 $this->breadcrumbs = array (
-		'Rapports' 
-);
-
-$this->menu = array (
-		array (
-				'label' => 'Créer un Rapport',
-				'url' => array (
-						'create' 
-				) 
-		) 
+		'Dashboard' 
 );
 ?>
+<h1>Dashboard</h1>
+<p>
+	Vous êtes connecté en tant que <strong>
+	<?php echo Yii::app()->user->user->Firstname .' '. Yii::app()->user->user->Lastname; ?></strong> 
+	(rôle: <?php echo Yii::app()->user->user->group->Name; ?>).
+	<br /><br />
+</p>
 
-<h1>Rapports</h1>
-
+<h4>Liste des rapports à valider</h4>
 <?php
-/*
- * $this->widget('zii.widgets.CListView', array( 'dataProvider'=>$dataProvider,
- * 'itemView'=>'_view', ));
- */
-
 $this->widget ( 'bootstrap.widgets.TbGridView', array (
 		'type' => 'striped bordered condensed',
-		'dataProvider' => $model->search (),
+		'dataProvider' => $reportProvider,
 		'filter' => null,
-		'template' => "{summary}{items}{pager}",
-		'summaryText' => 'Displaying {start}-{end} of {count} results.',
+		'template' => "{items}{pager}",
+		'htmlOptions' => array (
+				'class' => 'DashboardIndexTable' 
+		),
 		'columns' => array (
-				
+				array (
+						'name' => 'Id',
+						'header' => '#' 
+				),
 				array (
 						'name' => 'Author',
 						'header' => 'Auteur',
@@ -48,19 +44,15 @@ $this->widget ( 'bootstrap.widgets.TbGridView', array (
 						'value' => '$data->type->Name' 
 				),
 				array (
-						'name' => 'Status',
-						'header' => 'Status',
-						'value' => '$data->status->Status' 
-				),
-				array (
 						'name' => 'Day',
 						'header' => 'Date' 
 				),
-				
 				array (
 						'class' => 'bootstrap.widgets.TbButtonColumn',
+						'template' => '{update}',
+						'updateButtonUrl' => 'Yii::app()->createUrl("/Report/update", array("id" => $data->Id))',
 						'htmlOptions' => array (
-								'style' => 'width: 50px' 
+								'style' => 'width: 20px' 
 						) 
 				) 
 		) 

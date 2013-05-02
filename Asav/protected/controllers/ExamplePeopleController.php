@@ -25,8 +25,7 @@ class ExamplePeopleController extends Controller
 		if(yii::app()->user->hasState("user") && yii::app()->user->user->group->Id == 1){
 			$sponsor = yii::app()->user->id;
 		}
-	
-	
+		
 		// Data 1
 		$model=new Person('search');
 		// Data 2
