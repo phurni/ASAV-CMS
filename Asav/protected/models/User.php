@@ -176,9 +176,40 @@ class User extends CActiveRecord
 	
 		$criteria->with = array('genre', 'country');
 	
-	
 		return new CActiveDataProvider($this, array(
 				'criteria'=>$criteria,
 		));
+	}
+	
+	/**
+	 * Gets if the user is an administrator.
+	 */
+	public function IsAdmin()
+	{
+		return $this->group->Id == 3;
+	}
+	
+	/**
+	 * Gets if the user is the team.
+	 */
+	public function IsInTeam()
+	{
+		return $this->IsAdmin() || $this->IsSponsor();
+	}
+	
+	/**
+	 * Gets if the user is a sponsor.
+	 */
+	public function IsSponsor()
+	{
+		return $this->group->Id == 1;
+	}
+	
+	/**
+	 * Gets if the user is in the staff.
+	 */
+	public function IsStaff()
+	{
+		return $this->group->Id == 2;
 	}
 }
