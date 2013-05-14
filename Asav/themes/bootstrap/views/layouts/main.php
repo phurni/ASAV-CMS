@@ -27,7 +27,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
             	// Dashboard
-                array('label'=>'Dashboard', 'url'=>'.', 'visible'=>$isInTeam),
+                array('label'=>'Dashboard', 'url'=>Yii::app()->createUrl("/dashboard"), 'visible'=>$isInTeam),
             	// Enfants
             	array('label'=>'Enfants', 'url'=>'#', 'visible'=>!Yii::app()->user->IsGuest, 'items'=>array(
             			array('label'=>'Annuaire', 'url'=>Yii::app()->createUrl("/children")),
@@ -35,7 +35,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             			array('label'=>'Trombinoscope', 'url'=>Yii::app()->createUrl("/children/gallery")),
             	)),
             	//Reports
-            	array('label'=>'Raports', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
+            	array('label'=>'Rapports', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
             			array('label'=>'Créer', 'url'=>Yii::app()->createUrl("/report/create")),
             			array('label'=>'Liste', 'url'=>Yii::app()->createUrl("/report")),
             			array('label'=>'Validation', 'url'=>Yii::app()->createUrl("/dashboard")),

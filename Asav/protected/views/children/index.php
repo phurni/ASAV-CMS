@@ -2,12 +2,17 @@
 /* @var $this ChildrenController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Enfants',
+$this->breadcrumbs = array (
+		'Enfants' 
 );
 
-$this->menu=array(
-	array('label'=>'Créer Enfant', 'url'=>array('create')),
+$this->menu = array (
+		array (
+				'label' => 'Créer Enfant',
+				'url' => array (
+						'create' 
+				) 
+		) 
 );
 ?>
 
@@ -15,29 +20,48 @@ $this->menu=array(
 
 <?php
 /*
-$this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-));
-*/
+ * $this->widget('zii.widgets.CListView', array( 'dataProvider'=>$dataProvider,
+ * 'itemView'=>'_view', ));
+ */
 
-$this->widget('bootstrap.widgets.TbGridView', array(
-    'type'=>'striped bordered condensed',
-    'dataProvider'=>$dp,
-	'filter'=>null,
-    'template'=>"{summary}{items}{pager}",
-	'summaryText'=>'Displaying {start}-{end} of {count} results.',
-    'columns'=>array(
-        array('name'=>'Firstname', 'header'=>'Prénom'),
-        array('name'=>'Lastname', 'header'=>'Nom'),
-    	array('name'=>'Sponsor', 'value'=>'($data->sponsor ? $data->sponsor->FullName : "")'),
-    	array('name'=>'Birthday', 'header'=>'Date de naissance'),
-    	array('name'=>'Genre', 'value'=>'$data->genre->Name'),
-        array(
-            'class'=>'bootstrap.widgets.TbButtonColumn',
-            'htmlOptions'=>array('style'=>'width: 50px'),
-        ),
-    ),
-));
+$this->widget ( 'bootstrap.widgets.TbGridView', array (
+		'type' => 'striped bordered condensed',
+		'dataProvider' => $dp,
+		'filter' => null,
+		'template' => "{summary}{items}{pager}",
+		'summaryText' => 'Displaying {start}-{end} of {count} results.',
+		'columns' => array (
+				array (
+						'name' => 'Firstname',
+						'header' => 'Prénom',
+						'type' => 'raw',
+						'value' => 'CHtml::link($data->Firstname, Yii::app()->createUrl("/children/view", array("id"=>$data->Id)))' 
+				),
+				array (
+						'name' => 'Lastname',
+						'header' => 'Nom',
+						'type' => 'raw',
+						'value' => 'CHtml::link($data->Lastname, Yii::app()->createUrl("/children/view", array("id"=>$data->Id)))' 
+				),
+				array (
+						'name' => 'Sponsor',
+						'value' => '($data->sponsor ? $data->sponsor->FullName : "")' 
+				),
+				array (
+						'name' => 'Birthday',
+						'header' => 'Date de naissance' 
+				),
+				array (
+						'name' => 'Genre',
+						'value' => '$data->genre->Name' 
+				),
+				array (
+						'class' => 'bootstrap.widgets.TbButtonColumn',
+						'htmlOptions' => array (
+								'style' => 'width: 50px' 
+						) 
+				) 
+		) 
+) );
 
 ?>

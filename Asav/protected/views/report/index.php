@@ -40,7 +40,9 @@ $this->widget ( 'bootstrap.widgets.TbGridView', array (
 				array (
 						'name' => 'Child',
 						'header' => 'Enfant',
-						'value' => '($data->child ? $data->child->Fullname : "") ' 
+						'type' => 'raw',
+						'value'=>'$data->child ? CHtml::link($data->child->Fullname, Yii::app()->createUrl("/children/view", array("id"=>$data->child->Id))) : ""'
+						//'value' => '($data->child ? $data->child->Fullname : "") ' 
 				),
 				array (
 						'name' => 'Type',
