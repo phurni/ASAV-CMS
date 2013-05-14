@@ -4,15 +4,31 @@
 
 $this->breadcrumbs=array(
 	'Enfants'=>array('index'),
-	'Créer',
+	'Création',
 );
 
 $this->menu=array(
-	array('label'=>'Liste Enfants', 'url'=>array('index')),
-
+	array (
+				'label' => 'Annuaire des enfants',
+				'url' => array (
+						'index'
+				)
+		),
+		array (
+				'label' => 'Créer un enfant',
+				'url' => array (
+						'create' 
+				) 
+		),
+		array (
+				'label' => 'Trombinoscope',
+				'url' => array (
+						'create'
+				)
+		)
 );
 ?>
 
-<h1>Créer Enfant</h1>
+<h1>Créer un enfant</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
