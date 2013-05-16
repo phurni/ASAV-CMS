@@ -70,8 +70,29 @@ class ChildrenController extends Controller
 	
 	public function actionView($id)
 	{
-		$this->render('view',array(
+	/*	$this->render('view',array(
 				'model'=>$this->loadModel($id),
+		));*/
+		
+		
+		
+		//
+		if(yii::app()->user->hasState("user") && yii::app()->user->user->group->Id == 1){
+			$sponsor = yii::app()->user->id;
+		}
+		
+		$criteria=new CDbCriteria;
+		//$criteria->alias = 'relationships';
+		$criteria->join='LEFT JOIN relationships ON t.Id=relationships.Child';
+		$criteria->condition='relationships.isHosted=1';
+		
+		$model = new Child('search');
+		
+		
+		$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+		
+		$this->render('view',array(
+				'dp'=>$dp,
 		));
 	}
 	
