@@ -12,7 +12,7 @@ return array(
 		
 	// Website configuration
 	'charset'=>'utf-8',
-	'sourceLanguage'=>'fr_fr',
+	'sourceLanguage'=>'en',
 	'language'=>'fr',
 
 	// preloading 'log' component

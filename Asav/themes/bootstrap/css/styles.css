@@ -58,8 +58,16 @@
 	border-radius: 6px;
 }
 
+
+/* Dashboard */
+.DashboardIndexTable{
+	width: 95%;
+	margin: auto;
+}
+
+
+/* Reports */
 .ReportsCreateBigField
 {
 	width :650px;
-}
 }

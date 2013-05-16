@@ -15,12 +15,15 @@ class ChildrenController extends Controller
 	
 	public function actionIndex($sponsor = null)
 	{
+		$sponsorized = false;
 		if(yii::app()->user->hasState("user") && yii::app()->user->user->group->Id == 1){
 			$sponsor = yii::app()->user->id;
 		}
 		$criteria=new CDbCriteria;
-		if($sponsor != '')
+		if($sponsor != ''){
 			$criteria->addCondition('Sponsor='.$sponsor);
+			$sponsorized = true;
+		}
 		
 		$model = new Child('search');
 		
@@ -28,6 +31,7 @@ class ChildrenController extends Controller
 		
 		$this->render('index',array(
 				'dp'=>$dp,
+				'sponsorized'=>$sponsorized
 		));		
 	}
 	

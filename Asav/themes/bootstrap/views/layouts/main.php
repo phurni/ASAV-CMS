@@ -15,6 +15,8 @@
 <body>
 
 <?php
+$isInTeam = isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam();
+
 $this->widget('bootstrap.widgets.TbNavbar', array(
     'type'=>'inverse', // null or 'inverse'
     'brand'=> Yii::app()->name,
@@ -24,26 +26,27 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
-                array('label'=>'Home', 'url'=>'.', 'active'=>true),
-            	array('label'=>'Exemple', 'url'=>'#', 'items'=>array(
-            			array('label'=>'view', 'url'=>'examplePeople'),
+            	// Dashboard
+                array('label'=>'Dashboard', 'url'=>Yii::app()->createUrl("/dashboard"), 'visible'=>$isInTeam),
+            	// Enfants
+            	array('label'=>'Enfants', 'url'=>'#', 'visible'=>!Yii::app()->user->IsGuest, 'items'=>array(
+            			array('label'=>'Annuaire', 'url'=>Yii::app()->createUrl("/children")),
+            			array('label'=>'Créer', 'url'=>Yii::app()->createUrl("/children/create")),
+            			array('label'=>'Trombinoscope', 'url'=>Yii::app()->createUrl("/children/gallery")),
             	)),
-                array('label'=>'Parrainer un enfant', 'url'=>'#'),
-                array('label'=>'Comment nous soutenir', 'url'=>'#', 'items'=>array(
-                    array('label'=>'Parrainage', 'url'=>'#'),
-                    array('label'=>'Bénévolat', 'url'=>'#'),
-                    array('label'=>'Devenir membre', 'url'=>'#'),
-                	array('label'=>'Équipement', 'url'=>'#'),
-                )),
-            	array('label'=>'Contact', 'url'=>'#'),
+            	//Reports
+            	array('label'=>'Rapports', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
+            			array('label'=>'Créer', 'url'=>Yii::app()->createUrl("/report/create")),
+            			array('label'=>'Liste', 'url'=>Yii::app()->createUrl("/report")),
+            			array('label'=>'Validation', 'url'=>Yii::app()->createUrl("/dashboard")),
+            	)),
             ),
         ),
-        '<form class="navbar-search pull-left" action=""><input type="text" class="search-query span2" placeholder="Rechercher"></form>',
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'htmlOptions'=>array('class'=>'pull-right'),
             'items'=>array(
-				array('label'=>'Webmail', 'url'=>'#'),
+				array('label'=> !Yii::app()->user->isGuest ? Yii::app()->user->user->Firstname .' '. Yii::app()->user->user->Lastname : '', 'url'=>'#', 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'itemOptions'=> array('id'=>'sign_in'), 'active'=>false, 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout', 'url'=>array('/site/logout'), 'itemOptions'=> array('id'=>'sign_in'), 'active'=>false, 'visible'=>!Yii::app()->user->isGuest)
             ),

@@ -69,8 +69,7 @@ class MediaController extends Controller
 			// Set the created date
 			$model->Created = date('Y-m-d');
 			// Set the owner of the file
-			//$model->Author = Yii::app()->user->Id;
-			$model->Author = 2;
+			$model->Author = Yii::app()->user->Id;
 			// Get the uploade file
 			$model->File = CUploadedFile::getInstance($model,'File');
 			if($model->validate())
