@@ -22,6 +22,9 @@ $this->menu=array(
 <?php 
 $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
 $child = $dp->getData();
+
+print_r($child);
+die();
 ?>
 
 
