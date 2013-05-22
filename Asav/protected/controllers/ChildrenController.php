@@ -79,7 +79,8 @@ class ChildrenController extends Controller
 		$criteria=new CDbCriteria;
 		//$criteria->alias = 'relationships';
 		$criteria->join='LEFT JOIN relationships ON t.Id=relationships.Child';
-		$criteria->condition='relationships.isHosted=1';
+		$criteria->condition='t.Id = :id ';
+		$criteria->params = array(':id'=>$id);
 		
 		
 		$model = new Child('search');

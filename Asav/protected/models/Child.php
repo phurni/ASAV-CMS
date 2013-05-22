@@ -73,7 +73,7 @@ class Child extends CActiveRecord
 			'sponsor' => array(self::BELONGS_TO, 'User', 'Sponsor'),
 			'picture' => array(self::BELONGS_TO, 'Media', 'Picture'),
 			'medias' => array(self::HAS_MANY, 'Media', 'Child'),
-			'relationships' => array(self::HAS_MANY, 'Relationships', 'Child'),
+			'relationships' => array(self::HAS_MANY, 'Relationship', 'Child'),
 			'reports' => array(self::HAS_MANY, 'Reports', 'Child'),
 		);
 	}
