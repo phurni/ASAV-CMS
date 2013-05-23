@@ -74,9 +74,26 @@ class ChildrenController extends Controller
 	
 	public function actionView($id)
 	{
+
+		
+		$criteria=new CDbCriteria;
+		//$criteria->alias = 'relationships';
+		$criteria->join='LEFT JOIN relationships ON t.Id=relationships.Child';
+		$criteria->condition='t.Id = :id ';
+		$criteria->params = array(':id'=>$id);
+		
+		
+		$model = new Child('search');
+		
+		
+		$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+		echo "salut";
 		$this->render('view',array(
-				'model'=>$this->loadModel($id),
-		));
+				'dp'=>$dp,
+		))
+		
+		;
+		
 	}
 	
 	public function actionCreate()

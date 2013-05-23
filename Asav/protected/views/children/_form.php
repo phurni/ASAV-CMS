@@ -19,7 +19,7 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 	<p class="note">Les champs avec <span class="required">*</span> sont requis.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-<div class="form">	
+<div class="wideFields">	
 <div class="row-fluid">	
 
 
@@ -34,11 +34,22 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 		<?php echo $form->textField($model,'Lastname'); ?>
 		<?php echo $form->error($model,'Lastname'); ?>
 	</div>
-	
+		
+		<?php 
+		//don't show the sponsor child when user create a new child
+		$actionName = $this->getAction()->getId() ; 
+		if ($actionName != "create"){
+			
+			?>
 	<div class="span4">
 		<?php echo $form->dropDownListRow($model,'Sponsor',$sponsors); ?>
 		<?php echo $form->error($model,'Sponsor'); ?>
 	</div>
+		<?php }
+		// end IF.
+		?>
+	
+	
 </div>
 <div class="row-fluid">	
 
@@ -70,7 +81,7 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 			<span class="span6">
 			<?php echo $form->labelEx($model,'Photo'); ?>
 			<span>
-				<?php echo $form->fileField($model,'Picture', array('id' => 'file')); ?>
+				<?php echo $form->fileField($model,'Picture', array('id' => 'File')); ?>
 				<input type="text" id="textFile" class="validate" placeholder="Joindre un fichier..." style="display: none;cursor: pointer; background-color: white;" readonly="readonly" />
 			</span>
 		</span>
@@ -84,7 +95,7 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 
 </div><!-- form -->
 		
-		<script type="text/javascript">
+	<script type="text/javascript">
 		/*
 			Validates the form fields marked with the class 'validate'.
 			This function performs a "is not empty" check.
@@ -114,7 +125,7 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 		*/
 		$(function() {
 			// Customize the file upload component
-			with($("#file"))
+			with($("#File"))
 			{
 				css('display', 'none');
 				change(function() {$("#textFile").val($(this).val())});
@@ -129,12 +140,12 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 					if(code == 13 || code == 32)
 					{
 						e.preventDefault();
-						$("#file").click();
+						$("#File").click();
 						
 					}
 				});
 				click(function() {
-					$("#file").click();
+					$("#File").click();
 				});
 			}
 		});
