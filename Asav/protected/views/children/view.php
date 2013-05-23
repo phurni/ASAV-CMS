@@ -73,6 +73,7 @@ $child = $dp->data [0];
 		</b>
 		<?php echo CHtml::encode($child->Lastname); ?>		
 		</div>
+		
 
 		<div class="span4">
 			<b>

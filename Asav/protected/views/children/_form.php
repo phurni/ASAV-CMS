@@ -34,11 +34,22 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 		<?php echo $form->textField($model,'Lastname'); ?>
 		<?php echo $form->error($model,'Lastname'); ?>
 	</div>
-	
+		
+		<?php 
+		//don't show the sponsor child when user create a new child
+		$actionName = $this->getAction()->getId() ; 
+		if ($actionName != "create"){
+			
+			?>
 	<div class="span4">
 		<?php echo $form->dropDownListRow($model,'Sponsor',$sponsors); ?>
 		<?php echo $form->error($model,'Sponsor'); ?>
 	</div>
+		<?php }
+		// end IF.
+		?>
+	
+	
 </div>
 <div class="row-fluid">	
 
