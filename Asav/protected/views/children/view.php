@@ -3,6 +3,9 @@
 /* @var $dp Child */
 /* @var $form CActiveForm */
 
+$authors = CHtml::listData ( User::model ()->findAll (), 'Id', 'Fullname' );
+$child = $dp->data [0];
+
 $this->breadcrumbs = array (
 		'Enfants' => array (
 				'index' 
@@ -12,31 +15,31 @@ $this->breadcrumbs = array (
 
 $this->menu = array (
 		array (
-				'label' => 'Liste des Enfants',
+				'label' => 'Annuaire des enfants',
 				'url' => array (
 						'index' 
 				) 
 		),
 		array (
-				'label' => 'Créer Enfant',
+				'label' => 'Créer un enfant',
 				'url' => array (
 						'create' 
 				) 
 		),
 		array (
-				'label' => 'Modifier Enfant',
+				'label' => 'Modifier un enfant',
 				'url' => array (
 						'update',
-						'id' => $dp->Id 
+						'id' => $child->Id 
 				) 
 		),
 		array (
-				'label' => 'Supprimer Enfant',
+				'label' => 'Supprimer un enfant',
 				'url' => '#',
 				'linkOptions' => array (
 						'submit' => array (
 								'delete',
-								'id' => $dp->Id 
+								'id' => $child->Id 
 						),
 						'confirm' => 'Êtes-vous sûr vous supprimer cet enfant?' 
 				) 
@@ -44,16 +47,7 @@ $this->menu = array (
 );
 ?>
 
-<h1>Enfant : #<?php echo $dp->Id; ?></h1>
-
-<?php
-$authors = CHtml::listData ( User::model ()->findAll (), 'Id', 'Fullname' );
-$child = $dp->data [0];
-
-// print_r($child);
-// die();
-?>
-
+<h1>Enfant : #<?php echo $child->Id; ?></h1>
 
 <div class="wideFields">
 

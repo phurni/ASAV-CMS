@@ -9,10 +9,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-		array('label'=>'Liste des Rapports', 'url'=>array('index')),
-		array('label'=>'Créer Rapport', 'url'=>array('create')),
-		array('label'=>'Modifier Rapport', 'url'=>array('update', 'id'=>$model->Id)),
-		array('label'=>'Supprimer Rapport', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Êtes-vous sûr vous supprimer ce rapport?')),
+		array('label'=>'Liste des rapports', 'url'=>array('index')),
+		array('label'=>'Créer un rapport', 'url'=>array('create')),
+		array('label'=>'Modifier un rapport', 'url'=>array('update', 'id'=>$model->Id)),
+		array('label'=>'Supprimer un rapport', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Êtes-vous sûr vous supprimer ce rapport?')),
 
 );
 ?>
