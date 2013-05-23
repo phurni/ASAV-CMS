@@ -42,7 +42,7 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 			
 			?>
 	<div class="span4">
-		<?php echo $form->dropDownListRow($model,'Sponsor',$sponsors); ?>
+		<?php echo $form->dropDownListRow($model,'Sponsor',$sponsors,array('empty' => 'Sélectionner un parrain...', 'class' => 'validate')); ?>
 		<?php echo $form->error($model,'Sponsor'); ?>
 	</div>
 		<?php }
