@@ -6,6 +6,27 @@ $this->breadcrumbs=array(
 	'Trombinoscope',
 		
 );
+
+$this->menu = array (
+		array (
+				'label' => 'Annuaire des enfants',
+				'url' => array (
+						'index'
+				)
+		),
+		array (
+				'label' => 'Créer un enfant',
+				'url' => array (
+						'create'
+				)
+		),
+		array (
+				'label' => 'Trombinoscope',
+				'url' => array (
+						'gallery'
+				)
+		)
+);
 ?>
 <h1>Trombinoscope</h1>
 

@@ -194,7 +194,7 @@ class User extends CActiveRecord
 	 */
 	public function IsInTeam()
 	{
-		return $this->IsAdmin() || $this->IsSponsor();
+		return $this->IsAdmin() || $this->IsStaff();
 	}
 	
 	/**

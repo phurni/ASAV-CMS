@@ -8,11 +8,23 @@ $this->breadcrumbs = array (
 
 $this->menu = array (
 		array (
-				'label' => 'Créer un Rapport',
+				'label' => 'Créer un rapport',
 				'url' => array (
-						'create' 
+						'create'
+				)
+		),
+		array (
+				'label' => 'Liste des rapports',
+				'url' => array (
+						'index' 
 				) 
-		) 
+		),
+		array (
+				'label' => 'Liste des rapports à valider',
+				'url' => array (
+						'dashboard/'
+				)
+		)
 );
 ?>
 
@@ -42,7 +54,6 @@ $this->widget ( 'bootstrap.widgets.TbGridView', array (
 						'header' => 'Enfant',
 						'type' => 'raw',
 						'value'=>'$data->child ? CHtml::link($data->child->Fullname, Yii::app()->createUrl("/children/view", array("id"=>$data->child->Id))) : ""'
-						//'value' => '($data->child ? $data->child->Fullname : "") ' 
 				),
 				array (
 						'name' => 'Type',
