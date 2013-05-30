@@ -103,18 +103,18 @@ class User extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'Country' => 'Country',
+			'Country' => 'Pays',
 			'Genre' => 'Genre',
-			'Group' => 'Group',
-			'Firstname' => 'Firstname',
-			'Lastname' => 'Lastname',
-			'Birthday' => 'Birthday',
-			'Address' => 'Address',
+			'Group' => 'Groupe',
+			'Firstname' => 'Prénom',
+			'Lastname' => 'Nom',
+			'Birthday' => 'Date de naissance',
+			'Address' => 'Adresse',
 			'ZipCode' => 'Zip Code',
-			'Town' => 'Town',
+			'Town' => 'Ville',
 			'Email' => 'Email',
-			'Username' => 'Username',
-			'Password' => 'Password',
+			'Username' => "Nom d'utilisateur",
+			'Password' => 'Mot de passe',
 			'Salt' => 'Salt',
 		);
 	}
@@ -127,7 +127,10 @@ class User extends CActiveRecord
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
+		
 
+		
+		
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('Id',$this->Id);
