@@ -73,6 +73,11 @@ class Child extends CActiveRecord
 			'sponsor' => array(self::BELONGS_TO, 'User', 'Sponsor'),
 			'picture' => array(self::BELONGS_TO, 'Media', 'Picture'),
 			'medias' => array(self::HAS_MANY, 'Media', 'Child'),
+			
+			// SELECT `people`.* FROM `people` INNER JOIN `relationships` ON `people`.`Id` = `relationships`.`person` INNER JOIN `children` ON `children`.`Id` = `relationships`.`child` WHERE `children`.`Id` = 5
+			
+			//'tutor' =>array(self::HAS_ONE, 'Person', 'relationship(Child, Person)'),
+			'tutor' => array(self::HAS_ONE, 'Person', array('id'=>'Id'), 'through'=>'relationships'),
 			'relationships' => array(self::HAS_MANY, 'Relationships', 'Child'),
 			'reports' => array(self::HAS_MANY, 'Reports', 'Child'),
 		);
@@ -121,7 +126,7 @@ class Child extends CActiveRecord
 		$criteria->compare('t.Birthday',$this->Birthday,true);
 		$criteria->compare('genre.Name',$this->genre);
 		
-		$criteria->with = array('genre','sponsor');
+		$criteria->with = array('genre','sponsor', 'relationship');
 		
 		
 		return new CActiveDataProvider($this, array(
