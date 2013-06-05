@@ -19,7 +19,7 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 	<p class="note">Les champs avec <span class="required">*</span> sont requis.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-<div class="wideFields">	
+	
 <div class="row-fluid">	
 
 
@@ -42,7 +42,7 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 			
 			?>
 	<div class="span4">
-		<?php echo $form->dropDownListRow($model,'Sponsor',$sponsors); ?>
+		<?php echo $form->dropDownListRow($model,'Sponsor',$sponsors,array('empty' => 'Sélectionner un parrain...', 'class' => 'validate')); ?>
 		<?php echo $form->error($model,'Sponsor'); ?>
 	</div>
 		<?php }
@@ -63,6 +63,7 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 				'dateFormat' => 'dd mm yy',
 				'altFormat' => 'yy-mm-dd',
 				'altField' => "#Child_Birthday",
+				'changeYear'=>'true',
 		),
 		'model'=>$model,
 		'value'=>$model->Birthday,
@@ -93,7 +94,7 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->
+
 		
 	<script type="text/javascript">
 		/*
