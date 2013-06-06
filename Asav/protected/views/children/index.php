@@ -22,7 +22,7 @@ $this->menu = array (
 		array (
 				'label' => 'Trombinoscope',
 				'url' => array (
-						'create'
+						'gallery'
 				)
 		)
 );
