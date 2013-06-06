@@ -26,8 +26,11 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
-            	// Dashboard
-                array('label'=>'Dashboard', 'url'=>Yii::app()->createUrl("/dashboard"), 'visible'=>$isInTeam),
+            	// Administration
+            		array('label'=>'Administration', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
+            				array('label'=>'Dashboard', 'url'=>Yii::app()->createUrl("/dashboard")),
+            				array('label'=>'Espace de communication', 'url'=>Yii::app()->createUrl("/staffboard")),
+            		)),
             	// Enfants
             	array('label'=>'Enfants', 'url'=>'#', 'visible'=>!Yii::app()->user->IsGuest, 'items'=>array(
             			array('label'=>'Annuaire', 'url'=>Yii::app()->createUrl("/children")),
