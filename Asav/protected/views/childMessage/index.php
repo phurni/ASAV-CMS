@@ -9,7 +9,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Child Messages</h1>
+<h1>Messages aux enfants</h1>
 
 <?php 
 
@@ -38,16 +38,11 @@ $this->widget ( 'bootstrap.widgets.TbGridView', array (
 				),
 
 				array (
-						$forwarded = 'name' => 'IsForwarded';
-						if ($forwarded == '1'){
-						'name' => 'oui',
-						}
-						else{
-						'name' => 'non',
-						}
-						
+						'name' => 'IsForwarded' ,			
 						
 						'header' => 'transmis ?',
+						'value' => '$data->IsForwarded ? "oui" : "non"'
+						
 					
 				),
 

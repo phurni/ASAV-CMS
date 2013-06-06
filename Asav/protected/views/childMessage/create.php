@@ -1,15 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Child Messages'=>array('index'),
-	'Create',
+	'Messages aux enfants'=>array('index'),
+	'Créer',
 );
 
 $this->menu=array(
-	array('label'=>'List ChildMessage','url'=>array('index')),
-	array('label'=>'Manage ChildMessage','url'=>array('admin')),
+	array('label'=>'Liste des Messages','url'=>array('index')),
+
 );
 ?>
 
-<h1>Create ChildMessage</h1>
+<h1>Créer un Message</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
