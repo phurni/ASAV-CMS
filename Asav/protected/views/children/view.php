@@ -75,8 +75,6 @@ $this->menu = array (
 		</b>
 		<?php echo CHtml::encode(($child->sponsor ? $child->sponsor->Fullname : "")); ?>		
 		</div>
-
-
 	</div>
 
 	<div class="row-fluid">
