@@ -34,14 +34,23 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             	// Enfants
             	array('label'=>'Enfants', 'url'=>'#', 'visible'=>!Yii::app()->user->IsGuest, 'items'=>array(
             			array('label'=>'Annuaire', 'url'=>Yii::app()->createUrl("/children")),
-            			array('label'=>'Créer', 'url'=>Yii::app()->createUrl("/children/create")),
+            			array('label'=>'Créer un enfant', 'url'=>Yii::app()->createUrl("/children/create")),
+            			array('label'=>'Envoyer un message à un enfant', 'url'=>Yii::app()->createUrl("/childMessage/create")),
+            			array('label'=>'Messages envoyés aux enfants', 'url'=>Yii::app()->createUrl("/childMessage/create")),
             			array('label'=>'Trombinoscope', 'url'=>Yii::app()->createUrl("/children/gallery")),
             	)),
             	//Reports
             	array('label'=>'Rapports', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
-            			array('label'=>'Créer', 'url'=>Yii::app()->createUrl("/report/create")),
-            			array('label'=>'Liste', 'url'=>Yii::app()->createUrl("/report")),
-            			array('label'=>'Validation', 'url'=>Yii::app()->createUrl("/dashboard")),
+            			array('label'=>'Créer un rapport', 'url'=>Yii::app()->createUrl("/report/create")),
+            			array('label'=>'Liste des rapports', 'url'=>Yii::app()->createUrl("/report")),
+            			array('label'=>'Validation des rapports', 'url'=>Yii::app()->createUrl("/dashboard")),
+            	)),
+            	// Utilisateurs
+            	array('label'=>'Utilisateurs', 'url'=>'#', 'visible'=>!Yii::app()->user->IsGuest, 'items'=>array(
+            			array('label'=>'Créer un utilisateur', 'url'=>Yii::app()->createUrl("/users/create")),
+            			array('label'=>'Liste des utilisateurs', 'url'=>Yii::app()->createUrl("/users")),
+            			array('label'=>'Mailing', 'url'=>Yii::app()->createUrl("/users/mailing")),
+            			array('label'=>'Publipostage', 'url'=>Yii::app()->createUrl("/users/publipostage")),
             	)),
             ),
         ),
