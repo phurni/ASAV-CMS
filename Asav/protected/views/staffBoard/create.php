@@ -3,8 +3,8 @@
 /* @var $model StaffBoard */
 
 $this->breadcrumbs=array(
-	'Staff Boards'=>array('index'),
-	'Création d\'un article',
+	'Espace de communication'=>array('index'),
+	'Création d\'un message',
 );
 
 $this->menu=array(
@@ -12,6 +12,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Création d'un article</h1>
+<h1>Création d'un message</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

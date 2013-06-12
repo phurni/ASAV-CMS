@@ -41,7 +41,7 @@ $this->menu=array(
 	<!-- Attached media -->
 	<p>
 			<?php 
-			if($model->medias)
+			if(count($model->medias) > 0)
 			{
 				echo '<b>Fichiers attachés</b><br /><blockquote>';
 				foreach ($model->medias as $media)

@@ -32,17 +32,16 @@
 	</p>
 	<!-- Attached media -->
 	<p>
-		<b>Fichiers attachés</b><br />
-		<blockquote>
 			<?php 
-			if($data->medias)
+			if(count($data->medias) > 0)
 			{
+				echo '<b>Fichiers attachés</b><br /><blockquote>';
 				foreach ($data->medias as $media)
 				{
-					echo '<a href="'. Yii::app()->params['custom']['uploadPath'] . $media->Path .'">'. $media->Title .' ('. pathinfo($media->Path, PATHINFO_FILENAME) .'.'. pathinfo($media->Path, PATHINFO_EXTENSION) .')</a><br />';
+					echo '<a href="../'. Yii::app()->params['custom']['uploadPath'] . $media->Path .'">'. $media->Title .' ('. pathinfo($media->Path, PATHINFO_FILENAME) .'.'. pathinfo($media->Path, PATHINFO_EXTENSION) .')</a><br />';
 				}
+				echo '</blockquote>';
 			}
 			?>
-		</blockquote>
 	</p>
 </div>
