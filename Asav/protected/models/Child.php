@@ -74,6 +74,8 @@ class Child extends CActiveRecord
 			'picture' => array(self::BELONGS_TO, 'Media', 'Picture'),
 			'medias' => array(self::HAS_MANY, 'Media', 'Child'),
 			'relationships' => array(self::HAS_MANY, 'Relationship', 'Child'),
+			'tutor' => array(self::HAS_ONE, 'Person', array('Person'=>'Id'), 'through'=>'relationships', 'condition'=>'IsTutor = 1'),
+			'host' => array(self::HAS_ONE, 'Person', array('Person'=>'Id'), 'through'=>'relationships', 'condition'=>'IsHosted = 1'),
 			'reports' => array(self::HAS_MANY, 'Reports', 'Child'),
 		);
 	}
@@ -90,6 +92,8 @@ class Child extends CActiveRecord
 			'Lastname' => 'Nom',
 			'Birthday' => 'Date de naissance',
 			'Genre' => 'Genre',
+			'Address' => 'Adresse',
+			'Tutor' => 'Tuteur légal',
 		);
 	}
 

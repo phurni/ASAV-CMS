@@ -75,8 +75,6 @@ $this->menu = array (
 		</b>
 		<?php echo CHtml::encode(($child->sponsor ? $child->sponsor->Fullname : "")); ?>		
 		</div>
-
-
 	</div>
 
 	<div class="row-fluid">
@@ -102,23 +100,25 @@ $this->menu = array (
 		<?php echo CHtml::image(isset($child->picture) ? CHtml::encode($child->picture->Path) : '../images/noimage.png'); ?>		
 		</div>
 	</div>
-	<?php
-	// Check if the child is hosted somewhere
-	foreach ( $child->relationships as $relation ) {
-		if ($relation->IsHosted) {
-			?>
-			<div class="row-fluid">
-				<div class="span4">
-				<b>
-					<?php echo CHtml::encode($child->getAttributeLabel('Adresse')); ?>:
-				</b>
-				<?php echo '<br />'. $relation->person->Firstname .' '. $relation->person->Lastname .'<br />'. $relation->person->Address .'<br /><br />'; ?>
-				</div>
-			</div>
-			<?php
-		}
-	}
-	?>	
+	<div class="row-fluid">
+		<div class="span4">
+		<b>
+			<?php echo CHtml::encode($child->getAttributeLabel('Address')); ?>:
+		</b><br/>
+		<?php echo CHtml::encode($child->host ? $child->host->Fullname : "aucune"); ?>
+		<br />
+		<?php echo CHtml::encode($child->host ? $child->host->Address : ""); ?>
+		</div>
+		<div class="span4">
+		<b>
+			<?php echo CHtml::encode($child->getAttributeLabel('Tutor')); ?>:
+		</b><br/>
+		<?php echo CHtml::encode($child->tutor ?  $child->tutor->Fullname : "aucun"); ?>
+		<br />
+		<?php echo CHtml::encode($child->tutor ?  $child->tutor->Address : ""); ?>
+		</div>
+	</div>
+	<br/><br/>
 </div>
 
 
