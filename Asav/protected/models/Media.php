@@ -70,8 +70,8 @@ class Media extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'author' => array(self::BELONGS_TO, 'Users', 'Author'),
-			'child' => array(self::BELONGS_TO, 'Children', 'Child'),
+			'author' => array(self::BELONGS_TO, 'User', 'Author'),
+			'child' => array(self::BELONGS_TO, 'Child', 'Child'),
 			'childMessage' => array(self::BELONGS_TO, 'Childmessages', 'ChildMessage'),
 			'staffBoard' => array(self::BELONGS_TO, 'Staffboard', 'StaffBoard'),
 		);

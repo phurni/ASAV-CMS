@@ -12,13 +12,9 @@ $children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
 	<?php echo $form->errorSummary($model); ?>
 	<div class="row-fluid">	
 
-		<div class="span3">
-		<?php echo $form->dropDownListRow($model,'Author',$authors); ?>
-		<?php echo $form->error($model,'Author'); ?>
-		</div>
 		
 		
-		<div class="span3">		
+		<div class="span4">		
 			<?php echo $form->dropDownListRow($model,'Child',$children);?>
 			<?php echo $form->error($model,'Child'); ?>
 		</div>

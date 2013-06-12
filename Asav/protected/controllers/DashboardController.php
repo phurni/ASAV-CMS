@@ -38,7 +38,7 @@ class DashboardController extends Controller
 	{
 		// Get the reports to validate
 		$criteria=new CDbCriteria;
-		$criteria->addCondition('Status=2');
+		$criteria->addCondition('Status=4');
 		$reportProvider=new CActiveDataProvider('Report', array('criteria'=>$criteria));
 		$this->render('index',array(
 			'reportProvider'=>$reportProvider,

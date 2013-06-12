@@ -15,29 +15,29 @@ $status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
 	<p class="note">Les champs avec <span class="required">*</span> sont requis.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-	<div class="row-fluid">	
+<div class="row-fluid">	
 
 
 	<div class="span4">
-		<?php echo $form->dropDownListRow($model,'Author',$authors); ?>
+		<?php echo $form->textArea($model,'Author',$authors); ?>
 		<?php echo $form->error($model,'Author'); ?>
 	</div>
 
 	<div class="span4">
 		
-		<?php echo $form->dropDownListRow($model,'Child',$children);?>
+		<?php echo $form->textArea($model,'Child',$children);?>
 		<?php echo $form->error($model,'Child'); ?>
 	</div>	
 
 	<div class="span2">
 		<?php echo $form->labelEx($model,'Day'); ?>
-		<?php echo CHtml::encode($model,'Day'); ?>
+		<?php echo $form->textArea($model,'Day'); ?>
 		<?php echo $form->error($model,'Day'); ?>
 		
 	</div>
 	
 	<div class="span2">
-		<?php //echo $form->textField($model,'Status'); ?>
+
 		<?php echo $form->dropDownListRow($model,'Status',$status); ?>
 		<?php echo $form->error($model,'Status'); ?>
 	</div>
