@@ -7,6 +7,11 @@ class UserController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
+	
+	
+	
+	private $currentUser;
+	
 
 	/**
 	 * @return array action filters
@@ -30,7 +35,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','mailing','publipostage'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -128,6 +133,159 @@ class UserController extends Controller
 		$this->render('index',array(
 				'model'=>$model,
 		));
+	}
+	
+	public function actionMailing()
+	{
+		$model=new User();
+		$criteria=new CDbCriteria();
+		
+		
+		/**
+		 * Second step
+		 * Write the mail to send
+		 */
+		if(!empty($_POST) && isset($_POST["step"]) && $_POST["step"] == "select"){
+			$_SESSION["list"] = $_POST;
+			foreach ($_POST as $id => $value){
+				if($id != "step"){
+					$criteria->addCondition('t.Id=' . $value, "OR");
+				}
+			}
+			
+			
+			$tagList = array();
+			$tagList["id"] = array("Id", "affiche l'ID de l'utilisateur");
+			$tagList["pays"] = array("Country", "affiche le pays de l'utilisateur");
+			$tagList["genre"] = array("Genre", "affiche le genre de l'utilisateur");
+			$tagList["prénom"] = array("Firstname", "affiche le prénom de l'utilisateur");
+			$tagList["nom"] = array("Lastname", "affiche le nom de famille de l'utilisateur");
+			$tagList["date de naissance"] = array("Birthday", "affiche la date de naissance l'utilisateur");
+			$tagList["adresse"] = array("Address", "affiche l'adresse de l'utilisateur");
+			$tagList["NPA"] = array("ZipCode", "affiche le code postal de l'utilisateur");
+			$tagList["ville"] = array("Town", "affiche la ville de l'utilisateur");
+			$tagList["mail"] = array("Email", "affiche l'email de l'utilisateur");
+			$tagList["pseudo"] = array("Username", "affiche le pseudo de l'utilisateur");
+			
+			
+			
+			$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+			$this->render('mailing',array(
+					'dp'=>$dp,
+					'tags'=>$tagList
+			));
+		/**
+		 * Last step
+		 * Send the mail
+		 */
+		}else if(!empty($_POST) && isset($_POST["step"]) && $_POST["step"] == "send"){
+			foreach ($_SESSION["list"] as $id => $value){
+				if($id != "step"){
+					$criteria->addCondition('t.Id=' . $value, "OR");
+				}
+			}
+			$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+			foreach($dp->getData() as $user){
+				$this->currentUser = $user;
+				$subject = preg_replace_callback('/\{(\w+)\}/', array($this, "textReplace"), $_POST["subject"]);
+				$msg = preg_replace_callback('/\{(\w+)\}/', array($this, "textReplace"), $_POST["message"]);
+				
+				// Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
+				$headers  = 'MIME-Version: 1.0' . "\r\n";
+				$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+				
+				mail($user->Email, $subject, $msg, $headers);
+			}
+			
+			/**
+			 * Clear the stored data and show the list of sponsors
+			 */
+			$_SESSION["list"] = null;
+			$criteria=new CDbCriteria();
+			$criteria->addCondition('t.Group=1');
+			$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+			$this->render('sponsors',array(
+					'dp'=>$dp,
+					'action'=>'mailing',
+					'sended'=>true
+			));
+			
+		/**
+		 * First step
+		 * Select the sponsors to contact
+		 */
+		}else{
+			$criteria->addCondition('t.Group=1');
+			$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+			$this->render('sponsors',array(
+					'dp'=>$dp,
+					'action'=>'mailing'
+			));
+		}
+	}
+	
+	private function textReplace($matches){
+		$match = $matches[1];
+		switch($match){
+			case "Country":
+				return $this->currentUser->country->Name;
+				break;
+			case "Genre":
+				return $this->currentUser->genre->Name;
+				break;
+			default:
+				return $this->currentUser->$match;
+				break;
+		}
+	}
+	
+	
+	public function actionPublipostage()
+	{
+		$model=new User();
+		$criteria=new CDbCriteria();
+		if(isset($_POST) && !empty($_POST)){
+			foreach ($_POST as $id => $value){
+				if($id != "step"){
+					$criteria->addCondition('t.Id=' . $value, "OR");
+				}
+			}
+			
+			$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+			
+			//Print the header line
+			$out = "Nom;Prénom;Date de naissance;Adresse;NPA;Ville;Pays;Email" . PHP_EOL;
+			
+			foreach($dp->getData() as $data){
+				
+				//Format the birthday stored in the US format to the Swiss format
+				$birthday = date("Y m d", strtotime($data->Birthday));
+				
+				$out .= $data->Firstname . ";"
+					  . $data->Lastname . ";"
+					  . $birthday . ";"
+					  . $data->Address . ";"
+					  . $data->ZipCode . ";"
+					  . $data->Town . ";"
+					  . $data->country->Name . ";"
+					  . $data->Email . PHP_EOL;
+			}
+			
+			//Add the BOM to the UTF-8 output
+			$out = chr(239) . chr(187) . chr(191) . $out;
+			
+			//Send the export
+			Yii::app()->getRequest()->sendFile("export.csv", $out, "text/csv", true);
+			
+			
+		}else{
+			$criteria->addCondition('t.Group=1');
+			$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+			$this->render('sponsors',array(
+					'dp'=>$dp,
+					'action'=>'publipostage'
+			));
+		}
 	}
 
 	/**
