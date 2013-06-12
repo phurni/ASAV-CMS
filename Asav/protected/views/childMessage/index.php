@@ -15,7 +15,7 @@ $this->menu=array(
 
 $this->widget ( 'bootstrap.widgets.TbGridView', array (
 		'type' => 'striped bordered condensed',
-		'dataProvider' => $model->search (),
+		'dataProvider' => $dp,
 		'filter' => null,
 		'template' => "{summary}{items}{pager}",
 		'summaryText' => 'Displaying {start}-{end} of {count} results.',
