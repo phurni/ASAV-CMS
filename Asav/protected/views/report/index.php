@@ -66,8 +66,12 @@ $this->widget ( 'bootstrap.widgets.TbGridView', array (
 						'value' => '$data->status->Status' 
 				),
 				array (
+						'name' => 'Date_update',
+						'header' => 'Date de modification'
+				),
+				array (
 						'name' => 'Day',
-						'header' => 'Date' 
+						'header' => 'Date de viste' 
 				),
 				
 				array (

@@ -28,41 +28,56 @@ $this->menu=array(
 <div class="wideFields">
 	
 <div class="row-fluid">	
-	<div class="span4">
+		<div class="span3">
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('Status')); ?>:
 		</b>
 		<?php echo CHtml::encode($model->status->Status); ?>		
 		</div>
 		
-		<div class="span4">
+		<div class="span3">
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('Type')); ?>:
 		</b>
 		<?php echo CHtml::encode($model->type->Name); ?>			
 		</div>
-	</div>
-	
-	
-	<div class="row-fluid">	
 
-		<div class="span4">
+
+		<div class="span3">
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('Autheur')); ?>:
 		</b>
 		<?php echo CHtml::encode($model->author->Fullname); ?>		
 		</div>
 		
-		<div class="span4">
+		<div class="span3">
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('Enfant')); ?>:
 		</b>
 		<?php echo CHtml::encode($model->child->Fullname); ?>		
 		</div>
+</div>
+
+
+<div class="row-fluid">			
+		
+		<div class="span3">
+		<b>
+		<?php echo CHtml::encode($model->getAttributeLabel('Date_creation')); ?>:
+		</b>
+		<?php echo CHtml::encode($model->Date_creation); ?>		
+		</div>
 		
 		<div class="span4">
 		<b>
-		<?php echo CHtml::encode($model->getAttributeLabel('Date')); ?>:
+		<?php echo CHtml::encode($model->getAttributeLabel('Date_update')); ?>:
+		</b>
+		<?php echo CHtml::encode($model->Date_update); ?>		
+		</div>
+		
+		<div class="span4">
+		<b>
+		<?php echo CHtml::encode($model->getAttributeLabel('Day')); ?>:
 		</b>
 		<?php echo CHtml::encode($model->Day); ?>		
 		</div>
