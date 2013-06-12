@@ -10,7 +10,7 @@ $this->breadcrumbs = array (
 		'Enfants' => array (
 				'index' 
 		),
-		$dp->Id 
+		$child->getFullName()
 );
 
 $this->menu = array (
@@ -47,7 +47,7 @@ $this->menu = array (
 );
 ?>
 
-<h1>Enfant : #<?php echo $child->Id; ?></h1>
+<h1><?php echo $child->getFullName(); ?></h1>
 
 <div class="wideFields">
 

@@ -4,8 +4,8 @@
 
 $this->breadcrumbs=array(
 	'Enfants'=>array('index'),
-	$model->Id=>array('view','id'=>$model->Id),
-	'Modifier',
+	$model->getFullname()=>array('view','id'=>$model->Id),
+	'Modification',
 );
 
 $this->menu=array(

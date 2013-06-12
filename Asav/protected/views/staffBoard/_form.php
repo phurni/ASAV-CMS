@@ -16,14 +16,6 @@
 	
 	<div class="row-fluid">
 		<span class="span11">
-			<?php echo $form->labelEx($model,'Author'); ?>
-			<?php echo $form->textField($model,'Author'); ?>
-			<?php echo $form->error($model,'Author'); ?>
-		</span>
-	</div>
-
-	<div class="row-fluid">
-		<span class="span11">
 			<?php echo $form->labelEx($model,'Title'); ?>
 			<?php echo $form->textField($model,'Title',array('size'=>60,'maxlength'=>255)); ?>
 			<?php echo $form->error($model,'Title'); ?>
@@ -41,16 +33,15 @@
 	<div class="row-fluid">
 		<!-- Upload file -->
 		<span class="span5">
-			<label>Fichier à charger</label>
+			<label>Fichier à charger (optionnel)</label>
 			<span>
 				<input type="file" name="File" id="File" />
-				<?php //echo $form->fileField($model,'File', array('id' => 'File')); ?>
 				<input type="text" id="textFile" class="validate" placeholder="Joindre un fichier..." style="display: none;cursor: pointer; background-color: white;" readonly="readonly" />
 			</span>
 		</span>
 		<!-- The file name -->
 		<span class="span6">
-			<label for="filename">Nom du fichier</label>
+			<label for="filename">Nom du fichier (optionnel)</label>
 			
 			<span>
 				<input type="text" name="filename" id="filename" />
