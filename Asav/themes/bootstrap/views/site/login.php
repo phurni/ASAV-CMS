@@ -5,13 +5,13 @@
 
 $this->pageTitle=Yii::app()->name . ' - Login';
 $this->breadcrumbs=array(
-	'Login',
+	'Connexion',
 );
 ?>
 
-<h1>Login</h1>
+<h1>Connexion</h1>
 
-<p>Please fill out the following form with your login credentials:</p>
+<p>Compléter le formulaire suivant avec vos identifiants:</p>
 
 <div class="form">
 
@@ -24,13 +24,9 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
 	<?php echo $form->textFieldRow($model,'username'); ?>
 
-	<?php echo $form->passwordFieldRow($model,'password',array(
-        'hint'=>'Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>',
-    )); ?>
+	<?php echo $form->passwordFieldRow($model,'password'); ?>
 
 	<?php echo $form->checkBoxRow($model,'rememberMe'); ?>
 
@@ -38,7 +34,7 @@ $this->breadcrumbs=array(
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
             'buttonType'=>'submit',
             'type'=>'primary',
-            'label'=>'Login',
+            'label'=>'Se connecter',
         )); ?>
 	</div>
 

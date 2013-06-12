@@ -8,10 +8,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
+	array('label'=>'Créer un message', 'url'=>array('create')),
 	array('label'=>'Espace de communication', 'url'=>array('index')),
-	array('label'=>'Créer un article', 'url'=>array('create')),
-	array('label'=>'Mettre à jour l\'article', 'url'=>array('update', 'id'=>$model->Id)),
-	array('label'=>'Supprimer l\'article', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Mettre à jour du message', 'url'=>array('update', 'id'=>$model->Id)),
+	array('label'=>'Suppression du message', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Are you sure you want to delete this item?')),
 );
 ?>
 

@@ -81,6 +81,23 @@
 }
 
 
+/* Site: Index */
+.SiteIndexIntro{
+    text-align: center;
+	font-size: 16px;
+}
+
+.SiteIndexLogo{
+    background-color: #f9f9f9;
+    border-radius: 4px 4px 4px 4px;
+    list-style: none outside none;
+    margin: 0 0 20px;
+    padding: 8px 15px;
+	width: 320px;
+	border: 1px solid #dddddd;
+}
+
+
 /* Staffboard */
 .StaffboardElement{
 	border: 1px solid #DDDDDD;

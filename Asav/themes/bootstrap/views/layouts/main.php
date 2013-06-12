@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="language" content="en" />
+	<meta name="language" content="fr" />
 
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/styles.css" />
 
@@ -59,8 +59,8 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             'htmlOptions'=>array('class'=>'pull-right'),
             'items'=>array(
 				array('label'=> !Yii::app()->user->isGuest ? Yii::app()->user->user->Firstname .' '. Yii::app()->user->user->Lastname : '', 'url'=>'#', 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'itemOptions'=> array('id'=>'sign_in'), 'active'=>false, 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout', 'url'=>array('/site/logout'), 'itemOptions'=> array('id'=>'sign_in'), 'active'=>false, 'visible'=>!Yii::app()->user->isGuest)
+				array('label'=>'Connexion', 'url'=>array('/site/login'), 'itemOptions'=> array('id'=>'sign_in'), 'active'=>false, 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Déconnexion', 'url'=>array('/site/logout'), 'itemOptions'=> array('id'=>'sign_in'), 'active'=>false, 'visible'=>!Yii::app()->user->isGuest)
             ),
         ),
     ),
@@ -80,8 +80,10 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y') . ' ' . Yii::app()->name; ?>.<br/>
-		All Rights Reserved.
+		<p class="center">
+			<br /><br /><br />
+			Copyright &copy; <?php echo date('Y') . ' ' . Yii::app()->name; ?>, tous droits réservés.
+		</p>
 	</div><!-- footer -->
 
 </div><!-- page -->
