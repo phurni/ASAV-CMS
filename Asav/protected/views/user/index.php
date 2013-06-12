@@ -8,7 +8,8 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Créer un Utilisateur', 'url'=>array('create')),
-
+	array('label'=>'Mailing', 'url'=>array('mailing')),
+	array('label'=>'Publipostage', 'url'=>array('publipostage')),
 );
 ?>
 
