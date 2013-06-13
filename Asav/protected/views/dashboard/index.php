@@ -45,7 +45,7 @@ $this->widget ( 'bootstrap.widgets.TbGridView', array (
 						'value' => '$data->type->Name' 
 				),
 				array (
-						'name' => 'Day',
+						'name' => 'VisitDate',
 						'header' => 'Date' 
 				),
 				array (
