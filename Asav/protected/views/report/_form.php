@@ -48,20 +48,20 @@ $type=CHtml::listData(Reporttypes::model()->findAll(), 'Id', 'Name');
 
 
 		<div class="span3">
-			<?php echo $form->labelEx($model,'Day'); ?>
+			<?php echo $form->labelEx($model,'VisitDate'); ?>
 			<?php $this->widget('zii.widgets.jui.CJuiDatePicker',array(
-				'name'=>'tmp-Day',
+				'name'=>'tmp-VisitDate',
 				// additional javascript options for the date picker plugin
 				'options'=>array(
 						'showAnim'=>'fold',
 						'dateFormat' => 'dd mm yy',
 						'altFormat' => 'yy-mm-dd',
-						'altField' => "#Report_Day",
+						'altField' => "#Report_VisitDate",
 				),
 				'model'=>$model,
-				'value'=>$model->Day,
+				'value'=>$model->VisitDate,
 			)); ?>
-			<?php echo $form->textField($model,'Day', array('style'=>"display:none")); ?>
+			<?php echo $form->textField($model,'VisitDate', array('style'=>"display:none")); ?>
 		</div>
 </div>	
 <div class="row-fluid">	

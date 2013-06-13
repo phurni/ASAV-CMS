@@ -9,9 +9,9 @@
  * @property integer $Child
  * @property integer $Status
  * @property string $Type
- * @property string $Date_creation
- * @property string $Date_update
- * @property string $Day
+ * @property string $CreationDate
+ * @property string $UpdateDate
+ * @property string $VisitDate
  * @property string $ActionsNutricient
  * @property string $ActionsSchcool
  * @property string $ActionsOther
@@ -54,12 +54,12 @@ class Report extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Child, Status, Date_creation,Day, NoteNutricient, NoteSchool', 'required'),
+			array('Child, Status, CreationDate,VisitDate, NoteNutricient, NoteSchool', 'required'),
 			array('Author, Child, Status,Type', 'numerical', 'integerOnly'=>true),
 			array('ActionsNutricient, ActionsSchcool, ActionsOther, NoteOther', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('Id, Author, Child, Status, Type, Date_creation , Date_update,Day, ActionsNutricient, ActionsSchcool, ActionsOther, NoteNutricient, NoteSchool, NoteOther', 'safe', 'on'=>'search'),
+			array('Id, Author, Child, Status, Type, CreationDate , UpdateDate,VisitDate, ActionsNutricient, ActionsSchcool, ActionsOther, NoteNutricient, NoteSchool, NoteOther', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -89,9 +89,9 @@ class Report extends CActiveRecord
 			'Child' => 'Enfant',
 			'Status' => 'Status',
 			'Type' => 'Type',			
-			'Date_creation' => 'Date de création',
-			'Date_update' => 'Date de modification',
-			'Day' => 'Date de visite',
+			'CreationDate' => 'Date de création',
+			'UpdateDate' => 'Date de modification',
+			'VisitDate' => 'Date de visite',
 			'ActionsNutricient' => 'Actions nutritions',
 			'ActionsSchcool' => 'Actions école',
 			'ActionsOther' => 'Actions divers',
@@ -117,9 +117,9 @@ class Report extends CActiveRecord
 		$criteria->compare('Child',$this->Child);
 		$criteria->compare('Status',$this->Status);
 		$criteria->compare('Type',$this->Type);
-		$criteria->compare('Date_creation',$this->Date_creation,true);
-		$criteria->compare('Date_update',$this->Date_update,true);
-		$criteria->compare('Day',$this->Day,true);
+		$criteria->compare('CreationDate',$this->CreationDate,true);
+		$criteria->compare('UpdateDate',$this->UpdateDate,true);
+		$criteria->compare('VisitDate',$this->VisitDate,true);
 		$criteria->compare('ActionsNutricient',$this->ActionsNutricient,true);
 		$criteria->compare('ActionsSchcool',$this->ActionsSchcool,true);
 		$criteria->compare('ActionsOther',$this->ActionsOther,true);
