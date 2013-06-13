@@ -73,11 +73,11 @@ class ChildMessage extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'Author' => 'Author',
-			'Child' => 'Child',
-			'DateCreated' => 'Date Created',
+			'Author' => 'Auteur',
+			'Child' => 'Enfant',
+			'DateCreated' => 'Date de création',
 			'Message' => 'Message',
-			'IsForwarded' => 'Is Forwarded',
+			'IsForwarded' => 'transmis ? ',
 		);
 	}
 

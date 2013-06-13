@@ -50,6 +50,8 @@ class ChildMessageController extends Controller
 	 */
 	public function actionView($id)
 	{
+		if(Yii::app()->user->user->Id)
+			
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -69,6 +71,7 @@ class ChildMessageController extends Controller
 		if(isset($_POST['ChildMessage']))
 		{
 			$model->attributes=$_POST['ChildMessage'];
+			$model->Author = Yii::app()->user->user->Id;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Id));
 		}
@@ -125,12 +128,26 @@ class ChildMessageController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	public function actionIndex($sponsor = null)
 	{
-		$model=new ChildMessage('search');
+		$sponsorized = false;
+		if(yii::app()->user->hasState("user") && yii::app()->user->user->group->Id == 1){
+			$sponsor = yii::app()->user->id;
+		}
+		$criteria=new CDbCriteria;
+		if($sponsor != ''){
+			$criteria->addCondition('Author='.$sponsor);
+			$sponsorized = true;
+		}
+		
+		$model = new ChildMessage('search');
+		
+		$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+		
 		$this->render('index',array(
-				'model'=>$model,
-		));
+				'dp'=>$dp,
+				'sponsorized'=>$sponsorized
+		));		
 	}
 
 	/**

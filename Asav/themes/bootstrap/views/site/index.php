@@ -9,6 +9,6 @@ $this->pageTitle = Yii::app ()->name;
 		class="SiteIndexLogo" />
 	<br /><br />
 	Bienvenue sur le site intranet de <?php echo Yii::app ()->name; ?>.
-	<br />
-	<a href="<?php echo Yii::app()->createUrl("site/login"); ?>">Connectez-vous</a> afin de bénéficier de vos accès.
+	<br /><br />
+	<a class="btn btn-large" href="<?php echo Yii::app()->createUrl("site/login"); ?>">Connexion à l'intranet</a>
 </p>

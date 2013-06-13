@@ -22,13 +22,9 @@ $type=CHtml::listData(Reporttypes::model()->findAll(), 'Id', 'Name');
 	<?php echo $form->errorSummary($model); ?>
 <div class="form">	
 
-	<div class="row-fluid">	
+<div class="row-fluid">	
 
 
-	<div class="span3">
-		<?php echo $form->dropDownListRow($model,'Author',$authors); ?>
-		<?php echo $form->error($model,'Author'); ?>
-	</div>
 
 	<div class="span3">
 		
@@ -36,41 +32,38 @@ $type=CHtml::listData(Reporttypes::model()->findAll(), 'Id', 'Name');
 		<?php echo $form->error($model,'Child'); ?>
 	</div>
 	
-
-	
-
-	
-	<div class="span2">
-	<?php echo $form->labelEx($model,'Day'); ?>
-	<?php $this->widget('zii.widgets.jui.CJuiDatePicker',array(
-		'name'=>'tmp-Day',
-		// additional javascript options for the date picker plugin
-		'options'=>array(
-				'showAnim'=>'fold',
-				'dateFormat' => 'dd mm yy',
-				'altFormat' => 'yy-mm-dd',
-				'altField' => "#Report_Day",
-		),
-		'model'=>$model,
-		'value'=>$model->Day,
-	)); ?>
-	<?php echo $form->textField($model,'Day', array('style'=>"display:none")); ?>
-	</div>
-	
-	<div class="span2">
+	<div class="span3">
 		<?php //echo $form->textField($model,'Status'); ?>
 		<?php echo $form->dropDownListRow($model,'Status',$status); ?>
 		<?php echo $form->error($model,'Status'); ?>
 	</div>
 	
-	<div class="span2">
+	<div class="span3">
 		
 		<?php echo $form->dropDownListRow($model,'Type',$type); ?>
 		<?php echo $form->error($model,'Type'); ?>
 	</div>
-<?php 
-?>
-</div>
+
+
+
+
+		<div class="span3">
+			<?php echo $form->labelEx($model,'Day'); ?>
+			<?php $this->widget('zii.widgets.jui.CJuiDatePicker',array(
+				'name'=>'tmp-Day',
+				// additional javascript options for the date picker plugin
+				'options'=>array(
+						'showAnim'=>'fold',
+						'dateFormat' => 'dd mm yy',
+						'altFormat' => 'yy-mm-dd',
+						'altField' => "#Report_Day",
+				),
+				'model'=>$model,
+				'value'=>$model->Day,
+			)); ?>
+			<?php echo $form->textField($model,'Day', array('style'=>"display:none")); ?>
+		</div>
+</div>	
 <div class="row-fluid">	
 
 	<div class="row">
