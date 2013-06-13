@@ -71,8 +71,8 @@ class ReportController extends Controller
 		{
 			$model->attributes=$_POST['Report'];
 			$model->Author = Yii::app()->user->user->Id;
-			$model->Date_creation = date('Y-m-d');
-			$model->Date_update = date('Y-m-d');
+			$model->CreationDate = date('Y-m-d');
+			$model->UpdateDate = date('Y-m-d');
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Id));
 		}
@@ -97,7 +97,7 @@ class ReportController extends Controller
 		if(isset($_POST['Report']))
 		{
 			$model->attributes=$_POST['Report'];
-			$model->Date_update = date('Y-m-d');
+			$model->UpdateDate = date('Y-m-d');
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Id));
 		}

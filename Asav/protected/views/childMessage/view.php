@@ -22,7 +22,7 @@ $this->menu=array(
 //$type=CHtml::listData(Reporttype::model()->findAll(), 'Id', 'Name');
 ?>
 <div class="wideFields">
-	
+<br>	
 <div class="row-fluid">	
 	<div class="span4">
 		<b>
@@ -59,3 +59,4 @@ $this->menu=array(
 </div>		
 
 </div>
+<br>

@@ -9,24 +9,44 @@ $this->menu=array(
 	array('label'=>'Create Media','url'=>array('create')),
 	array('label'=>'Update Media','url'=>array('update','id'=>$model->Id)),
 	array('label'=>'Delete Media','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Media','url'=>array('admin')),
+
 );
+
+
 ?>
 
-<h1>View Media #<?php echo $model->Id; ?></h1>
+<h1>Consulter Media : #<?php echo $model->Id; ?></h1>
 
-<?php $this->widget('bootstrap.widgets.TbDetailView',array(
-	'data'=>$model,
-	'attributes'=>array(
-		'Id',
-		'Author',
-		'Child',
-		'ChildMessage',
-		'StaffBoard',
-		'Path',
-		'Title',
-		'Description',
-		'Created',
-		'Modified',
-	),
-)); ?>
+<div class="wideFields">
+	<div class="row-fluid">	
+		<div class="span4">
+		<b>
+		<?php echo CHtml::encode($model->getAttributeLabel('Title')); ?>:
+		</b>
+		<?php echo CHtml::encode($model->Title); ?>
+		</div>
+	
+	
+	
+	<div class="span4">
+		<b>
+		<?php echo CHtml::encode($model->getAttributeLabel('Author')); ?>:
+		</b>
+		<?php echo CHtml::encode($model->author->Fullname); ?>
+	</div>
+	
+		<div class="span4">
+			<b>
+			<?php echo CHtml::encode($model->getAttributeLabel('Enfant')); ?>:
+			</b>
+			<?php echo CHtml::encode($model->child->Fullname); ?>			
+		</div>
+
+		<div class="span4">
+		<b>
+		<?php echo CHtml::encode($model->getAttributeLabel('Path')); ?>:
+		</b>
+		<?php echo CHtml::encode($model->Path); ?>
+		</div>
+	</div>	
+</div>

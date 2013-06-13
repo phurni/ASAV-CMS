@@ -63,23 +63,23 @@ $this->menu=array(
 		
 		<div class="span3">
 		<b>
-		<?php echo CHtml::encode($model->getAttributeLabel('Date_creation')); ?>:
+		<?php echo CHtml::encode($model->getAttributeLabel('CreationDate')); ?>:
 		</b>
-		<?php echo CHtml::encode($model->Date_creation); ?>		
+		<?php echo CHtml::encode($model->CreationDate); ?>		
 		</div>
 		
 		<div class="span4">
 		<b>
-		<?php echo CHtml::encode($model->getAttributeLabel('Date_update')); ?>:
+		<?php echo CHtml::encode($model->getAttributeLabel('UpdateDate')); ?>:
 		</b>
-		<?php echo CHtml::encode($model->Date_update); ?>		
+		<?php echo CHtml::encode($model->UpdateDate); ?>		
 		</div>
 		
 		<div class="span4">
 		<b>
-		<?php echo CHtml::encode($model->getAttributeLabel('Day')); ?>:
+		<?php echo CHtml::encode($model->getAttributeLabel('VisitDate')); ?>:
 		</b>
-		<?php echo CHtml::encode($model->Day); ?>		
+		<?php echo CHtml::encode($model->VisitDate); ?>		
 		</div>
 		
 		
