@@ -5,7 +5,7 @@
  */
 
 // change the following paths if necessary
-$yii=dirname(__FILE__).'/../../../../wamp/www/Asav/YiiFramework/yii.php';
+$yii=dirname(__FILE__).'/../YiiFramework/yii.php';
 $config=dirname(__FILE__).'/protected/config/test.php';
 
 // remove the following line when in production mode

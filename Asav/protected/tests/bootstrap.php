@@ -1,7 +1,7 @@
 <?php
 
 // change the following paths if necessary
-$yiit=dirname(__FILE__).'/../../../../../../wamp/www/Asav/YiiFramework/yiit.php';
+$yiit=dirname(__FILE__).'/../YiiFramework/yiit.php';
 $config=dirname(__FILE__).'/../config/test.php';
 
 require_once($yiit);

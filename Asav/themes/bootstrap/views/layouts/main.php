@@ -36,7 +36,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             			array('label'=>'Annuaire', 'url'=>Yii::app()->createUrl("/children")),
             			array('label'=>'Créer un enfant', 'url'=>Yii::app()->createUrl("/children/create")),
             			array('label'=>'Envoyer un message à un enfant', 'url'=>Yii::app()->createUrl("/childMessage/create")),
-            			array('label'=>'Messages envoyés aux enfants', 'url'=>Yii::app()->createUrl("/childMessage/create")),
+            			array('label'=>'Messages envoyés aux enfants', 'url'=>Yii::app()->createUrl("/childMessage")),
             			array('label'=>'Trombinoscope', 'url'=>Yii::app()->createUrl("/children/gallery")),
             	)),
             	//Reports
