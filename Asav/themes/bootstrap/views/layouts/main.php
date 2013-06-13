@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="language" content="en" />
+	<meta name="language" content="fr" />
 
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/styles.css" />
 
@@ -26,19 +26,31 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'items'=>array(
-            	// Dashboard
-                array('label'=>'Dashboard', 'url'=>Yii::app()->createUrl("/dashboard"), 'visible'=>$isInTeam),
+            	// Administration
+            		array('label'=>'Administration', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
+            				array('label'=>'Dashboard', 'url'=>Yii::app()->createUrl("/dashboard")),
+            				array('label'=>'Espace de communication', 'url'=>Yii::app()->createUrl("/staffboard")),
+            		)),
             	// Enfants
             	array('label'=>'Enfants', 'url'=>'#', 'visible'=>!Yii::app()->user->IsGuest, 'items'=>array(
             			array('label'=>'Annuaire', 'url'=>Yii::app()->createUrl("/children")),
-            			array('label'=>'Créer', 'url'=>Yii::app()->createUrl("/children/create")),
+            			array('label'=>'Créer un enfant', 'url'=>Yii::app()->createUrl("/children/create")),
+            			array('label'=>'Envoyer un message à un enfant', 'url'=>Yii::app()->createUrl("/childMessage/create")),
+            			array('label'=>'Messages envoyés aux enfants', 'url'=>Yii::app()->createUrl("/childMessage/create")),
             			array('label'=>'Trombinoscope', 'url'=>Yii::app()->createUrl("/children/gallery")),
             	)),
             	//Reports
             	array('label'=>'Rapports', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
-            			array('label'=>'Créer', 'url'=>Yii::app()->createUrl("/report/create")),
-            			array('label'=>'Liste', 'url'=>Yii::app()->createUrl("/report")),
-            			array('label'=>'Validation', 'url'=>Yii::app()->createUrl("/dashboard")),
+            			array('label'=>'Créer un rapport', 'url'=>Yii::app()->createUrl("/report/create")),
+            			array('label'=>'Liste des rapports', 'url'=>Yii::app()->createUrl("/report")),
+            			array('label'=>'Validation des rapports', 'url'=>Yii::app()->createUrl("/dashboard")),
+            	)),
+            	// Utilisateurs
+            	array('label'=>'Utilisateurs', 'url'=>'#', 'visible'=>!Yii::app()->user->IsGuest, 'items'=>array(
+            			array('label'=>'Créer un utilisateur', 'url'=>Yii::app()->createUrl("/users/create")),
+            			array('label'=>'Liste des utilisateurs', 'url'=>Yii::app()->createUrl("/users")),
+            			array('label'=>'Mailing', 'url'=>Yii::app()->createUrl("/users/mailing")),
+            			array('label'=>'Publipostage', 'url'=>Yii::app()->createUrl("/users/publipostage")),
             	)),
             ),
         ),
@@ -47,8 +59,8 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             'htmlOptions'=>array('class'=>'pull-right'),
             'items'=>array(
 				array('label'=> !Yii::app()->user->isGuest ? Yii::app()->user->user->Firstname .' '. Yii::app()->user->user->Lastname : '', 'url'=>'#', 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'itemOptions'=> array('id'=>'sign_in'), 'active'=>false, 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout', 'url'=>array('/site/logout'), 'itemOptions'=> array('id'=>'sign_in'), 'active'=>false, 'visible'=>!Yii::app()->user->isGuest)
+				array('label'=>'Connexion', 'url'=>array('/site/login'), 'itemOptions'=> array('id'=>'sign_in'), 'active'=>false, 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Déconnexion', 'url'=>array('/site/logout'), 'itemOptions'=> array('id'=>'sign_in'), 'active'=>false, 'visible'=>!Yii::app()->user->isGuest)
             ),
         ),
     ),
@@ -68,8 +80,10 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y') . ' ' . Yii::app()->name; ?>.<br/>
-		All Rights Reserved.
+		<p class="center">
+			<br /><br /><br />
+			Copyright &copy; <?php echo date('Y') . ' ' . Yii::app()->name; ?>, tous droits réservés.
+		</p>
 	</div><!-- footer -->
 
 </div><!-- page -->

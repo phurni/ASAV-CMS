@@ -60,7 +60,7 @@ class StaffBoard extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'medias' => array(self::HAS_MANY, 'Media', 'StaffBoard'),
-			'author' => array(self::BELONGS_TO, 'Users', 'Author'),
+			'author' => array(self::BELONGS_TO, 'User', 'Author'),
 		);
 	}
 
@@ -71,10 +71,10 @@ class StaffBoard extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'Author' => 'Author',
-			'Title' => 'Title',
-			'Content' => 'Content',
-			'DateCreated' => 'Date Created',
+			'Author' => 'Auteur',
+			'Title' => 'Titre',
+			'Content' => 'Message',
+			'DateCreated' => 'Date de création',
 		);
 	}
 
