@@ -94,12 +94,12 @@ class Media extends CActiveRecord {
 		return array (
 				'author' => array (
 						self::BELONGS_TO,
-						'Users',
+						'User',
 						'Author' 
 				),
 				'child' => array (
 						self::BELONGS_TO,
-						'Children',
+						'Child',
 						'Child' 
 				),
 				'childMessage' => array (
