@@ -156,10 +156,11 @@ class MediaController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Media');
+		$dp=new CActiveDataProvider('Media');
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+				'dp'=>$dp
+				
+		));	
 	}
 
 	/**
