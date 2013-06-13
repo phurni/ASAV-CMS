@@ -105,7 +105,7 @@ $type=CHtml::listData(Reporttypes::model()->findAll(), 'Id', 'Name');
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer', array("class" => "btn")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

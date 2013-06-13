@@ -11,8 +11,8 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Liste des utilisateurs', 'url'=>array('index')),
 	array('label'=>'Créer un utilisateur', 'url'=>array('create')),
-	array('label'=>'Consulter utilisateur', 'url'=>array('view', 'id'=>$model->Id)),
-	array('label'=>'Supprimer un utilisateur', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Consulter l\'utilisateur', 'url'=>array('view', 'id'=>$model->Id)),
+	array('label'=>'Supprimer l\'utilisateur', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Are you sure you want to delete this item?')),
 	
 );
 ?>

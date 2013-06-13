@@ -89,7 +89,7 @@ $genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
 	
 </div> <!-- END form -->
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer', array("class" => "btn")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

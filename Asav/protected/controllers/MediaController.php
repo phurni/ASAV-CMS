@@ -15,6 +15,7 @@ class MediaController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
+			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -31,7 +32,7 @@ class MediaController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('createforchild','create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -59,22 +60,54 @@ class MediaController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
+	public function actionCreateForChild()
 	{
 		$model=new Media;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['Media']))
 		{
 			$model->attributes=$_POST['Media'];
+			// Set the created date
+			$model->Created = date('Y-m-d');
+			// Set the owner of the file
+			$model->Author = Yii::app()->user->Id;
+			// Get the uploade file
+			$model->File = CUploadedFile::getInstance($model,'File');
+			if($model->validate())
+			{
+				if($model->save())
+				{
+					// Normal redirection to the media entry
+					$this->redirect(array('view','id'=>$model->Id));
+				}
+			}
+		}
+
+		$this->render('createforchild',array(
+			'model'=>$model,
+		));
+	}
+	
+	public function actionCreate()
+	{
+		$model=new Media;
+	
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+	
+		if(isset($_POST['Media']))
+		{
+			$model->attributes=$_POST['Media'];
+			// Set the created date
+			$model->Created = date('Y-m-d');
+			// Get the uploade file
+			$model->File = CUploadedFile::getInstance($model,'File');
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Id));
 		}
-
+	
 		$this->render('create',array(
-			'model'=>$model,
+				'model'=>$model,
 		));
 	}
 
@@ -93,6 +126,8 @@ class MediaController extends Controller
 		if(isset($_POST['Media']))
 		{
 			$model->attributes=$_POST['Media'];
+			// Set the created date
+			$model->Modified = date('Y-m-d');
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Id));
 		}
@@ -109,17 +144,11 @@ class MediaController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+		$this->loadModel($id)->delete();
 
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
@@ -127,11 +156,10 @@ class MediaController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Media('search');
+		$dataProvider=new CActiveDataProvider('Media');
 		$this->render('index',array(
-				'model'=>$model,
+			'dataProvider'=>$dataProvider,
 		));
-	
 	}
 
 	/**

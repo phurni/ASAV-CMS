@@ -114,7 +114,7 @@ $countries=CHtml::listData(Country::model()->findAll(), 'Id', 'Name');
 </div>	
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer', array("class" => "btn")); ?>
 	</div>
 </div>
 <?php $this->endWidget(); ?>
