@@ -56,6 +56,13 @@ $this->menu=array(
 		<?php echo CHtml::encode($model->IsForwarded ? "oui" : "non"); ?>		
 		</div>
 		
+		<div class="span4">
+		<b>
+		<?php echo CHtml::encode($model->getAttributeLabel('Message')); ?>:
+		</b>
+		<?php echo CHtml::encode($model->Message); ?>		
+		</div>
+		
 </div>		
 
 </div>
