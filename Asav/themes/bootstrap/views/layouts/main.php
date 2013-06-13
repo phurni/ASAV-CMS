@@ -47,10 +47,10 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             	)),
             	// Utilisateurs
             	array('label'=>'Utilisateurs', 'url'=>'#', 'visible'=>!Yii::app()->user->IsGuest, 'items'=>array(
-            			array('label'=>'Créer un utilisateur', 'url'=>Yii::app()->createUrl("/users/create")),
-            			array('label'=>'Liste des utilisateurs', 'url'=>Yii::app()->createUrl("/users")),
-            			array('label'=>'Mailing', 'url'=>Yii::app()->createUrl("/users/mailing")),
-            			array('label'=>'Publipostage', 'url'=>Yii::app()->createUrl("/users/publipostage")),
+            			array('label'=>'Créer un utilisateur', 'url'=>Yii::app()->createUrl("/user/create")),
+            			array('label'=>'Liste des utilisateurs', 'url'=>Yii::app()->createUrl("/user")),
+            			array('label'=>'Mailing', 'url'=>Yii::app()->createUrl("/user/mailing")),
+            			array('label'=>'Publipostage', 'url'=>Yii::app()->createUrl("/user/publipostage")),
             	)),
             ),
         ),
