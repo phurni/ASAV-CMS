@@ -223,6 +223,11 @@ class User extends CActiveRecord
 		return $this->group->Id == 2;
 	}
 	
+	
+	/**
+	 * 
+	 * Encrypt the given data and return an array with the encrypted data and the salt
+	 */
 	public function encrypt($value, $key = null){
 		$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, "cbc");
 		$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
