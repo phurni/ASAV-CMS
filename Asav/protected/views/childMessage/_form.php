@@ -19,11 +19,21 @@ $children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
 			<?php echo $form->error($model,'Child'); ?>
 		</div>
 		
-		<div class="span2">		
+		<?php 
+		
+		$action = $this->getAction()->getId();
+		if($action != "create"){
+			?>
+			<div class="span2">
 			<?php echo $form->labelEx($model,'IsForwarded'); ?>
 			<?php echo $form->CheckBox($model,'IsForwarded');?>
 			<?php echo $form->error($model,'IsForwarded'); ?>
 		</div>
+			
+		<?php	
+		}
+		?>
+		
 		
 	
 		<div class="span2">

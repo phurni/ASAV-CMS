@@ -75,7 +75,7 @@ class StaffBoardController extends Controller
 			// Set the created date
 			$model->DateCreated = date('Y-m-d');
 			// Validate the model
-			if($model->validate() && isset($_FILES['File'])) // Not sure about the syntax
+			if($model->validate() && isset($_FILES['File']))
 			{
 				if($model->save())
 				{
