@@ -28,7 +28,7 @@ class ReportController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','reportsbychild'),
+				'actions'=>array('index','view','reportsbychild','myreports'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -121,19 +121,28 @@ class ReportController extends Controller
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
 
-	/**
-	 * Lists all models.
-	 */
 	public function actionIndex()
 	{
-		/*$dataProvider=new CActiveDataProvider('Report');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,*/
-		
-		//modification due à la nom utilisation de la vue par défaut de yii
-		$model=new Report('search');
-		$this->render('index',array(
-				'model'=>$model,
+		$model = new Report('search');
+		$dp = new CActiveDataProvider($model);
+		$this->render ('index', array(
+			'dp' => $dp,
+			'title' => "Rapports"
+		));
+	}
+	
+	public function actionMyreports()
+	{
+		$id = yii::app()->user->id;
+		$criteria = new CDbCriteria();
+		if($id !== null){
+			$criteria->addCondition ('Author=' . $id);
+		}
+		$model = new Report('search');
+		$dp = new CActiveDataProvider($model, array('criteria' => $criteria));
+		$this->render ('index', array(
+			'dp' => $dp,
+			'title' => "Mes rapports"
 		));
 	}
 	

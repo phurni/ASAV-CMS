@@ -43,6 +43,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             	array('label'=>'Rapports', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
             			array('label'=>'Créer un rapport', 'url'=>Yii::app()->createUrl("/report/create")),
             			array('label'=>'Liste des rapports', 'url'=>Yii::app()->createUrl("/report")),
+						array('label'=>'Mes rapports', 'url'=>Yii::app()->createUrl("/report/myreports")),
             			array('label'=>'Validation des rapports', 'url'=>Yii::app()->createUrl("/dashboard")),
             	)),
             	// Utilisateurs

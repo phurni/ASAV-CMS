@@ -27,6 +27,12 @@ $this->menu = array (
 				'url' => array (
 						'dashboard/'
 				)
+		),
+		array (
+				'label' => 'Mes rapports',
+				'url' => array (
+						'myreports' 
+				) 
 		)
 )
 ;
