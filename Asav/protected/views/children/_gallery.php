@@ -9,9 +9,10 @@
 	<?php 
 	echo Chtml::link(
 		CHtml::image(
-			isset($data->picture) ? CHtml::encode($data->picture->Path) : '../images/noimage.png',
+			'../' . Yii::app()->params['custom']['uploadPath'] .
+			(isset($data->picture) ? CHtml::encode($data->picture->Path) : '../../images/noimage.png'),
 			CHtml::encode($data->Firstname .' '. $data->Lastname),
-			array('width' => '200')
+			array('width' => '150')
 		),
 		array('view', 'id'=>$data->Id)
 	);

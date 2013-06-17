@@ -56,7 +56,7 @@ $this->menu = array (
 			<b>
 		<?php echo CHtml::encode($child->getAttributeLabel('Picture')); ?>:
 		</b><br />
-		<?php echo CHtml::image('../' . Yii::app()->params['custom']['uploadPath'] . (isset($child->picture) ? CHtml::encode($child->picture->Path) : '../images/noimage.png')); ?>		
+		<?php echo CHtml::image('../' . Yii::app()->params['custom']['uploadPath'] . (isset($child->picture) ? CHtml::encode($child->picture->Path) : '../../images/noimage.png')); ?>		
 		</div>
 		</div>
 

@@ -116,29 +116,11 @@ class ChildrenController extends Controller {
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 		
-		/*
-		 * if(isset($_POST['Child'])) { $model->attributes=$_POST['Child'];
-		 * if($model->save()) $this->redirect(array('view','id'=>$model->Id)); }
-		 * $this->render('create',array( 'model'=>$model, ));
-		 */
-		
-		// If there's a file
-		/*
-		 * if ($model->validate () && isset ( $_FILES ['File'] )) { // Get the
-		 * uploade file $file = CUploadedFile::getInstanceByName('File'); $media
-		 * = new Media(); // Set the Staffboard id $media->Child = $model->Id;
-		 * // Set the title $media->Title = $file->getName(); // Set the created
-		 * date $media->Created = date('Y-m-d'); // Set the owner of the file
-		 * $media->Author = Yii::app()->user->Id; // Save the file
-		 * $media->save(); }
-		 */
-		
 		if (isset ( $_POST ['Child'] )) {
 			$model->attributes = $_POST ['Child'];
 			// Validate the model
 			if ($model->validate ()) {
 				// If there's a file to upload
-				//if (isset ( $_FILES ['File'] ))
 				if(CUploadedFile::getInstanceByName ( 'File' ) != null)
 				{
 					if ($model->save ())
@@ -151,7 +133,7 @@ class ChildrenController extends Controller {
 						// Set the title
 						$media->Title = $file->getName ();
 						// Set the created date
-						$media->Created = date ( 'Y-m-d' );
+						$media->Created = date ( 'Y-m-d h:i:s' );
 						// Set the owner of the file
 						$media->Author = Yii::app ()->user->Id;
 						
@@ -189,17 +171,52 @@ class ChildrenController extends Controller {
 		
 		if (isset ( $_POST ['Child'] )) {
 			$model->attributes = $_POST ['Child'];
-			if ($model->save ())
-				$this->redirect ( array (
-						'view',
-						'id' => $model->Id 
-				) );
+			// Validate the model
+			if ($model->validate ()) {
+				// If there's a file to upload
+				if(CUploadedFile::getInstanceByName ( 'File' ) != null)
+				{
+					if ($model->save ())
+					{
+						// Get the uploade file
+						$file = CUploadedFile::getInstanceByName ( 'File' );
+						$media = new Media ();
+						// Set the Staffboard id
+						$media->Child = $model->Id;
+						// Set the title
+						$media->Title = $file->getName ();
+						// Set the created date
+						$media->Created = date ( 'Y-m-d h:i:s' );
+						// Set the owner of the file
+						$media->Author = Yii::app ()->user->Id;
+						
+						$media->File = $file;
+						if ($media->save ()) {
+							// Save the id of the picture in the child
+							$model->Picture = $media->Id;
+							$model->save ();
+							$this->redirect ( array (
+									'view',
+									'id' => $model->Id 
+							) );
+						}
+					}
+				} else {
+					if ($model->save ()) {
+						$this->redirect ( array (
+								'view',
+								'id' => $model->Id 
+						) );
+					}
+				}
+			}
 		}
 		
 		$this->render ( 'update', array (
 				'model' => $model 
 		) );
 	}
+	
 	public function actionDelete($id) {
 		$this->loadModel ( $id )->delete ();
 		
