@@ -11,9 +11,7 @@
 $form = $this->beginWidget ( 'bootstrap.widgets.TbActiveForm', array (
 		'id' => 'report-form',
 		'enableAjaxValidation' => false,
-		'htmlOptions' => array (
-				'class' => "wideFields" 
-		) 
+		'htmlOptions'=>array('enctype'=>'multipart/form-data','class'=>'wideFields')
 ) );
 
 $sponsors = CHtml::listData ( User::model ()->findAll (), 'Id', 'Fullname' );
@@ -92,11 +90,13 @@ if ($actionName != "create") {
 	<span class="span6">
 			<?php echo $form->labelEx($model,'Photo'); ?>
 			<span>
-				<?php echo $form->fileField($model,'Picture', array('id' => 'File')); ?>
+				<!--<?php echo $form->fileField($model,'Picture', array('id' => 'File')); ?>
 				<input type="text" id="textFile" class="validate"
 			placeholder="Joindre un fichier..."
 			style="display: none; cursor: pointer; background-color: white;"
-			readonly="readonly" />
+			readonly="readonly" />-->
+			<input type="file" name="File" id="File" />
+			<input type="text" id="textFile" class="validate" placeholder="Joindre une image..." style="display: none;cursor: pointer; background-color: white;" readonly="readonly" />
 	</span>
 	</span>
 
@@ -106,8 +106,7 @@ if ($actionName != "create") {
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer', array("class" => "btn")); ?>
 	</div>
 
-<script type="text/javascript"
-	src="<?php echo Yii::app()->theme->baseUrl; ?>/js/upload.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/upload.js"></script>
 
 <?php $this->endWidget(); ?>
 		

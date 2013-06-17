@@ -15,6 +15,6 @@ $this->menu=array(
 	array('label'=>'Supprimer Enfant', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Êtes-vous sûr vous supprimer ce rapport ?')),
 );
 ?>
-<h1>Modifier Enfant : #<?php echo $model->Id; ?></h1>
+<h1><?php echo $model->getFullname(); ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

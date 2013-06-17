@@ -27,14 +27,14 @@ $this->menu = array (
 				) 
 		),
 		array (
-				'label' => 'Modifier un enfant',
+				'label' => 'Modifier l\'enfant',
 				'url' => array (
 						'update',
 						'id' => $child->Id 
 				) 
 		),
 		array (
-				'label' => 'Supprimer un enfant',
+				'label' => 'Supprimer l\'enfant',
 				'url' => '#',
 				'linkOptions' => array (
 						'submit' => array (
@@ -50,6 +50,15 @@ $this->menu = array (
 <h1><?php echo $child->getFullName(); ?></h1>
 
 <div class="wideFields">
+
+	<div class="row-fluid">
+<div class="span4">
+			<b>
+		<?php echo CHtml::encode($child->getAttributeLabel('Picture')); ?>:
+		</b><br />
+		<?php echo CHtml::image('../' . Yii::app()->params['custom']['uploadPath'] . (isset($child->picture) ? CHtml::encode($child->picture->Path) : '../images/noimage.png')); ?>		
+		</div>
+		</div>
 
 	<div class="row-fluid">
 
@@ -91,13 +100,6 @@ $this->menu = array (
 		<?php echo CHtml::encode($child->getAttributeLabel('Genre')); ?>:
 		</b>
 		<?php echo CHtml::encode($child->genre->Name); ?>		
-		</div>
-
-		<div class="span4">
-			<b>
-		<?php echo CHtml::encode($child->getAttributeLabel('Media')); ?>:
-		</b>
-		<?php echo CHtml::image(isset($child->picture) ? CHtml::encode($child->picture->Path) : '../images/noimage.png'); ?>		
 		</div>
 	</div>
 	<div class="row-fluid">
