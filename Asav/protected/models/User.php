@@ -36,6 +36,13 @@ class User extends CActiveRecord
 		return $this->Firstname . " " . $this->Lastname;
 	}
 	
+	public function beforeSave(){
+		$credentials = $this->encrypt($this->Password);
+		$this->Password = $credentials["hash"];
+		$this->Salt = $credentials["key"];
+		return parent::beforeSave();
+	}
+	
 	
 	/**
 	 * Returns the static model of the specified AR class.
@@ -214,5 +221,16 @@ class User extends CActiveRecord
 	public function IsStaff()
 	{
 		return $this->group->Id == 2;
+	}
+	
+	public function encrypt($value, $key = null){
+		$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, "cbc");
+		$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+		if(!$key){
+			$key = md5(time());
+		}
+		$chain = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $value, MCRYPT_MODE_CBC, md5(md5($key))));
+		
+		return array("key" => $key, "hash" => $chain);
 	}
 }

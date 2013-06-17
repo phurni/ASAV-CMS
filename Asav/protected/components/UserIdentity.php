@@ -11,10 +11,17 @@ class UserIdentity extends CUserIdentity
 	public function authenticate(){
 		$record=User::model()->findByAttributes(array('Username'=>$this->username));
 		
+		
+		$credentials;
+		// Get the encrypted version of the given password
+		if($record!==null){
+			$credentials = $record->encrypt($this->password, $record->Salt);
+		}
+		
 		if($record===null){
 			$this->_id='user Null';
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		}else if($record->Password!==$this->password){
+		}else if($record->Password!==$credentials["hash"]){
 			$this->_id=$this->username;
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		}else{
