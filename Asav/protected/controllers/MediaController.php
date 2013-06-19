@@ -148,7 +148,7 @@ class MediaController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex($type = 'Child',$id = null)
+	public function actionIndex($type = null,$id = null)
 	{
 		if ($type == null AND $id == null){
 		$dp=new CActiveDataProvider('Media');

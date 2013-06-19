@@ -52,11 +52,23 @@ $this->menu=array(
 		<?php echo CHtml::encode($model->Path); ?>
 		</div>
 		
-			<div class="span4">
+		<div class="span4">
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('ChildMessage')); ?>:
 		</b>
-		<?php echo CHtml::encode($model->ChildMessage); ?>
-	</div>
+		<?php if ($model->childMessage != null){
+		echo CHtml::encode($model->childMessage->Id);
+		} ?>
+		</div>
+		
+		<div class="span4">
+		<b>
+		<?php echo CHtml::encode($model->getAttributeLabel('StaffBoard')); ?>:
+		</b>
+		<?php if ($model->staffBoard != null){
+		echo CHtml::encode($model->staffBoard->Id);
+		} ?>
+		</div>
+		
 	</div>	
 </div>
