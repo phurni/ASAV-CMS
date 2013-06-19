@@ -58,6 +58,15 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             			array('label'=>'Créer une personne', 'url'=>Yii::app()->createUrl("/person/create")),
             			array('label'=>'Liste des utilisateurs', 'url'=>Yii::app()->createUrl("/person")),
             	)),
+            	// Media
+            	array('label'=>'Media', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
+            			array('label'=>'Enfants', 'url'=>Yii::app()->createUrl("/media/index?type=child")),
+            			array('label'=>'Espace de communication', 'url'=>Yii::app()->createUrl("/media/index?type=staffBoard")),
+            			array('label'=>'Messages des enfants', 'url'=>Yii::app()->createUrl("/media/index?type=childMessage")),
+            			array('label'=>'Rapports', 'url'=>Yii::app()->createUrl("/media/index?type=report")),
+            			array('label'=>'Tous', 'url'=>Yii::app()->createUrl("/media/index")),
+            			
+            	)),
             ),
         ),
         array(
