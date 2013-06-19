@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
-	'people'=>array('index'),
-	$model->Id,
+	'Personne'=>array('index'),
+	$model->GetFullname(),
 );
 
 $this->menu=array(
@@ -13,7 +13,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Personne : #<?php echo $model->Id; ?></h1>
+<h1><?php echo $model->GetFullname(); ?></h1>
 
 <div class="wideFields">
 

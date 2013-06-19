@@ -1,8 +1,8 @@
 <?php
 $this->breadcrumbs=array(
-	'people'=>array('index'),
-	$model->Id=>array('view','id'=>$model->Id),
-	'Update',
+	'Personne'=>array('index'),
+	$model->GetFullname()=>array('view','id'=>$model->Id),
+	'Mise à jour',
 );
 
 $this->menu=array(
@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Modifier Personne <?php echo $model->Id; ?></h1>
+<h1><?php echo $model->GetFullname(); ?></h1>
 
 <?php echo $this->renderPartial('_form',array('model'=>$model)); ?>
