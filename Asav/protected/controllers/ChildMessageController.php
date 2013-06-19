@@ -71,7 +71,12 @@ class ChildMessageController extends Controller
 		if(isset($_POST['ChildMessage']))
 		{
 			$model->attributes=$_POST['ChildMessage'];
+			// Set the author
 			$model->Author = Yii::app()->user->user->Id;
+			// Set the created date
+			$model->DateCreated = date ( 'Y-m-d h:i:s' );
+			// Set the forward flag
+			$model->IsForwarded = 0;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Id));
 		}
