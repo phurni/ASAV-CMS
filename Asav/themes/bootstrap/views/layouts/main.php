@@ -20,7 +20,7 @@ $isInTeam = isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam();
 $this->widget('bootstrap.widgets.TbNavbar', array(
     'type'=>'inverse', // null or 'inverse'
     'brand'=> Yii::app()->name,
-    'brandUrl'=> '.',
+    'brandUrl'=> $isInTeam ? Yii::app()->createUrl("/dashboard") : Yii::app()->createUrl("/children"),
     'collapse'=>true, // requires bootstrap-responsive.css
     'items'=>array(
         array(

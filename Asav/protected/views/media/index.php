@@ -42,17 +42,6 @@ $this->widget ( 'bootstrap.widgets.TbGridView', array (
 						'value' => '$data->Created'
 				),
 				
-				array (
-						'name' => 'ChildMessage',
-				
-						'value' => '$data->ChildMessage'
-				),
-				
-				array (
-						'name' => 'StaffBoard',
-				
-						'value' => '$data->StaffBoard'
-				),
 
 				array (
 						'class' => 'bootstrap.widgets.TbButtonColumn',
