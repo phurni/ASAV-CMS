@@ -11,7 +11,8 @@ $this->menu = array (
 				'label' => 'Créer un rapport',
 				'url' => array (
 						'create'
-				)
+				),
+				'visible' => $isInTeam
 		),
 		array (
 				'label' => 'Liste des rapports',
@@ -23,13 +24,15 @@ $this->menu = array (
 				'label' => 'Liste des rapports à valider',
 				'url' => array (
 						'dashboard/'
-				)
+				),
+				'visible' => $isInTeam
 		),
 		array (
 				'label' => 'Mes rapports',
 				'url' => array (
 						'myreports' 
-				) 
+				),
+				'visible' => $isInTeam
 		)
 );
 ?>

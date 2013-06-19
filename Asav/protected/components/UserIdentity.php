@@ -26,6 +26,21 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		}else{
 			$this->_id=$record['Id'];
+			
+			$auth=Yii::app()->authManager;
+			
+			/*
+			$role = $auth->createRole('sponsor');
+			$role = $auth->createRole('staff');
+			$role = $auth->createRole('admin');
+			*/
+			
+			if(!$auth->isAssigned($record->group->Name,$this->_id)){
+				if($auth->assign($record->group->Name,$this->_id)){
+					Yii::app()->authManager->save();
+				}
+			}
+			
 			$this->setState('title', $record['Username']);
 			$this->errorCode=self::ERROR_NONE;
 		}

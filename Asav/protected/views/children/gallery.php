@@ -18,7 +18,8 @@ $this->menu = array (
 				'label' => 'Créer un enfant',
 				'url' => array (
 						'create'
-				)
+				),
+				'visible' => $isInTeam
 		),
 		array (
 				'label' => 'Trombinoscope',
@@ -36,3 +37,4 @@ $this->menu = array (
 )); ?>
 
 <div class="clear" />
+</div>

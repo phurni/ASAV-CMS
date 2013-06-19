@@ -6,8 +6,8 @@ $this->breadcrumbs=array(
 	"mailing",
 );
 $this->menu=array(
-		array('label'=>'Liste des utilisateurs', 'url'=>array('index')),
-		array('label'=>'Créer un Utilisateur', 'url'=>array('create')),
+		array('label'=>'Liste des membres', 'url'=>array('index')),
+		array('label'=>'Créer un membre', 'url'=>array('create')),
 		array('label'=>'Mailing', 'url'=>array('mailing')),
 		array('label'=>'Publipostage', 'url'=>array('publipostage')),
 );

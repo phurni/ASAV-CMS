@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Liste des utilisateurs', 'url'=>array('index')),
+	array('label'=>'Liste des membres', 'url'=>array('index')),
 	array('label'=>'Mailing', 'url'=>array('mailing')),
 	array('label'=>'Publipostage', 'url'=>array('publipostage')),
 );

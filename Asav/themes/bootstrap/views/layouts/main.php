@@ -20,7 +20,7 @@ $isInTeam = isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam();
 $this->widget('bootstrap.widgets.TbNavbar', array(
     'type'=>'inverse', // null or 'inverse'
     'brand'=> Yii::app()->name,
-    'brandUrl'=>'.',
+    'brandUrl'=> '.',
     'collapse'=>true, // requires bootstrap-responsive.css
     'items'=>array(
         array(
@@ -34,7 +34,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             	// Enfants
             	array('label'=>'Enfants', 'url'=>'#', 'visible'=>!Yii::app()->user->IsGuest, 'items'=>array(
             			array('label'=>'Annuaire', 'url'=>Yii::app()->createUrl("/children")),
-            			array('label'=>'Créer un enfant', 'url'=>Yii::app()->createUrl("/children/create")),
+            			array('label'=>'Créer un enfant', 'url'=>Yii::app()->createUrl("/children/create"), 'visible'=> $isInTeam),
             			array('label'=>'Envoyer un message à un enfant', 'url'=>Yii::app()->createUrl("/childMessage/create")),
             			array('label'=>'Messages envoyés aux enfants', 'url'=>Yii::app()->createUrl("/childMessage")),
             			array('label'=>'Trombinoscope', 'url'=>Yii::app()->createUrl("/children/gallery")),
@@ -47,11 +47,16 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             			array('label'=>'Validation des rapports', 'url'=>Yii::app()->createUrl("/dashboard")),
             	)),
             	// Utilisateurs
-            	array('label'=>'Utilisateurs', 'url'=>'#', 'visible'=>!Yii::app()->user->IsGuest, 'items'=>array(
-            			array('label'=>'Créer un utilisateur', 'url'=>Yii::app()->createUrl("/user/create")),
-            			array('label'=>'Liste des utilisateurs', 'url'=>Yii::app()->createUrl("/user")),
+            	array('label'=>'Membres', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
+            			array('label'=>'Créer un membre', 'url'=>Yii::app()->createUrl("/user/create")),
+            			array('label'=>'Liste des membres', 'url'=>Yii::app()->createUrl("/user")),
             			array('label'=>'Mailing', 'url'=>Yii::app()->createUrl("/user/mailing")),
             			array('label'=>'Publipostage', 'url'=>Yii::app()->createUrl("/user/publipostage")),
+            	)),
+            	// Personnes
+            	array('label'=>'Personnes', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
+            			array('label'=>'Créer une personne', 'url'=>Yii::app()->createUrl("/person/create")),
+            			array('label'=>'Liste des utilisateurs', 'url'=>Yii::app()->createUrl("/person")),
             	)),
             ),
         ),

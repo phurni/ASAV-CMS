@@ -23,7 +23,10 @@ class DashboardController extends Controller
 		return array(
 				array('allow', // allow authenticated user to perform 'create' and 'update' actions
 						'actions'=>array('index'),
-						'users'=>array('@'),
+						'roles'=>array(
+									'staff',
+									'admin'
+								),
 				),
 				array('deny',  // deny all users
 						'users'=>array('*'),

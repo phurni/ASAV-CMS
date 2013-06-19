@@ -21,17 +21,26 @@ $this->menu = array (
 				) 
 		),
 		array (
+				'label' => 'Consulter les rapports liés',
+				'url' => array (
+						'children/' . $child->Id . '/reportsbychild'
+				),
+				'visible' => $isInTeam
+		),
+		array (
 				'label' => 'Créer un enfant',
 				'url' => array (
-						'create' 
-				) 
+						'create'
+				),
+				'visible' => $isInTeam
 		),
 		array (
 				'label' => 'Modifier l\'enfant',
 				'url' => array (
 						'update',
 						'id' => $child->Id 
-				) 
+				),
+				'visible' => $isInTeam
 		),
 		array (
 				'label' => 'Supprimer l\'enfant',
@@ -42,7 +51,8 @@ $this->menu = array (
 								'id' => $child->Id 
 						),
 						'confirm' => 'Êtes-vous sûr vous supprimer cet enfant?' 
-				) 
+				),
+				'visible' => $isInTeam
 		) 
 );
 ?>

@@ -16,6 +16,7 @@ $form = $this->beginWidget ( 'bootstrap.widgets.TbActiveForm', array (
 
 $sponsors = CHtml::listData ( User::model ()->findAll (), 'Id', 'Fullname' );
 $genres = CHtml::listData ( Genre::model ()->findAll (), 'Id', 'Name' );
+$people = CHtml::listData ( Person::model ()->findAll (), 'Id', 'Fullname' );
 ?>
 
 <p class="note">
@@ -100,6 +101,16 @@ if ($actionName != "create") {
 	</span>
 	</span>
 
+</div>
+<div class="row-fluid">
+	<div class="span6">
+		<?php echo $form->dropDownListRow($model,'host',$people,array('empty' => 'Sélectionner une hôte...', 'class' => 'validate')); ?>
+		<?php echo $form->error($model,'host'); ?>
+	</div>
+	<div class="span6">
+		<?php echo $form->dropDownListRow($model,'tutor',$people,array('empty' => 'Sélectionner une tuteur...', 'class' => 'validate')); ?>
+		<?php echo $form->error($model,'tutor'); ?>
+	</div>
 </div>
 <!-- END form -->
 <div class="row buttons">

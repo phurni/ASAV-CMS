@@ -28,16 +28,12 @@ class ReportController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','reportsbychild','myreports'),
-				'users'=>array('*'),
+					'actions'=>array('index','view'),
+					'users'=>array('@'),
 			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','delete'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin'),
-				'users'=>array('admin'),
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+					'actions'=>array('create','update','delete','reportsbychild','myreports'),
+					'roles'=>array('staff','admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -53,6 +49,7 @@ class ReportController extends Controller
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
 		));
 	}
 
@@ -79,6 +76,7 @@ class ReportController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
+			'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
 		));
 	}
 
@@ -104,6 +102,7 @@ class ReportController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
+			'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
 		));
 	}
 
@@ -127,7 +126,8 @@ class ReportController extends Controller
 		$dp = new CActiveDataProvider($model);
 		$this->render ('index', array(
 			'dp' => $dp,
-			'title' => "Rapports"
+			'title' => "Rapports",
+			'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
 		));
 	}
 	
@@ -142,7 +142,8 @@ class ReportController extends Controller
 		$dp = new CActiveDataProvider($model, array('criteria' => $criteria));
 		$this->render ('index', array(
 			'dp' => $dp,
-			'title' => "Mes rapports"
+			'title' => "Mes rapports",
+			'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
 		));
 	}
 	
@@ -157,8 +158,9 @@ class ReportController extends Controller
 		$item = Child::model()->findbyPk($child);
 		
 		$this->render('reportsbychild',array(
-				'dp'=>$dp,
-				'child'=>$item,
+			'dp'=>$dp,
+			'child'=>$item,
+			'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
 		));		
 	}
 
@@ -174,6 +176,7 @@ class ReportController extends Controller
 
 		$this->render('admin',array(
 			'model'=>$model,
+			'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
 		));
 	}
 

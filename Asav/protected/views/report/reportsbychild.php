@@ -31,7 +31,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 		
 		array('name'=>'Author','header'=>'Autheur', 'value'=>'($data->author ? $data->author->Fullname : "") '),
     	array('name'=>'Status', 'header'=>'Status', 'value'=>'$data->status->Status'),
-    	array('name'=>'Day', 'header'=>'Date'),
+    	array('name'=>'CreationDate', 'header'=>'Date'),
        
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',

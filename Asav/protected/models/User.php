@@ -36,13 +36,6 @@ class User extends CActiveRecord
 		return $this->Firstname . " " . $this->Lastname;
 	}
 	
-	public function beforeSave(){
-		$credentials = $this->encrypt($this->Password);
-		$this->Password = $credentials["hash"];
-		$this->Salt = $credentials["key"];
-		return parent::beforeSave();
-	}
-	
 	
 	/**
 	 * Returns the static model of the specified AR class.
@@ -76,8 +69,8 @@ class User extends CActiveRecord
 			array('Address', 'length', 'max'=>255),
 			array('Town', 'length', 'max'=>60),
 			array('Username', 'length', 'max'=>50),
-			array('Password', 'length', 'max'=>40),
-			array('Salt', 'length', 'max'=>20),
+			array('Password', 'length', 'max'=>44),
+			array('Salt', 'length', 'max'=>32),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('Id, Country, Genre, Group, Firstname, Lastname, Birthday, Address, ZipCode, Town, Email, Username, Password, Salt', 'safe', 'on'=>'search'),
@@ -236,6 +229,6 @@ class User extends CActiveRecord
 		}
 		$chain = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $value, MCRYPT_MODE_CBC, md5(md5($key))));
 		
-		return array("key" => $key, "hash" => $chain);
+		return array("key" => $key, "hash" => sha1($chain, true));
 	}
 }

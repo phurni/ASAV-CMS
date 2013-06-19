@@ -8,10 +8,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Liste des utilisateurs', 'url'=>array('index')),
-	array('label'=>'Créer un utilisateur', 'url'=>array('create')),
-	array('label'=>'Modifier l\'utilisateur', 'url'=>array('update', 'id'=>$model->Id)),
-	array('label'=>'Supprimer l\'utilisateur', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Liste des membres', 'url'=>array('index')),
+	array('label'=>'Créer un membre', 'url'=>array('create')),
+	array('label'=>'Modifier la fiche du membre', 'url'=>array('update', 'id'=>$model->Id)),
+	array('label'=>'Supprimer la fiche du membre', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Are you sure you want to delete this item?')),
 );
 ?>
 
@@ -73,13 +73,6 @@ $this->menu=array(
 		<?php echo CHtml::encode($model->getAttributeLabel('Username')); ?>:
 		</b><br>
 		<?php echo CHtml::encode($model->Username); ?>		
-		</div>
-		
-		<div class="span3">
-		<b>
-		<?php echo CHtml::encode($model->getAttributeLabel('Password')); ?>:
-		</b><br>
-		<?php echo CHtml::encode($model->Password); ?>		
 		</div>
 	
 	</div> <!-- end row-fluid -->

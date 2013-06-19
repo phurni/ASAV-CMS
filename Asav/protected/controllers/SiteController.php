@@ -29,9 +29,16 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		if(!Yii::app()->user->isGuest)
-			$this->redirect(array("dashboard/index"));
-		$this->render('index');
+		
+		if (yii::app()->user->hasState("user")){
+			if(yii::app()->user->user->group->Id == 1){
+				$this->redirect(Yii::app()->createUrl("children"));
+			}else{
+				$this->redirect(Yii::app()->createUrl("Dashboard"));
+			}
+		}else{
+			$this->render('index');
+		}
 	}
 
 	/**
@@ -93,8 +100,13 @@ class SiteController extends Controller
 		{
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->createUrl("Dashboard"));
+			if($model->validate() && $model->login()){
+				if (yii::app()->user->hasState("user") && yii::app()->user->user->group->Id == 1) {
+					$this->redirect(Yii::app()->createUrl("children"));
+				}else{
+					$this->redirect(Yii::app()->createUrl("Dashboard"));
+				}
+			}
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
