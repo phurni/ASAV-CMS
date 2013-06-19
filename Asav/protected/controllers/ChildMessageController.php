@@ -46,11 +46,16 @@ class ChildMessageController extends Controller
 	 */
 	public function actionView($id)
 	{
-		if(Yii::app()->user->user->Id)
-			
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		$model = $this->loadModel($id);
+		$user = Yii::app()->user->user;
+		
+		if($user->group->Id == 1 && $model->Author != $user->Id){
+			throw new CHttpException(403);
+		}else{
+			$this->render('view',array(
+					'model'=>$model,
+			));
+		}
 	}
 
 	/**
@@ -76,9 +81,30 @@ class ChildMessageController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Id));
 		}
-
+		
+		$user = Yii::app()->user->user;
+		
+		$child = new Child('search');
+		$criteria = new CDbCriteria();
+		if($user->group->Id == 1){
+			$criteria->join = 'INNER JOIN users ON t.Sponsor = users.Id';
+			$criteria->condition = 'users.Id = :id';
+			$criteria->params = array (
+					':id' => $user->Id
+			);
+		}
+		$child = new CActiveDataProvider ($child, array (
+				'criteria' => $criteria
+		) );
+		
+		$children = array();
+		foreach($child->getData() as $row){
+			$children[] = $row;
+		}
+		
 		$this->render('create',array(
 			'model'=>$model,
+			'children'=>$children
 		));
 	}
 

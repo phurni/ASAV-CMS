@@ -68,11 +68,40 @@ class ReportController extends Controller {
 	 * @param integer $id
 	 *        	the ID of the model to be displayed
 	 */
-	public function actionView($id) {
-		$this->render ( 'view', array (
-				'model' => $this->loadModel ( $id ),
-				'isInTeam' => (isset ( Yii::app ()->user->user ) && Yii::app ()->user->user->IsInTeam ()) 
+	public function actionView($id)
+	{
+		$model = $this->loadModel($id);
+		$user = Yii::app()->user->user;
+		
+		$criteria = new CDbCriteria();
+		if($user->group->Id == 1){
+			$criteria->join = 'INNER JOIN children ON t.Child = children.Id INNER JOIN users on children.Sponsor = users.Id';
+			$criteria->condition = 'users.Id = :id';
+			$criteria->params = array (
+					':id' => $user->Id
+			);
+		}
+		
+		$reports = new CActiveDataProvider ($model, array (
+				'criteria' => $criteria
 		) );
+		
+		$valid = false;
+		foreach($reports->getData() as $report){
+			if($report->Id == $id){
+				$valid = true;
+				break;
+			}
+		}
+		
+		if(!$valid){
+			throw new CHttpException(403);
+		}else{
+			$this->render('view',array(
+					'model'=>$model,
+					'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
+			));
+		}
 	}
 	
 	/**
@@ -213,14 +242,27 @@ class ReportController extends Controller {
 					'index' 
 			) );
 	}
-	public function actionIndex() {
-		$model = new Report ( 'search' );
-		$dp = new CActiveDataProvider ( $model );
-		$this->render ( 'index', array (
-				'dp' => $dp,
-				'title' => "Rapports",
-				'isInTeam' => (isset ( Yii::app ()->user->user ) && Yii::app ()->user->user->IsInTeam ()) 
+
+	public function actionIndex()
+	{
+		$model = new Report('search');
+		$user = Yii::app()->user->user;
+		$criteria = new CDbCriteria();
+		if($user->group->Id == 1){
+			$criteria->join = 'INNER JOIN children ON t.Child = children.Id INNER JOIN users on children.Sponsor = users.Id';
+			$criteria->condition = 'users.Id = :id';
+			$criteria->params = array (
+					':id' => $user->Id
+			);
+		}
+		$dp = new CActiveDataProvider ($model, array (
+				'criteria' => $criteria
 		) );
+		$this->render ('index', array(
+			'dp' => $dp,
+			'title' => "Rapports",
+			'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
+		));
 	}
 	public function actionMyreports() {
 		$id = yii::app ()->user->id;
