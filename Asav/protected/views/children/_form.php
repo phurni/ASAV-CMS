@@ -88,20 +88,35 @@ if ($actionName != "create") {
 
 
 
-	<span class="span6">
+	<span class="span6 row-upload">
 			<?php echo $form->labelEx($model,'Photo'); ?>
 			<span>
-				<!--<?php echo $form->fileField($model,'Picture', array('id' => 'File')); ?>
-				<input type="text" id="textFile" class="validate"
-			placeholder="Joindre un fichier..."
-			style="display: none; cursor: pointer; background-color: white;"
-			readonly="readonly" />-->
-			<input type="file" name="File" id="File" />
-			<input type="text" id="textFile" class="validate" placeholder="Joindre une image..." style="display: none;cursor: pointer; background-color: white;" readonly="readonly" />
+			<input type="file" name="Picture" class="File" />
+			<input type="text" class="textFile validate" placeholder="Joindre une image..." style="display: none;cursor: pointer; background-color: white;" readonly="readonly" />
 	</span>
 	</span>
 
 </div>
+
+<div class="row-fluid row-upload">
+		<!-- Upload file -->
+		<span class="span5">
+			<label>Fichier à charger (optionnel)</label>
+			<span>
+				<input type="file" name="File" class="File" />
+				<input type="text" class="textFile validate" placeholder="Joindre un fichier..." style="display: none;cursor: pointer; background-color: white;" readonly="readonly" />
+			</span>
+		</span>
+		<!-- The file name -->
+		<span class="span6">
+			<label for="filename">Nom du fichier (optionnel)</label>
+			
+			<span>
+				<input type="text" name="filename" id="filename" />
+			</span>
+		</span>
+	</div>
+
 <!-- END form -->
 <div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer', array("class" => "btn")); ?>

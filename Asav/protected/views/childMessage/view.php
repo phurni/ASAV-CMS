@@ -15,12 +15,6 @@ $this->menu=array(
 
 <h1>Consulter Message : #<?php echo $model->Id; ?></h1>
 
-<?php 
-//$children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
-//$authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
-//$status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
-//$type=CHtml::listData(Reporttype::model()->findAll(), 'Id', 'Name');
-?>
 <div class="wideFields">
 <br>	
 <div class="row-fluid">	
@@ -56,29 +50,35 @@ $this->menu=array(
 		<?php echo CHtml::encode($model->IsForwarded ? "oui" : "non"); ?>		
 		</div>
 		
-		<div class="span4">
+</div>		
+
+	<div class="row-fluid">	
+		
+		<div class="span11">
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('Message')); ?>:
-		</b>
+		</b><br />
 		<?php echo CHtml::encode($model->Message); ?>		
 		</div>
 		
 </div>		
 
 <!-- Attached media -->
-	<p>
-			<?php 
-			if(count($model->medias) > 0)
-			{
-				echo '<b>Fichiers attachés</b><br /><blockquote>';
-				foreach ($model->medias as $media)
-				{
-					echo '<a href="../'. Yii::app()->params['custom']['uploadPath'] . $media->Path .'">'. $media->Title .' ('. pathinfo($media->Path, PATHINFO_FILENAME) .'.'. pathinfo($media->Path, PATHINFO_EXTENSION) .')</a><br />';
+	<div class="row-fluid">
+		<div class="span4">
+			<p>
+			<?php
+			if (count ( $model->medias ) > 0) {
+				echo '<br /><b>Fichiers attachés</b><br /><blockquote>';
+				foreach ( $model->medias as $media ) {
+					echo '<a href="'. Yii::app()->createUrl("media/file?path=" . dirname($media->Path)) .'">' . $media->Title . ' (' . pathinfo ( $media->Path, PATHINFO_FILENAME ) . '.' . pathinfo ( $media->Path, PATHINFO_EXTENSION ) . ')</a><br />';
 				}
 				echo '</blockquote>';
 			}
 			?>
-	</p>
+			</p>
+		</div>
+	</div>
 
 </div>
 <br>
