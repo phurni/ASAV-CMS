@@ -74,7 +74,8 @@ class Report extends CActiveRecord
 			'status' => array(self::BELONGS_TO, 'Reportstatus', 'Status'),
 			'child' => array(self::BELONGS_TO, 'Child', 'Child'),
 			'author' => array(self::BELONGS_TO, 'User', 'Author'),
-			'type' => array(self::BELONGS_TO,'Reporttypes', 'Type')
+			'type' => array(self::BELONGS_TO,'Reporttypes', 'Type'),
+			'medias' => array(self::HAS_MANY, 'Media', 'Report')
 		);
 	}
 
