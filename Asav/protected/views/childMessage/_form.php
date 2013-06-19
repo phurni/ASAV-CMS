@@ -12,8 +12,6 @@ $children=CHtml::listData($children, 'Id', 'Fullname');
 	<?php echo $form->errorSummary($model); ?>
 	<div class="row-fluid">	
 
-		
-		
 		<div class="span5">		
 			<?php echo $form->dropDownListRow($model,'Child',$children);?>
 			<?php echo $form->error($model,'Child'); ?>
