@@ -33,14 +33,14 @@ class ChildrenController extends Controller {
 		$this->render ( 'index', array (
 				'dp' => $dp,
 				'sponsorized' => $sponsorized,
-				'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
+				'isInTeam' => (isset ( Yii::app ()->user->user ) && Yii::app ()->user->user->IsInTeam ()) 
 		) );
 	}
 	public function actionGallery() {
 		$dataProvider = new CActiveDataProvider ( 'Child' );
 		$this->render ( 'gallery', array (
 				'dataProvider' => $dataProvider,
-				'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
+				'isInTeam' => (isset ( Yii::app ()->user->user ) && Yii::app ()->user->user->IsInTeam ()) 
 		) );
 	}
 	public function filters() {
@@ -75,7 +75,7 @@ class ChildrenController extends Controller {
 						),
 						'roles' => array (
 								'staff',
-								'admin'
+								'admin' 
 						) 
 				),
 				array (
@@ -103,7 +103,7 @@ class ChildrenController extends Controller {
 		echo "salut";
 		$this->render ( 'view', array (
 				'dp' => $dp,
-				'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
+				'isInTeam' => (isset ( Yii::app ()->user->user ) && Yii::app ()->user->user->IsInTeam ()) 
 		) );
 	}
 	public function actionCreate() {
@@ -116,50 +116,75 @@ class ChildrenController extends Controller {
 			$model->attributes = $_POST ['Child'];
 			// Validate the model
 			if ($model->validate ()) {
-				// If there's a file to upload
-				if(CUploadedFile::getInstanceByName ( 'File' ) != null)
-				{
-					if ($model->save ())
-					{
-						// Get the uploade file
-						$file = CUploadedFile::getInstanceByName ( 'File' );
-						$media = new Media ();
-						// Set the Staffboard id
-						$media->Child = $model->Id;
-						// Set the title
-						$media->Title = $file->getName ();
-						// Set the created date
-						$media->Created = date ( 'Y-m-d h:i:s' );
-						// Set the owner of the file
-						$media->Author = Yii::app ()->user->Id;
-						
-						$media->File = $file;
-						if ($media->save ()) {
-							// Save the id of the picture in the child
-							$model->Picture = $media->Id;
-							$model->save ();
-							$this->redirect ( array (
-									'view',
-									'id' => $model->Id 
-							) );
-						}
-					}
-				} else {
-					if ($model->save ()) {
-						$this->redirect ( array (
-								'view',
-								'id' => $model->Id 
-						) );
-					}
+				// -------------------------------
+				// Save the child
+				// -------------------------------
+				$model->save ();
+				// -------------------------------
+				// Upload the picture
+				// -------------------------------
+				// If there's a picture to upload
+				if (CUploadedFile::getInstanceByName ( 'Picture' ) != null) {
+					// Get the uploade file
+					$file = CUploadedFile::getInstanceByName ( 'Picture' );
+					$picture = new Media ();
+					// Set the Staffboard id
+					$picture->Child = $model->Id;
+					// Set the title
+					$picture->Title = $file->getName ();
+					// Set the created date
+					$picture->Created = date ( 'Y-m-d h:i:s' );
+					// Set the owner of the file
+					$picture->Author = Yii::app ()->user->Id;
+					$picture->File = $file;
+					// Save the id of the child in the picture
+					$picture->Child = $model->Id;
+					$picture->save ();
 				}
+				// -------------------------------
+				// Upload the file
+				// -------------------------------
+				// If there's a file to upload
+				if (CUploadedFile::getInstanceByName ( 'File' ) != null) {
+					// Get the uploade file
+					$file = CUploadedFile::getInstanceByName ( 'File' );
+					$media = new Media ();
+					// Set the Staffboard id
+					$media->Child = $model->Id;
+					// Set the title
+					$media->Title = $_POST ['filename'];
+					// Set the created date
+					$media->Created = date ( 'Y-m-d h:i:s' );
+					// Set the owner of the file
+					$media->Author = Yii::app ()->user->Id;
+					$media->File = $file;
+					$media->save ();
+				}
+				// -------------------------------
+				// Update the child
+				// -------------------------------
+				if (CUploadedFile::getInstanceByName ( 'Picture' ) != null) {
+						
+					// Save the id of the picture in the child
+					$model->Picture = $picture->Id;
+					$model->save();
+				}
+				// -------------------------------
+				// Redirect to the view
+				// -------------------------------
+				$this->redirect ( array (
+						'view',
+						'id' => $model->Id
+				) );
 			}
 		}
 		
 		$this->render ( 'create', array (
 				'model' => $model,
-				'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
+				'isInTeam' => (isset ( Yii::app ()->user->user ) && Yii::app ()->user->user->IsInTeam ()) 
 		) );
 	}
+	
 	public function actionUpdate($id) {
 		$model = $this->loadModel ( $id );
 		
@@ -170,53 +195,83 @@ class ChildrenController extends Controller {
 			$model->attributes = $_POST ['Child'];
 			// Validate the model
 			if ($model->validate ()) {
-				// If there's a file to upload
-				if(CUploadedFile::getInstanceByName ( 'File' ) != null)
-				{
-					if ($model->save ())
-					{
-						// Get the uploade file
-						$file = CUploadedFile::getInstanceByName ( 'File' );
-						$media = new Media ();
-						// Set the Staffboard id
-						$media->Child = $model->Id;
-						// Set the title
-						$media->Title = $file->getName ();
-						// Set the created date
-						$media->Created = date ( 'Y-m-d h:i:s' );
-						// Set the owner of the file
-						$media->Author = Yii::app ()->user->Id;
-						
-						$media->File = $file;
-						if ($media->save ()) {
-							// Save the id of the picture in the child
-							$model->Picture = $media->Id;
-							$model->save ();
-							$this->redirect ( array (
-									'view',
-									'id' => $model->Id 
-							) );
-						}
-					}
-				} else {
-					if ($model->save ()) {
-						$this->redirect ( array (
-								'view',
-								'id' => $model->Id 
-						) );
-					}
+				// -------------------------------
+				// Save the child
+				// -------------------------------
+				$model->save ();
+				// -------------------------------
+				// Upload the picture
+				// -------------------------------
+				// If there's a picture to upload
+				if (CUploadedFile::getInstanceByName ( 'Picture' ) != null) {
+					// Get the uploade file
+					$file = CUploadedFile::getInstanceByName ( 'Picture' );
+					$picture = new Media ();
+					// Set the Staffboard id
+					$picture->Child = $model->Id;
+					// Set the title
+					$picture->Title = $file->getName ();
+					// Set the created date
+					$picture->Created = date ( 'Y-m-d h:i:s' );
+					// Set the owner of the file
+					$picture->Author = Yii::app ()->user->Id;
+					$picture->File = $file;
+					// Save the id of the child in the picture
+					$picture->Child = $model->Id;
+					$picture->save ();
 				}
+				// -------------------------------
+				// Upload the file
+				// -------------------------------
+				// If there's a file to upload
+				if (CUploadedFile::getInstanceByName ( 'File' ) != null) {
+					// Get the uploade file
+					$file = CUploadedFile::getInstanceByName ( 'File' );
+					$media = new Media ();
+					// Set the Staffboard id
+					$media->Child = $model->Id;
+					// Set the title
+					$media->Title = $_POST ['filename'];
+					// Set the created date
+					$media->Created = date ( 'Y-m-d h:i:s' );
+					// Set the owner of the file
+					$media->Author = Yii::app ()->user->Id;
+					$media->File = $file;
+					$media->save ();
+				}
+				// -------------------------------
+				// Update the child
+				// -------------------------------
+				if (CUploadedFile::getInstanceByName ( 'Picture' ) != null) {
+					
+					// Save the id of the picture in the child
+					$model->Picture = $picture->Id;
+					$model->save();
+				}
+				// -------------------------------
+				// Redirect to the view
+				// -------------------------------
+				$this->redirect ( array (
+						'view',
+						'id' => $model->Id 
+				) );
 			}
 		}
 		
 		$this->render ( 'update', array (
 				'model' => $model,
-				'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
+				'isInTeam' => (isset ( Yii::app ()->user->user ) && Yii::app ()->user->user->IsInTeam ()) 
 		) );
 	}
-	
 	public function actionDelete($id) {
-		$this->loadModel ( $id )->delete ();
+		// Get the model
+		$model = $this->loadModel ( $id );
+		// Delete each model attached
+		foreach ( $model->medias as $media ) {
+			$media->delete ();
+		}
+		// Delete the model
+		$model->delete ();
 		
 		// if AJAX request (triggered by deletion via admin grid view), we
 		// should not redirect the browser
@@ -233,7 +288,7 @@ class ChildrenController extends Controller {
 		
 		$this->render ( 'admin', array (
 				'model' => $model,
-				'isInTeam' => (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam())
+				'isInTeam' => (isset ( Yii::app ()->user->user ) && Yii::app ()->user->user->IsInTeam ()) 
 		) );
 	}
 	public function loadModel($id) {

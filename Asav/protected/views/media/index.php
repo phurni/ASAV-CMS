@@ -30,8 +30,8 @@ $this->widget ( 'bootstrap.widgets.TbGridView', array (
 				),
 				array (
 						'name' => 'Title',
-						
-						'value' => '$data->Title'
+						'type' => 'raw',
+						'value' => 'CHtml::link($data->Title . \' (\' . pathinfo ( $data->Path, PATHINFO_FILENAME ) . \'.\' . pathinfo ( $data->Path, PATHINFO_EXTENSION ) . \')\', Yii::app()->createUrl(\'media/file?path=\'. dirname($data->Path)))'
 				),
 				array (
 						'name' => 'Created',

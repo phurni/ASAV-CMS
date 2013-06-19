@@ -202,6 +202,8 @@ class Media extends CActiveRecord {
 			// Remove the folder from the file system
 			rmdir(str_replace(pathinfo($file, PATHINFO_FILENAME) .'.'. pathinfo($file, PATHINFO_EXTENSION), '', $file));
 		}
+		
+		return parent::beforeDelete ();
 	}
 	
 	/**

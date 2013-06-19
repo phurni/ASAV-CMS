@@ -30,13 +30,13 @@
 		</span>
 	</div>
 	
-	<div class="row-fluid">
+	<div class="row-fluid row-upload">
 		<!-- Upload file -->
 		<span class="span5">
 			<label>Fichier à charger (optionnel)</label>
 			<span>
-				<input type="file" name="File" id="File" />
-				<input type="text" id="textFile" class="validate" placeholder="Joindre un fichier..." style="display: none;cursor: pointer; background-color: white;" readonly="readonly" />
+				<input type="file" name="File" class="File" />
+				<input type="text" class="textFile validate" placeholder="Joindre un fichier..." style="display: none;cursor: pointer; background-color: white;" readonly="readonly" />
 			</span>
 		</span>
 		<!-- The file name -->

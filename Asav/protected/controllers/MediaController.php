@@ -27,8 +27,12 @@ class MediaController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'create', 'update'),
+			array('allow',
+				'actions'=>array('file'),
+				'users'=>array('@'),
+			),
+			array('allow',
+				'actions'=>array('index','view', 'create', 'update', 'delete'),
 				'roles'=>array('staff', 'admin'),
 			),
 			array('deny',  // deny all users
@@ -142,7 +146,7 @@ class MediaController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
 
 	/**
@@ -174,6 +178,37 @@ class MediaController extends Controller
 				'dp'=>$dp,
 		
 		));
+		}
+	}
+	
+	public function actionFile($path)
+	{
+		// Store the full path of the media's directory
+		$dir = dirname($_SERVER['SCRIPT_FILENAME']) . "/" . Yii::app()->params ['custom'] ['uploadPath'] . $path . "/";
+		$output = null;
+		
+		// Get the media of the directory
+		if (is_dir($dir)) {
+			if ($handle = opendir($dir)) {
+				while (($file = readdir($handle)) !== false) {
+					if($file != '.' && $file != '..'){
+						$output = $dir . $file;
+						break;
+					}
+				}
+				closedir($handle);
+			}
+		}
+		
+		// Send the media to the logged user
+		if($output){
+			header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
+			header("Cache-Control: public"); // needed for i.e.
+			header('Content-Type: application/octet-stream');
+			header("Content-Transfer-Encoding: Binary");
+			header("Content-Length:".filesize($output));
+            header("Content-Disposition: attachment; filename=" . pathinfo($output, PATHINFO_FILENAME) . "." . pathinfo($output, PATHINFO_EXTENSION));
+            readfile($output);
 		}
 	}
 	
