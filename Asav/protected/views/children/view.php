@@ -117,15 +117,17 @@ $this->menu = array (
 		<b>
 			<?php echo CHtml::encode($child->getAttributeLabel('Address')); ?>:
 		</b><br/>
-		<?php echo CHtml::encode($child->host ? $child->host->Fullname : "aucune"); ?>
+		<?php echo CHtml::encode($child->host ? $child->host->genre->Name : "aucune"); ?>
+		<?php echo CHtml::encode($child->host ? $child->host->Fullname : ""); ?>
 		<br />
 		<?php echo CHtml::encode($child->host ? $child->host->Address : ""); ?>
 		</div>
 		<div class="span4">
 		<b>
-			<?php echo CHtml::encode($child->getAttributeLabel('Tutor')); ?>:
+			<?php echo CHtml::encode($child->getAttributeLabel('tutor')); ?>:
 		</b><br/>
-		<?php echo CHtml::encode($child->tutor ?  $child->tutor->Fullname : "aucun"); ?>
+		<?php echo CHtml::encode($child->tutor ?  $child->tutor->genre->Name : "aucun"); ?>
+		<?php echo CHtml::encode($child->tutor ?  $child->tutor->Fullname : ""); ?>
 		<br />
 		<?php echo CHtml::encode($child->tutor ?  $child->tutor->Address : ""); ?>
 		</div>
