@@ -55,6 +55,8 @@ class MediaController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 	}
+	
+
 
 	/**
 	 * Creates a new model.
@@ -154,14 +156,36 @@ class MediaController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	public function actionIndex($type = 'Child',$id = null)
 	{
+		if ($type == null AND $id == null){
 		$dp=new CActiveDataProvider('Media');
 		$this->render('index',array(
 				'dp'=>$dp
 				
 		));	
+		}
+		else{
+		//filter
+		$criteria=new CDbCriteria;
+		if($id == null){$criteria->addCondition($type);}
+		else{
+		
+				
+			$criteria->addCondition($type.'='.$id);
+		}
+		
+		$model = new Media('search');
+		$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+		
+		$this->render('index',array(
+				'dp'=>$dp,
+		
+		));
+		}
 	}
+	
+
 
 	/**
 	 * Manages all models.
