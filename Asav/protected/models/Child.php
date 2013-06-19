@@ -52,7 +52,7 @@ class Child extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('Firstname, Lastname, Birthday, Genre', 'required'),
-			array('Sponsor, Genre', 'numerical', 'integerOnly'=>true),
+			array('Sponsor, Genre, host, tutor', 'numerical', 'integerOnly'=>true),
 			array('Firstname, Lastname', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -75,6 +75,7 @@ class Child extends CActiveRecord
 			'medias' => array(self::HAS_MANY, 'Media', 'Child'),
 			'relationships' => array(self::HAS_MANY, 'Relationship', 'Child'),
 			'tutor' => array(self::HAS_ONE, 'Person', array('Person'=>'Id'), 'through'=>'relationships', 'condition'=>'IsTutor = 1'),
+			'tutorRelation' => array(self::HAS_ONE, 'Relationship', 'Child', 'condition'=>'IsTutor = 1'),
 			'host' => array(self::HAS_ONE, 'Person', array('Person'=>'Id'), 'through'=>'relationships', 'condition'=>'IsHosted = 1'),
 			'reports' => array(self::HAS_MANY, 'Reports', 'Child'),
 		);
@@ -87,13 +88,15 @@ class Child extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'Sponsor' => 'Sponsor',
+			'Sponsor' => 'Parrain',
 			'Firstname' => 'Prénom',
 			'Lastname' => 'Nom',
 			'Birthday' => 'Date de naissance',
 			'Genre' => 'Genre',
 			'Address' => 'Adresse',
-			'Tutor' => 'Tuteur légal',
+			'tutor' => 'Tuteur légal',
+			'host' => 'Hôte',
+			'Picture' => 'Image de profil'
 		);
 	}
 

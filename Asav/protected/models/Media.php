@@ -107,6 +107,11 @@ class Media extends CActiveRecord {
 						'Childmessages',
 						'ChildMessage' 
 				),
+				'report' => array (
+						self::BELONGS_TO,
+						'Report',
+						'Report'
+				),
 				'staffBoard' => array (
 						self::BELONGS_TO,
 						'Staffboard',

@@ -11,7 +11,8 @@ $this->menu = array (
 				'label' => 'Créer un rapport',
 				'url' => array (
 						'create'
-				)
+				),
+				'visible' => $isInTeam
 		),
 		array (
 				'label' => 'Liste des rapports',
@@ -23,17 +24,25 @@ $this->menu = array (
 				'label' => 'Liste des rapports à valider',
 				'url' => array (
 						'dashboard/'
-				)
+				),
+				'visible' => $isInTeam
+		),
+		array (
+				'label' => 'Mes rapports',
+				'url' => array (
+						'myreports' 
+				),
+				'visible' => $isInTeam
 		)
 );
 ?>
 
-<h1>Rapports</h1>
+<h1><?php echo $title ?></h1>
 
 <?php
 $this->widget ( 'bootstrap.widgets.TbGridView', array (
 		'type' => 'striped bordered condensed',
-		'dataProvider' => $model->search (),
+		'dataProvider' => $dp,
 		'filter' => null,
 		'template' => "{summary}{items}{pager}",
 		'summaryText' => 'Displaying {start}-{end} of {count} results.',

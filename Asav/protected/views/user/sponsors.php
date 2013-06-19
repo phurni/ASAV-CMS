@@ -9,14 +9,14 @@ $this->breadcrumbs=array(
 
 if($action == "mailing"){
 	$this->menu=array(
-		array('label'=>'Liste des utilisateurs', 'url'=>array('index')),
-		array('label'=>'Créer un Utilisateur', 'url'=>array('create')),
+		array('label'=>'Liste des membres', 'url'=>array('index')),
+		array('label'=>'Créer un membre', 'url'=>array('create')),
 		array('label'=>'Publipostage', 'url'=>array('publipostage')),
 	);
 }else if($action == "publipostage"){
 	$this->menu=array(
-		array('label'=>'Liste des utilisateurs', 'url'=>array('index')),
-		array('label'=>'Créer un Utilisateur', 'url'=>array('create')),
+		array('label'=>'Liste des membres', 'url'=>array('index')),
+		array('label'=>'Créer un membre', 'url'=>array('create')),
 		array('label'=>'Mailing', 'url'=>array('mailing')),
 	);
 }

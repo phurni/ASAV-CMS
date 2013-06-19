@@ -9,7 +9,7 @@
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'report-form',
 	'enableAjaxValidation'=>false,
-	'htmlOptions'=>array('class'=>"wideFields"),
+	'htmlOptions'=>array('enctype'=>'multipart/form-data','class'=>'wideFields'),
 )); 
 $children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
 $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
@@ -102,12 +102,31 @@ $type=CHtml::listData(Reporttypes::model()->findAll(), 'Id', 'Name');
 		<?php echo $form->error($model,'NoteOther'); ?>
 	</div>
 	
-
+	<div class="row-fluid">
+		<!-- Upload file -->
+		<span class="span6">
+			<label>Fichier à charger (optionnel)</label>
+			<span>
+				<input type="file" name="File" id="File" />
+				<input type="text" id="textFile" class="validate" placeholder="Joindre un fichier..." style="display: none;cursor: pointer; background-color: white;" readonly="readonly" />
+			</span>
+		</span>
+		<!-- The file name -->
+		<span class="span6">
+			<label for="filename">Nom du fichier (optionnel)</label>
+			
+			<span>
+				<input type="text" name="filename" id="filename" />
+			</span>
+		</span>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer', array("class" => "btn")); ?>
 	</div>
 
+	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/upload.js"></script>
+	
 <?php $this->endWidget(); ?>
 	</div>
 </div><!-- form -->

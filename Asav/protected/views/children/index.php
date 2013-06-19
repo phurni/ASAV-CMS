@@ -17,7 +17,8 @@ $this->menu = array (
 				'label' => 'Créer un enfant',
 				'url' => array (
 						'create' 
-				) 
+				),
+				'visible' => $isInTeam
 		),
 		array (
 				'label' => 'Trombinoscope',

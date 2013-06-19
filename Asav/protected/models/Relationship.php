@@ -59,9 +59,9 @@ class Relationship extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'child' => array(self::BELONGS_TO, 'Children', 'Child'),
+			'child' => array(self::BELONGS_TO, 'Child', 'Child'),
 			'person' => array(self::BELONGS_TO, 'Person', 'Person'),
-			'relationType' => array(self::BELONGS_TO, 'Relationtypes', 'RelationType'),
+			'relationType' => array(self::BELONGS_TO, 'RelationType', 'RelationType'),
 		);
 	}
 

@@ -27,16 +27,12 @@ class ChildMessageController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				'actions'=>array('index','view', 'create', 'update'),
+				'roles'=>array('sponsor', 'staff', 'admin'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'actions'=>array('delete'),
+				'roles'=>array('staff', 'admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -50,11 +46,16 @@ class ChildMessageController extends Controller
 	 */
 	public function actionView($id)
 	{
-		if(Yii::app()->user->user->Id)
-			
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		$model = $this->loadModel($id);
+		$user = Yii::app()->user->user;
+		
+		if($user->group->Id == 1 && $model->Author != $user->Id){
+			throw new CHttpException(403);
+		}else{
+			$this->render('view',array(
+					'model'=>$model,
+			));
+		}
 	}
 
 	/**
@@ -71,13 +72,39 @@ class ChildMessageController extends Controller
 		if(isset($_POST['ChildMessage']))
 		{
 			$model->attributes=$_POST['ChildMessage'];
+			// Set the author
 			$model->Author = Yii::app()->user->user->Id;
+			// Set the created date
+			$model->DateCreated = date ( 'Y-m-d h:i:s' );
+			// Set the forward flag
+			$model->IsForwarded = 0;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Id));
 		}
-
+		
+		$user = Yii::app()->user->user;
+		
+		$child = new Child('search');
+		$criteria = new CDbCriteria();
+		if($user->group->Id == 1){
+			$criteria->join = 'INNER JOIN users ON t.Sponsor = users.Id';
+			$criteria->condition = 'users.Id = :id';
+			$criteria->params = array (
+					':id' => $user->Id
+			);
+		}
+		$child = new CActiveDataProvider ($child, array (
+				'criteria' => $criteria
+		) );
+		
+		$children = array();
+		foreach($child->getData() as $row){
+			$children[] = $row;
+		}
+		
 		$this->render('create',array(
 			'model'=>$model,
+			'children'=>$children
 		));
 	}
 

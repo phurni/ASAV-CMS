@@ -69,8 +69,8 @@ class User extends CActiveRecord
 			array('Address', 'length', 'max'=>255),
 			array('Town', 'length', 'max'=>60),
 			array('Username', 'length', 'max'=>50),
-			array('Password', 'length', 'max'=>40),
-			array('Salt', 'length', 'max'=>20),
+			array('Password', 'length', 'max'=>44),
+			array('Salt', 'length', 'max'=>32),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('Id, Country, Genre, Group, Firstname, Lastname, Birthday, Address, ZipCode, Town, Email, Username, Password, Salt', 'safe', 'on'=>'search'),
@@ -214,5 +214,21 @@ class User extends CActiveRecord
 	public function IsStaff()
 	{
 		return $this->group->Id == 2;
+	}
+	
+	
+	/**
+	 * 
+	 * Encrypt the given data and return an array with the encrypted data and the salt
+	 */
+	public function encrypt($value, $key = null){
+		$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, "cbc");
+		$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+		if(!$key){
+			$key = md5(time());
+		}
+		$chain = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $value, MCRYPT_MODE_CBC, md5(md5($key))));
+		
+		return array("key" => $key, "hash" => sha1($chain, true));
 	}
 }

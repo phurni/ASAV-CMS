@@ -4,7 +4,7 @@
 	'htmlOptions'=>array('class'=>"wideFields"),
 )); 
 $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
-$children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
+$children=CHtml::listData($children, 'Id', 'Fullname');
 ?>
 
 	<p class="note">Les champs avec <span class="required">*</span> sont requis.</p>
@@ -30,12 +30,6 @@ $children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
 			<?php echo $form->error($model,'IsForwarded'); ?>
 		</div>
 			
-		<?php	
-		}
-		?>
-		
-		
-	
 		<div class="span2">
 			<?php echo $form->labelEx($model,'DateCreated'); ?>
 			<?php $this->widget('zii.widgets.jui.CJuiDatePicker',array(
@@ -52,6 +46,10 @@ $children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
 			)); ?>
 			<?php echo $form->textField($model,'DateCreated', array('style'=>"display:none")); ?>
 		</div>
+	
+		<?php	
+		}
+		?>
 	
 	</div>
 	<?php echo $form->textAreaRow($model,'Message',array('rows'=>6, 'cols'=>50, 'class'=>'span8')); ?>

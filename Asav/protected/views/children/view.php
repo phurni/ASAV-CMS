@@ -21,20 +21,29 @@ $this->menu = array (
 				) 
 		),
 		array (
-				'label' => 'Créer un enfant',
+				'label' => 'Consulter les rapports liés',
 				'url' => array (
-						'create' 
-				) 
+						'children/' . $child->Id . '/reportsbychild'
+				),
+				'visible' => $isInTeam
 		),
 		array (
-				'label' => 'Modifier un enfant',
+				'label' => 'Créer un enfant',
+				'url' => array (
+						'create'
+				),
+				'visible' => $isInTeam
+		),
+		array (
+				'label' => 'Modifier l\'enfant',
 				'url' => array (
 						'update',
 						'id' => $child->Id 
-				) 
+				),
+				'visible' => $isInTeam
 		),
 		array (
-				'label' => 'Supprimer un enfant',
+				'label' => 'Supprimer l\'enfant',
 				'url' => '#',
 				'linkOptions' => array (
 						'submit' => array (
@@ -42,7 +51,8 @@ $this->menu = array (
 								'id' => $child->Id 
 						),
 						'confirm' => 'Êtes-vous sûr vous supprimer cet enfant?' 
-				) 
+				),
+				'visible' => $isInTeam
 		) 
 );
 ?>
@@ -50,6 +60,15 @@ $this->menu = array (
 <h1><?php echo $child->getFullName(); ?></h1>
 
 <div class="wideFields">
+
+	<div class="row-fluid">
+<div class="span4">
+			<b>
+		<?php echo CHtml::encode($child->getAttributeLabel('Picture')); ?>:
+		</b><br />
+		<?php echo CHtml::image('../' . Yii::app()->params['custom']['uploadPath'] . (isset($child->picture) ? CHtml::encode($child->picture->Path) : '../../images/noimage.png')); ?>		
+		</div>
+		</div>
 
 	<div class="row-fluid">
 
@@ -92,28 +111,23 @@ $this->menu = array (
 		</b>
 		<?php echo CHtml::encode($child->genre->Name); ?>		
 		</div>
-
-		<div class="span4">
-			<b>
-		<?php echo CHtml::encode($child->getAttributeLabel('Media')); ?>:
-		</b>
-		<?php echo CHtml::image(isset($child->picture) ? CHtml::encode($child->picture->Path) : '../images/noimage.png'); ?>		
-		</div>
 	</div>
 	<div class="row-fluid">
 		<div class="span4">
 		<b>
 			<?php echo CHtml::encode($child->getAttributeLabel('Address')); ?>:
 		</b><br/>
-		<?php echo CHtml::encode($child->host ? $child->host->Fullname : "aucune"); ?>
+		<?php echo CHtml::encode($child->host ? $child->host->genre->Name : "aucune"); ?>
+		<?php echo CHtml::encode($child->host ? $child->host->Fullname : ""); ?>
 		<br />
 		<?php echo CHtml::encode($child->host ? $child->host->Address : ""); ?>
 		</div>
 		<div class="span4">
 		<b>
-			<?php echo CHtml::encode($child->getAttributeLabel('Tutor')); ?>:
+			<?php echo CHtml::encode($child->getAttributeLabel('tutor')); ?>:
 		</b><br/>
-		<?php echo CHtml::encode($child->tutor ?  $child->tutor->Fullname : "aucun"); ?>
+		<?php echo CHtml::encode($child->tutor ?  $child->tutor->genre->Name : "aucun"); ?>
+		<?php echo CHtml::encode($child->tutor ?  $child->tutor->Fullname : ""); ?>
 		<br />
 		<?php echo CHtml::encode($child->tutor ?  $child->tutor->Address : ""); ?>
 		</div>

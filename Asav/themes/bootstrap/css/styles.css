@@ -34,7 +34,7 @@
 
 /* Forms */
 .wideFields input, .wideFields textarea, .wideFields select {
-	width: 97.5%;
+	width: 95%;
 }
 .grid-view table.items th a.select-all, .grid-view table.items th a.select-none {
 	display: inline;
