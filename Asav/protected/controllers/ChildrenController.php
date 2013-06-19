@@ -152,7 +152,7 @@ class ChildrenController extends Controller {
 					// Set the Staffboard id
 					$media->Child = $model->Id;
 					// Set the title
-					$media->Title = $file->getName ();
+					$media->Title = $_POST ['filename'];
 					// Set the created date
 					$media->Created = date ( 'Y-m-d h:i:s' );
 					// Set the owner of the file
@@ -231,7 +231,7 @@ class ChildrenController extends Controller {
 					// Set the Staffboard id
 					$media->Child = $model->Id;
 					// Set the title
-					$media->Title = $file->getName ();
+					$media->Title = $_POST ['filename'];
 					// Set the created date
 					$media->Created = date ( 'Y-m-d h:i:s' );
 					// Set the owner of the file

@@ -27,12 +27,12 @@ class MediaController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
+			array('allow',
 				'actions'=>array('file'),
 				'users'=>array('@'),
 			),
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'create', 'update'),
+			array('allow',
+				'actions'=>array('index','view', 'create', 'update', 'delete'),
 				'roles'=>array('staff', 'admin'),
 			),
 			array('deny',  // deny all users
@@ -146,7 +146,7 @@ class MediaController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
 
 	/**

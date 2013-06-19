@@ -3,10 +3,6 @@ $this->breadcrumbs=array(
 	'Medias',
 );
 
-$this->menu=array(
-	array('label'=>'Create Media','url'=>array('create')),
-	array('label'=>'Manage Media','url'=>array('admin')),
-);
 ?>
 
 <h1>Medias</h1>
@@ -33,8 +29,8 @@ $this->widget ( 'bootstrap.widgets.TbGridView', array (
 				),
 				array (
 						'name' => 'Title',
-						
-						'value' => '$data->Title'
+						'type' => 'raw',
+						'value' => 'CHtml::link($data->Title . \' (\' . pathinfo ( $data->Path, PATHINFO_FILENAME ) . \'.\' . pathinfo ( $data->Path, PATHINFO_EXTENSION ) . \')\', Yii::app()->createUrl(\'media/file?path=\'. dirname($data->Path)))'
 				),
 				array (
 						'name' => 'Created',

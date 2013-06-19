@@ -21,6 +21,13 @@ $this->menu = array (
 				) 
 		),
 		array (
+				'label' => 'Consulter le portfolio',
+				'url' => array (
+						'media/index?type=child&&id=' . $child->Id
+				),
+				'visible' => $isInTeam
+		),
+		array (
 				'label' => 'Consulter les rapports liés',
 				'url' => array (
 						'children/' . $child->Id . '/reportsbychild' 
