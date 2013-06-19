@@ -4,7 +4,7 @@
 	'htmlOptions'=>array('class'=>"wideFields"),
 )); 
 $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
-$children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
+$children=CHtml::listData($children, 'Id', 'Fullname');
 ?>
 
 	<p class="note">Les champs avec <span class="required">*</span> sont requis.</p>
