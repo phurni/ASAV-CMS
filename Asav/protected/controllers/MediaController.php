@@ -176,6 +176,7 @@ class MediaController extends Controller
 		
 		$this->render('index',array(
 				'dp'=>$dp,
+				'type'=>$type
 		
 		));
 		}
