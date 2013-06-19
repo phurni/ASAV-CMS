@@ -68,7 +68,7 @@ class ChildMessageController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		
 		if(isset($_POST['ChildMessage']))
 		{
 			$model->attributes=$_POST['ChildMessage'];
@@ -78,8 +78,41 @@ class ChildMessageController extends Controller
 			$model->DateCreated = date ( 'Y-m-d h:i:s' );
 			// Set the forward flag
 			$model->IsForwarded = 0;
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->Id));
+		// Validate the model
+			if ($model->validate ()) {
+				// If there's a file to upload
+				if(CUploadedFile::getInstanceByName ( 'File' ) != null)
+				{
+					if ($model->save ()) {
+						$media = new Media ();
+						// Set the Staffboard id
+						$media->ChildMessage = $model->Id;
+						// Set the title
+						$media->Title = $_POST ['filename'];
+						// Set the created date
+						$media->Created = date ( 'Y-m-d h:i:s' );
+						// Set the owner of the file
+						$media->Author = Yii::app ()->user->Id;
+						// Get the uploade file
+						$media->File = CUploadedFile::getInstanceByName ( 'File' );
+						if ($media->save ()) {
+							$this->redirect ( array (
+									'view',
+									'id' => $model->Id 
+							) );
+						}
+					}
+				}
+				else 
+				{
+					if ($model->save ()) {
+						$this->redirect ( array (
+								'view',
+								'id' => $model->Id
+						) );
+					}
+				}
+			}
 		}
 		
 		$user = Yii::app()->user->user;
@@ -123,12 +156,66 @@ class ChildMessageController extends Controller
 		if(isset($_POST['ChildMessage']))
 		{
 			$model->attributes=$_POST['ChildMessage'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->Id));
+		// Validate the model
+			if ($model->validate ()) {
+				// If there's a file to upload
+				if(CUploadedFile::getInstanceByName ( 'File' ) != null)
+				{
+					if ($model->save ()) {
+						$media = new Media ();
+						// Set the Staffboard id
+						$media->ChildMessage = $model->Id;
+						// Set the title
+						$media->Title = $_POST ['filename'];
+						// Set the created date
+						$media->Created = date ( 'Y-m-d h:i:s' );
+						// Set the owner of the file
+						$media->Author = Yii::app ()->user->Id;
+						// Get the uploade file
+						$media->File = CUploadedFile::getInstanceByName ( 'File' );
+						if ($media->save ()) {
+							$this->redirect ( array (
+									'view',
+									'id' => $model->Id 
+							) );
+						}
+					}
+				}
+				else 
+				{
+					if ($model->save ()) {
+						$this->redirect ( array (
+								'view',
+								'id' => $model->Id
+						) );
+					}
+				}
+			}
+		}
+		
+		$user = Yii::app()->user->user;
+		
+		$child = new Child('search');
+		$criteria = new CDbCriteria();
+		if($user->group->Id == 1){
+			$criteria->join = 'INNER JOIN users ON t.Sponsor = users.Id';
+			$criteria->condition = 'users.Id = :id';
+			$criteria->params = array (
+					':id' => $user->Id
+			);
+		}
+		$child = new CActiveDataProvider ($child, array (
+				'criteria' => $criteria
+		) );
+		
+		$children = array();
+		foreach($child->getData() as $row){
+			$children[] = $row;
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
+			'children'=>$children
 		));
 	}
 
