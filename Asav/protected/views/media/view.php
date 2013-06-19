@@ -37,10 +37,13 @@ $this->menu=array(
 	
 		<div class="span4">
 			<b>
-			<?php echo CHtml::encode($model->getAttributeLabel('Enfant')); ?>:
+			<?php echo CHtml::encode($model->getAttributeLabel('Child')); ?>:
 			</b>
-			<?php echo CHtml::encode($model->child->Fullname); ?>			
+			<?php if ($model->child != null){
+			echo CHtml::encode($model->child->Fullname);
+			} ?>
 		</div>
+
 
 		<div class="span4">
 		<b>
@@ -48,5 +51,12 @@ $this->menu=array(
 		</b>
 		<?php echo CHtml::encode($model->Path); ?>
 		</div>
+		
+			<div class="span4">
+		<b>
+		<?php echo CHtml::encode($model->getAttributeLabel('ChildMessage')); ?>:
+		</b>
+		<?php echo CHtml::encode($model->ChildMessage); ?>
+	</div>
 	</div>	
 </div>
