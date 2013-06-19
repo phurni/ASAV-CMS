@@ -65,5 +65,20 @@ $this->menu=array(
 		
 </div>		
 
+<!-- Attached media -->
+	<p>
+			<?php 
+			if(count($model->medias) > 0)
+			{
+				echo '<b>Fichiers attachés</b><br /><blockquote>';
+				foreach ($model->medias as $media)
+				{
+					echo '<a href="../'. Yii::app()->params['custom']['uploadPath'] . $media->Path .'">'. $media->Title .' ('. pathinfo($media->Path, PATHINFO_FILENAME) .'.'. pathinfo($media->Path, PATHINFO_EXTENSION) .')</a><br />';
+				}
+				echo '</blockquote>';
+			}
+			?>
+	</p>
+
 </div>
 <br>
