@@ -13,17 +13,11 @@ $childmessage=CHtml::listData(ChildMessage::model()->findAll(), 'Id', 'Id');
 	<?php echo $form->errorSummary($model); ?>
 	
 	<div class="row-fluid">	
-		<div class="span6">		
+		<div class="span12">		
 			<?php echo $form->textFieldRow($model, 'Title', array('maxlength'=>100, 'class' => 'validate')); ?>
 		</div>
 		
-		<div class="span6">
-			<?php echo $form->labelEx($model,'Path'); ?>
-			<div>
-				<?php echo $form->fileField($model,'File', array('id' => 'File')); ?>
-				<input type="text" id="textFile" class="validate" placeholder="Joindre un fichier..." style="display: none;cursor: pointer; background-color: white;" readonly="readonly" />
-			</div>
-		</div>
+
 	</div>
 	
 	<div class="row-fluid">	
