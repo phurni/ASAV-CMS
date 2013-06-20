@@ -105,6 +105,8 @@ class UserController extends Controller
 				$credentials = $model->encrypt($model->Password);
 				$model->Password = $credentials["hash"];
 				$model->Salt = $credentials["key"];
+			}else{
+				$model->Password = $this->loadModel($id)->Password;
 			}
 			
 			if($model->save())
