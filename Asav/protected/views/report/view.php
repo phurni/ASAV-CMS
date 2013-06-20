@@ -10,6 +10,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 		array('label'=>'Liste des rapports', 'url'=>array('index')),
+		array('label'=>'Consulter les média liés', 'url'=>array('media/index?type=report&&id='. $model->Id)),
 		array('label'=>'Créer un rapport', 'url'=>array('create')),
 		array('label'=>'Modifier un rapport', 'url'=>array('update', 'id'=>$model->Id)),
 		array('label'=>'Supprimer un rapport', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Êtes-vous sûr vous supprimer ce rapport?')),
@@ -19,12 +20,6 @@ $this->menu=array(
 
 
 <h1>Rapport : #<?php echo CHtml::encode($model->Id);?></h1>
-<?php 
-//$children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
-//$authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
-//$status=CHtml::listData(Reportstatus::model()->findAll(), 'Id', 'Status');
-//$type=CHtml::listData(Reporttype::model()->findAll(), 'Id', 'Name');
-?>
 <div class="wideFields">
 	
 <div class="row-fluid">	

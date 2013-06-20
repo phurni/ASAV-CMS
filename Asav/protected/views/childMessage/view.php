@@ -6,6 +6,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Liste des Messages','url'=>array('index')),
+	array('label'=>'Consulter les média liés', 'url'=>array('media/index?type=childMessage&&id='. $model->Id)),
 	array('label'=>'Créer un Message','url'=>array('create')),
 	array('label'=>'Modifier un Message','url'=>array('update','id'=>$model->Id)),
 	array('label'=>'Supprimer un Message','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->Id),'confirm'=>'Êtes-vous sûr vous supprimer ce message ?')),

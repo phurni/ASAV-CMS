@@ -31,17 +31,19 @@
 	?>
 	</p>
 	<!-- Attached media -->
-	<p>
-			<?php 
-			if(count($data->medias) > 0)
-			{
-				echo '<b>Fichiers attachés</b><br /><blockquote>';
-				foreach ($data->medias as $media)
-				{
-					echo '<a href="../'. Yii::app()->params['custom']['uploadPath'] . $media->Path .'">'. $media->Title .' ('. pathinfo($media->Path, PATHINFO_FILENAME) .'.'. pathinfo($media->Path, PATHINFO_EXTENSION) .')</a><br />';
+	<div class="row-fluid">
+		<div class="span4">
+			<p>
+			<?php
+			if (count ( $data->medias ) > 0) {
+				echo '<br /><b>Fichiers attachés</b><br /><blockquote>';
+				foreach ( $data->medias as $media ) {
+					echo '<a href="'. Yii::app()->createUrl("media/file?path=" . dirname($media->Path)) .'">' . $media->Title . ' (' . pathinfo ( $media->Path, PATHINFO_FILENAME ) . '.' . pathinfo ( $media->Path, PATHINFO_EXTENSION ) . ')</a><br />';
 				}
 				echo '</blockquote>';
 			}
 			?>
-	</p>
+			</p>
+		</div>
+	</div>
 </div>

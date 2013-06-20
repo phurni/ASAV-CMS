@@ -8,6 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
+	array('label'=>'Consulter les média liés', 'url'=>array('media/index?type=staffBoard&&id='. $model->Id)),
 	array('label'=>'Créer un message', 'url'=>array('create')),
 	array('label'=>'Espace de communication', 'url'=>array('index')),
 	array('label'=>'Mettre à jour du message', 'url'=>array('update', 'id'=>$model->Id)),
