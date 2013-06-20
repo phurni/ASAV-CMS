@@ -80,11 +80,11 @@ class Person extends CActiveRecord
 	{
 		return array(
 			'Id' => 'ID',
-			'Country' => 'Country',
+			'Country' => 'Pays',
 			'Genre' => 'Genre',
-			'Firstname' => 'Firstname',
-			'Lastname' => 'Lastname',
-			'Address' => 'Address',
+			'Firstname' => 'Prénom',
+			'Lastname' => 'Nom',
+			'Address' => 'Adresse',
 		);
 	}
 

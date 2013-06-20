@@ -3,8 +3,8 @@
 /* @var $model User */
 
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	$model->Id,
+	'Membres'=>array('index'),
+	$model->getFullname(),
 );
 
 $this->menu=array(
@@ -15,7 +15,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Utilisateur : #<?php echo $model->Id; ?></h1>
+<h1><?php echo $model->getFullname(); ?></h1>
 
 
 <div class="wideFields">
