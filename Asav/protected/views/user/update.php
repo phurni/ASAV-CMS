@@ -3,9 +3,9 @@
 /* @var $model User */
 
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	$model->Id=>array('view','id'=>$model->Id),
-	'Update',
+	'Membres'=>array('index'),
+	$model->getFullname()=>array('view','id'=>$model->Id),
+	'Mise à jour',
 );
 
 $this->menu=array(
@@ -17,6 +17,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Modifier Utilisateur : #<?php echo $model->Id; ?></h1>
+<h1><?php echo $model->getFullname(); ?></h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

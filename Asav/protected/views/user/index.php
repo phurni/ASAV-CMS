@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Utilisateurs',
+	'Membres',
 );
 
 $this->menu=array(
@@ -13,13 +13,9 @@ $this->menu=array(
 );
 ?>
 
-<h1>Utilisateurs</h1>
+<h1>Membres</h1>
 
-<?php /*$this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); 
-*/
+<?php
 
 $this->widget ( 'bootstrap.widgets.TbGridView', array (
 		'type' => 'striped bordered condensed',

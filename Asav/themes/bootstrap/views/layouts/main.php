@@ -46,7 +46,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
 						array('label'=>'Mes rapports', 'url'=>Yii::app()->createUrl("/report/myreports")),
             			array('label'=>'Validation des rapports', 'url'=>Yii::app()->createUrl("/dashboard")),
             	)),
-            	// Utilisateurs
+            	// Membres
             	array('label'=>'Membres', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
             			array('label'=>'Créer un membre', 'url'=>Yii::app()->createUrl("/user/create")),
             			array('label'=>'Liste des membres', 'url'=>Yii::app()->createUrl("/user")),
@@ -56,7 +56,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             	// Personnes
             	array('label'=>'Personnes', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
             			array('label'=>'Créer une personne', 'url'=>Yii::app()->createUrl("/person/create")),
-            			array('label'=>'Liste des utilisateurs', 'url'=>Yii::app()->createUrl("/person")),
+            			array('label'=>'Liste des personnes', 'url'=>Yii::app()->createUrl("/person")),
             	)),
             	// Media
             	array('label'=>'Media', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
