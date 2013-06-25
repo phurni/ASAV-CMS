@@ -31,9 +31,9 @@ $countries=CHtml::listData(Country::model()->findAll(), 'Id', 'Name');
 		
 	<div class="row-fluid">	
 	
-		<div class="span4">
+		<div class="span8">
 			<?php echo $form->labelEx($model,'Adresse'); ?>
-			<?php echo $form->textField($model,'Address'); ?>
+			<?php echo $form->textArea($model,'Address',array('rows'=>6, 'cols'=>50)); ?>
 			<?php echo $form->error($model,'Address'); ?>
 		</div>
 		
@@ -49,7 +49,7 @@ $countries=CHtml::listData(Country::model()->findAll(), 'Id', 'Name');
 </div>
 	
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Créer' : 'Enregistrer', array("class"=>"btn")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

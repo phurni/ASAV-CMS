@@ -37,9 +37,19 @@ class ChildrenController extends Controller {
 		) );
 	}
 	public function actionGallery() {
-		$dataProvider = new CActiveDataProvider ( 'Child' );
+		$model = new Child ( 'search' );
+		$criteria = new CDbCriteria ();
+		
+		if (yii::app ()->user->hasState ( "user" ) && yii::app ()->user->user->group->Id == 1) {
+			$criteria->addCondition ( 'Sponsor IS NULL' );
+		}
+		
+		
+		$dp = new CActiveDataProvider ( $model, array (
+				'criteria' => $criteria 
+		) );
 		$this->render ( 'gallery', array (
-				'dataProvider' => $dataProvider,
+				'dataProvider' => $dp,
 				'isInTeam' => (isset ( Yii::app ()->user->user ) && Yii::app ()->user->user->IsInTeam ()) 
 		) );
 	}
