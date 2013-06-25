@@ -57,7 +57,7 @@ $countries=CHtml::listData(Country::model()->findAll(), 'Id', 'Name');
 				'showAnim'=>'fold',
 				'dateFormat' => 'dd mm yy',
 				'altFormat' => 'yy-mm-dd',
-				'altField' => "#Child_Birthday",
+				'altField' => "#User_Birthday",
 				'changeYear'=>'true',
 		),
 		'model'=>$model,

@@ -61,7 +61,7 @@ class UserController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new User;
+		$model=new User();
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -100,6 +100,7 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
+			$model->Birthday = $_POST['User']['Birthday'];
 			
 			if(trim($model->Password) != ""){
 				$credentials = $model->encrypt($model->Password);
