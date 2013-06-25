@@ -6,14 +6,6 @@ return array (
     'description' => '',
     'bizRule' => NULL,
     'data' => NULL,
-    'assignments' => 
-    array (
-      2 => 
-      array (
-        'bizRule' => NULL,
-        'data' => NULL,
-      ),
-    ),
   ),
   'staff' => 
   array (
@@ -21,14 +13,6 @@ return array (
     'description' => '',
     'bizRule' => NULL,
     'data' => NULL,
-    'assignments' => 
-    array (
-      3 => 
-      array (
-        'bizRule' => NULL,
-        'data' => NULL,
-      ),
-    ),
   ),
   'admin' => 
   array (
@@ -38,7 +22,7 @@ return array (
     'data' => NULL,
     'assignments' => 
     array (
-      5 => 
+      1 => 
       array (
         'bizRule' => NULL,
         'data' => NULL,

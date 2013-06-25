@@ -15,6 +15,20 @@ Features
 - Staffboard plateform
 - Mailing for users
 
+Requirements
+-------------
+The mod_rewrite must be activated in Apache.
+
+Website Access
+--------------
+As soon as the website is set up, you need to log in with these following credentials:
+
+- Username: admin
+- Password: admin
+
+We know... we spent a lot of time to imagine these login details. This is why we *highly* recommend you to change them.
+
+
 Authors
 -------
 The authors of this project are
