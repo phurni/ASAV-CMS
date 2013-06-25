@@ -108,8 +108,6 @@ class ChildMessageController extends Controller {
 						$media->ChildMessage = $model->Id;
 						// Set the title
 						$media->Title = $_POST ['filename'];
-						// Set the created date
-						$media->Created = date ( 'Y-m-d h:i:s' );
 						// Set the owner of the file
 						$media->Author = Yii::app ()->user->Id;
 						// Get the uploade file
@@ -184,8 +182,6 @@ class ChildMessageController extends Controller {
 						$media->ChildMessage = $model->Id;
 						// Set the title
 						$media->Title = $_POST ['filename'];
-						// Set the created date
-						$media->Created = date ( 'Y-m-d h:i:s' );
 						// Set the owner of the file
 						$media->Author = Yii::app ()->user->Id;
 						// Get the uploade file

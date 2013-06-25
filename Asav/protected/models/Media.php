@@ -177,6 +177,8 @@ class Media extends CActiveRecord {
 		
 		// Get the uploade file
 		if (isset ( $this->File )) {
+			// Set the created date
+			$this->Created = date ( 'Y-m-d h:i:s' );
 			// Create the path of the file
 			$folderName = $this->generateRandomName ();
 			$path = Yii::app ()->params ['custom'] ['uploadPath'] . $folderName;

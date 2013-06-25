@@ -51,7 +51,7 @@ $countries=CHtml::listData(Country::model()->findAll(), 'Id', 'Name');
 	<div class="span3">
 	<?php echo $form->labelEx($model,'Birthday'); ?>
 	<?php $this->widget('zii.widgets.jui.CJuiDatePicker',array(
-		'name'=>'tmp-Day',
+		'name'=>'tmp-Birthday',
 		// additional javascript options for the date picker plugin
 		'options'=>array(
 				'showAnim'=>'fold',
