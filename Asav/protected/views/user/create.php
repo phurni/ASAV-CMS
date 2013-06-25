@@ -3,8 +3,8 @@
 /* @var $model User */
 
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	'Create',
+	'Personne'=>array('index'),
+	'Création',
 );
 
 $this->menu=array(

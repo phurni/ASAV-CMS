@@ -132,8 +132,6 @@ class ChildrenController extends Controller {
 					$picture->Child = $model->Id;
 					// Set the title
 					$picture->Title = $file->getName ();
-					// Set the created date
-					$picture->Created = date ( 'Y-m-d h:i:s' );
 					// Set the owner of the file
 					$picture->Author = Yii::app ()->user->Id;
 					$picture->File = $file;
@@ -153,8 +151,6 @@ class ChildrenController extends Controller {
 					$media->Child = $model->Id;
 					// Set the title
 					$media->Title = $_POST ['filename'];
-					// Set the created date
-					$media->Created = date ( 'Y-m-d h:i:s' );
 					// Set the owner of the file
 					$media->Author = Yii::app ()->user->Id;
 					$media->File = $file;
@@ -211,8 +207,6 @@ class ChildrenController extends Controller {
 					$picture->Child = $model->Id;
 					// Set the title
 					$picture->Title = $file->getName ();
-					// Set the created date
-					$picture->Created = date ( 'Y-m-d h:i:s' );
 					// Set the owner of the file
 					$picture->Author = Yii::app ()->user->Id;
 					$picture->File = $file;
@@ -232,8 +226,6 @@ class ChildrenController extends Controller {
 					$media->Child = $model->Id;
 					// Set the title
 					$media->Title = $_POST ['filename'];
-					// Set the created date
-					$media->Created = date ( 'Y-m-d h:i:s' );
 					// Set the owner of the file
 					$media->Author = Yii::app ()->user->Id;
 					$media->File = $file;
