@@ -1,7 +1,7 @@
 <?php
 
 // uncomment the following to define a path alias
-Yii::setPathOfAlias('bootstrap',realpath(dirname(__FILE__) . "../../extensions/bootstrap"));
+Yii::setPathOfAlias('bootstrap',realpath(dirname(__FILE__) . "/../extensions/bootstrap"));
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
