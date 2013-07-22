@@ -9,7 +9,7 @@
 
 	<?php echo $form->textFieldRow($model,'Child',array('class'=>'span5')); ?>
 
-	<?php echo $form->textFieldRow($model,'ChildMessage',array('class'=>'span5')); ?>
+	<?php echo $form->textFieldRow($model,'Childmessage',array('class'=>'span5')); ?>
 
 	<?php echo $form->textFieldRow($model,'Staffboard',array('class'=>'span5')); ?>
 

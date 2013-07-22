@@ -7,7 +7,7 @@
  * @property integer $Id
  * @property integer $Author
  * @property integer $Child
- * @property integer $ChildMessage
+ * @property integer $Childmessage
  * @property integer $Staffboard
  * @property string $Path
  * @property string $Title
@@ -18,7 +18,7 @@
  * The followings are the available model relations:
  * @property Users $author
  * @property Children $child
- * @property Childmessages $childMessage
+ * @property Childmessages $childmessage
  * @property Staffboard $staffboard
  */
 class Media extends CActiveRecord {
@@ -56,7 +56,7 @@ class Media extends CActiveRecord {
 						'required' 
 				),
 				array (
-						'Author, Child, ChildMessage, Staffboard',
+						'Author, Child, Childmessage, Staffboard',
 						'numerical',
 						'integerOnly' => true 
 				),
@@ -72,7 +72,7 @@ class Media extends CActiveRecord {
 				// The following rule is used by search().
 				// Please remove those attributes that should not be searched.
 				array (
-						'Id, Author, Child, ChildMessage, Staffboard, Path, Title, Description, Created, Modified',
+						'Id, Author, Child, Childmessage, Staffboard, Path, Title, Description, Created, Modified',
 						'safe',
 						'on' => 'search' 
 				),
@@ -102,10 +102,10 @@ class Media extends CActiveRecord {
 						'Child',
 						'Child' 
 				),
-				'childMessage' => array (
+				'childmessage' => array (
 						self::BELONGS_TO,
-						'ChildMessage',
-						'ChildMessage' 
+						'Childmessage',
+						'Childmessage' 
 				),
 				'report' => array (
 						self::BELONGS_TO,
@@ -129,7 +129,7 @@ class Media extends CActiveRecord {
 				'Id' => 'ID',
 				'Author' => 'Auteur',
 				'Child' => 'Enfant',
-				'ChildMessage' => 'ChildMessage',
+				'Childmessage' => 'Childmessage',
 				'Staffboard' => 'Staff Board',
 				'Path' => 'Fichier à charger',
 				'Title' => 'Titre',
@@ -154,7 +154,7 @@ class Media extends CActiveRecord {
 		$criteria->compare ( 'Id', $this->Id );
 		$criteria->compare ( 'Author', $this->Author );
 		$criteria->compare ( 'Child', $this->Child );
-		$criteria->compare ( 'ChildMessage', $this->ChildMessage );
+		$criteria->compare ( 'Childmessage', $this->Childmessage );
 		$criteria->compare ( 'Staffboard', $this->Staffboard );
 		$criteria->compare ( 'Path', $this->Path, true );
 		$criteria->compare ( 'Title', $this->Title, true );

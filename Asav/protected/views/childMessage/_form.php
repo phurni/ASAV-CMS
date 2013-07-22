@@ -44,7 +44,7 @@ $isInTeam = (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam()
 									'showAnim'=>'fold',
 									'dateFormat' => 'dd mm yy',
 									'altFormat' => 'yy-mm-dd',
-									'altField' => "#ChildMessage_DateCreated",
+									'altField' => "#Childmessage_DateCreated",
 							),
 							'model'=>$model,
 							'value'=>$model->DateCreated,

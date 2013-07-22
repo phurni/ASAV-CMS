@@ -5,7 +5,7 @@
 )); 
 $authors=CHtml::listData(User::model()->findAll(), 'Id', 'Fullname');
 $children=CHtml::listData(Child::model()->findAll(), 'Id', 'Fullname');
-$childmessage=CHtml::listData(ChildMessage::model()->findAll(), 'Id', 'Id');
+$childmessage=CHtml::listData(Childmessage::model()->findAll(), 'Id', 'Id');
 ?>
 
 	<p class="note">Les champs avec <span class="required">*</span> sont requis.</p>
@@ -33,8 +33,8 @@ $childmessage=CHtml::listData(ChildMessage::model()->findAll(), 'Id', 'Id');
 		</div>
 		
 		<div class="span2">		
-			<?php echo $form->dropDownListRow($model,'ChildMessage',$childmessage);?>
-			<?php echo $form->error($model,'ChildMessage'); ?>
+			<?php echo $form->dropDownListRow($model,'Childmessage',$childmessage);?>
+			<?php echo $form->error($model,'Childmessage'); ?>
 		</div>
 		
 		<div class="span2">		

@@ -16,12 +16,12 @@
  * @property Users $author
  * @property Media[] $medias
  */
-class ChildMessage extends CActiveRecord
+class Childmessage extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return ChildMessage the static model class
+	 * @return Childmessage the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -62,7 +62,7 @@ class ChildMessage extends CActiveRecord
 		return array(
 			'child' => array(self::BELONGS_TO, 'Child', 'Child'),
 			'author' => array(self::BELONGS_TO, 'User', 'Author'),
-			'medias' => array(self::HAS_MANY, 'Media', 'ChildMessage'),
+			'medias' => array(self::HAS_MANY, 'Media', 'Childmessage'),
 		);
 	}
 

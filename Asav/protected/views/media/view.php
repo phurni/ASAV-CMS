@@ -28,7 +28,7 @@ $this->menu = array (
 		array (
 				'label' => 'Média liés aux messages des enfants',
 				'url' => array (
-						'index?type=childMessage' 
+						'index?type=childmessage' 
 				) 
 		),
 		array (

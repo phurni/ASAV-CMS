@@ -23,12 +23,12 @@ if(isset($type) && $type == "child"){
 						'type' => 'raw',
 						'value'=>'$data->child ? CHtml::link($data->child->Fullname, Yii::app()->createUrl("/children/view", array("id"=>$data->child->Id))) : ""'
 				);
-}else if(isset($type) && $type == "childMessage"){
+}else if(isset($type) && $type == "childmessage"){
 	$columns[] = array (
 						'name' => 'Child',
 						
 						'type' => 'raw',
-						'value'=>'$data->childMessage->child ? CHtml::link($data->childMessage->child->Fullname, Yii::app()->createUrl("/children/view", array("id"=>$data->childMessage->child->Id))) : ""'
+						'value'=>'$data->childmessage->child ? CHtml::link($data->childmessage->child->Fullname, Yii::app()->createUrl("/children/view", array("id"=>$data->childmessage->child->Id))) : ""'
 				);
 }else if(isset($type) && $type == "report"){
 	$columns[] = array (

@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `media` (
   `Id` int(10) NOT NULL AUTO_INCREMENT,
   `Author` int(10) DEFAULT NULL,
   `Child` int(10) DEFAULT NULL,
-  `ChildMessage` int(11) DEFAULT NULL,
+  `Childmessage` int(11) DEFAULT NULL,
   `Report` int(11) DEFAULT NULL,
   `Staffboard` int(11) DEFAULT NULL,
   `Path` varchar(255) NOT NULL,
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `media` (
   `Modified` date DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `Child` (`Child`),
-  KEY `ChildMessage` (`ChildMessage`),
+  KEY `Childmessage` (`Childmessage`),
   KEY `Staffboard` (`Staffboard`),
   KEY `Author` (`Author`),
   KEY `Report` (`Report`)
@@ -349,7 +349,7 @@ ALTER TABLE `children`
 ALTER TABLE `media`
   ADD CONSTRAINT `media_ibfk_6` FOREIGN KEY (`Report`) REFERENCES `reports` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `media_ibfk_1` FOREIGN KEY (`Child`) REFERENCES `children` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `media_ibfk_3` FOREIGN KEY (`ChildMessage`) REFERENCES `childmessages` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `media_ibfk_3` FOREIGN KEY (`Childmessage`) REFERENCES `childmessages` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `media_ibfk_4` FOREIGN KEY (`Staffboard`) REFERENCES `staffboard` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `media_ibfk_5` FOREIGN KEY (`Author`) REFERENCES `users` (`Id`) ON DELETE SET NULL ON UPDATE CASCADE;
 

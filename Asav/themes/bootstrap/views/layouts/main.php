@@ -35,8 +35,8 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             	array('label'=>'Enfants', 'url'=>'#', 'visible'=>!Yii::app()->user->IsGuest, 'items'=>array(
             			array('label'=>'Annuaire', 'url'=>Yii::app()->createUrl("/children")),
             			array('label'=>'Créer un enfant', 'url'=>Yii::app()->createUrl("/children/create"), 'visible'=> $isInTeam),
-            			array('label'=>'Envoyer un message à un enfant', 'url'=>Yii::app()->createUrl("/childMessage/create")),
-            			array('label'=>'Messages envoyés aux enfants', 'url'=>Yii::app()->createUrl("/childMessage")),
+            			array('label'=>'Envoyer un message à un enfant', 'url'=>Yii::app()->createUrl("/childmessage/create")),
+            			array('label'=>'Messages envoyés aux enfants', 'url'=>Yii::app()->createUrl("/childmessage")),
             			array('label'=>'Trombinoscope', 'url'=>Yii::app()->createUrl("/children/gallery")),
             	)),
             	//Reports
@@ -62,7 +62,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             	array('label'=>'Media', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
             			array('label'=>'Enfants', 'url'=>Yii::app()->createUrl("/media/index?type=child")),
             			array('label'=>'Espace de communication', 'url'=>Yii::app()->createUrl("/media/index?type=staffboard")),
-            			array('label'=>'Messages des enfants', 'url'=>Yii::app()->createUrl("/media/index?type=childMessage")),
+            			array('label'=>'Messages des enfants', 'url'=>Yii::app()->createUrl("/media/index?type=childmessage")),
             			array('label'=>'Rapports', 'url'=>Yii::app()->createUrl("/media/index?type=report")),
             			array('label'=>'Tous', 'url'=>Yii::app()->createUrl("/media/index")),
             			

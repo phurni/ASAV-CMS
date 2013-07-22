@@ -1,5 +1,5 @@
 <?php
-class ChildMessageController extends Controller {
+class ChildmessageController extends Controller {
 	/**
 	 *
 	 * @var string the default layout for the views. Defaults to
@@ -85,13 +85,13 @@ class ChildMessageController extends Controller {
 	 * page.
 	 */
 	public function actionCreate() {
-		$model = new ChildMessage ();
+		$model = new Childmessage ();
 		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 		
-		if (isset ( $_POST ['ChildMessage'] )) {
-			$model->attributes = $_POST ['ChildMessage'];
+		if (isset ( $_POST ['Childmessage'] )) {
+			$model->attributes = $_POST ['Childmessage'];
 			// Set the author
 			$model->Author = Yii::app ()->user->user->Id;
 			// Set the created date
@@ -105,7 +105,7 @@ class ChildMessageController extends Controller {
 					if ($model->save ()) {
 						$media = new Media ();
 						// Set the Staffboard id
-						$media->ChildMessage = $model->Id;
+						$media->Childmessage = $model->Id;
 						// Set the title
 						$media->Title = $_POST ['filename'];
 						// Set the owner of the file
@@ -170,8 +170,8 @@ class ChildMessageController extends Controller {
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 		
-		if (isset ( $_POST ['ChildMessage'] )) {
-			$model->attributes = $_POST ['ChildMessage'];
+		if (isset ( $_POST ['Childmessage'] )) {
+			$model->attributes = $_POST ['Childmessage'];
 			// Validate the model
 			if ($model->validate ()) {
 				// If there's a file to upload
@@ -179,7 +179,7 @@ class ChildMessageController extends Controller {
 					if ($model->save ()) {
 						$media = new Media ();
 						// Set the Staffboard id
-						$media->ChildMessage = $model->Id;
+						$media->Childmessage = $model->Id;
 						// Set the title
 						$media->Title = $_POST ['filename'];
 						// Set the owner of the file
@@ -273,7 +273,7 @@ class ChildMessageController extends Controller {
 			$sponsorized = true;
 		}
 		
-		$model = new ChildMessage ( 'search' );
+		$model = new Childmessage ( 'search' );
 		
 		$dp = new CActiveDataProvider ( $model, array (
 				'criteria' => $criteria 
@@ -289,10 +289,10 @@ class ChildMessageController extends Controller {
 	 * Manages all models.
 	 */
 	public function actionAdmin() {
-		$model = new ChildMessage ( 'search' );
+		$model = new Childmessage ( 'search' );
 		$model->unsetAttributes (); // clear any default values
-		if (isset ( $_GET ['ChildMessage'] ))
-			$model->attributes = $_GET ['ChildMessage'];
+		if (isset ( $_GET ['Childmessage'] ))
+			$model->attributes = $_GET ['Childmessage'];
 		
 		$this->render ( 'admin', array (
 				'model' => $model 
@@ -308,7 +308,7 @@ class ChildMessageController extends Controller {
 	 *        	integer the ID of the model to be loaded
 	 */
 	public function loadModel($id) {
-		$model = ChildMessage::model ()->findByPk ( $id );
+		$model = Childmessage::model ()->findByPk ( $id );
 		if ($model === null)
 			throw new CHttpException ( 404, 'The requested page does not exist.' );
 		return $model;
