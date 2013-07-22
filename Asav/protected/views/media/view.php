@@ -22,7 +22,7 @@ $this->menu = array (
 		array (
 				'label' => 'Média liés à l\'espace de communication',
 				'url' => array (
-						'index?type=staffBoard' 
+						'index?type=staffboard' 
 				) 
 		),
 		array (

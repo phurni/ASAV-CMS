@@ -19,7 +19,7 @@
  * @property Users $author
  * @property Children $child
  * @property Childmessages $childMessage
- * @property Staffboard $staffBoard
+ * @property Staffboard $staffboard
  */
 class Media extends CActiveRecord {
 	public $File;
@@ -112,7 +112,7 @@ class Media extends CActiveRecord {
 						'Report',
 						'Report'
 				),
-				'staffBoard' => array (
+				'staffboard' => array (
 						self::BELONGS_TO,
 						'Staffboard',
 						'Staffboard' 
