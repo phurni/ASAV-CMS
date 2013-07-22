@@ -1,6 +1,6 @@
 <?php
-/* @var $this StaffBoardController */
-/* @var $model StaffBoard */
+/* @var $this StaffboardController */
+/* @var $model Staffboard */
 /* @var $form CActiveForm */
 ?>
 

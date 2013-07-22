@@ -38,8 +38,8 @@ $childmessage=CHtml::listData(ChildMessage::model()->findAll(), 'Id', 'Id');
 		</div>
 		
 		<div class="span2">		
-			<?php echo $form->dropDownListRow($model,'StaffBoard',$childmessage);?>
-			<?php echo $form->error($model,'StaffBoard'); ?>
+			<?php echo $form->dropDownListRow($model,'Staffboard',$childmessage);?>
+			<?php echo $form->error($model,'Staffboard'); ?>
 		</div>	
 	</div>
 	<div class="row-fluid">

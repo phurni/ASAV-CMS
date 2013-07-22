@@ -1,6 +1,6 @@
 <?php
-/* @var $this StaffBoardController */
-/* @var $model StaffBoard */
+/* @var $this StaffboardController */
+/* @var $model Staffboard */
 
 $this->breadcrumbs=array(
 	'Staff Boards'=>array('index'),
@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List StaffBoard', 'url'=>array('index')),
-	array('label'=>'Create StaffBoard', 'url'=>array('create')),
+	array('label'=>'List Staffboard', 'url'=>array('index')),
+	array('label'=>'Create Staffboard', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

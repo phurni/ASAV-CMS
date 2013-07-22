@@ -14,12 +14,12 @@
  * @property Media[] $medias
  * @property Users $author
  */
-class StaffBoard extends CActiveRecord
+class Staffboard extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return StaffBoard the static model class
+	 * @return Staffboard the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -59,7 +59,7 @@ class StaffBoard extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'medias' => array(self::HAS_MANY, 'Media', 'StaffBoard'),
+			'medias' => array(self::HAS_MANY, 'Media', 'Staffboard'),
 			'author' => array(self::BELONGS_TO, 'User', 'Author'),
 		);
 	}

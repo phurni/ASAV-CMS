@@ -1,6 +1,6 @@
 <?php
-/* @var $this StaffBoardController */
-/* @var $data StaffBoard */
+/* @var $this StaffboardController */
+/* @var $data Staffboard */
 ?>
 
 <div class="view StaffboardElement">

@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `media` (
   `Child` int(10) DEFAULT NULL,
   `ChildMessage` int(11) DEFAULT NULL,
   `Report` int(11) DEFAULT NULL,
-  `StaffBoard` int(11) DEFAULT NULL,
+  `Staffboard` int(11) DEFAULT NULL,
   `Path` varchar(255) NOT NULL,
   `Title` varchar(100) NOT NULL,
   `Description` text,
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `media` (
   PRIMARY KEY (`Id`),
   KEY `Child` (`Child`),
   KEY `ChildMessage` (`ChildMessage`),
-  KEY `StaffBoard` (`StaffBoard`),
+  KEY `Staffboard` (`Staffboard`),
   KEY `Author` (`Author`),
   KEY `Report` (`Report`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -247,12 +247,12 @@ CREATE TABLE IF NOT EXISTS `reportstatus` (
 --
 
 INSERT INTO `reportstatus` (`Id`, `Status`) VALUES
-(4, 'Écrit'),
-(5, 'Traité'),
+(4, '√âcrit'),
+(5, 'Trait√©'),
 (6, 'Retour aux agents'),
-(7, 'Publié au Comité'),
-(8, 'Publié aux parrains et au Comité'),
-(9, 'Classé');
+(7, 'Publi√© au Comit√©'),
+(8, 'Publi√© aux parrains et au Comit√©'),
+(9, 'Class√©');
 
 -- --------------------------------------------------------
 
@@ -322,7 +322,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`Id`, `Country`, `Genre`, `Group`, `Firstname`, `Lastname`, `Birthday`, `Address`, `ZipCode`, `Town`, `Email`, `Username`, `Password`, `Salt`) VALUES
-(1, 3, 1, 3, 'John', 'Smith', '2000-01-01', '-', 0, '-', 'admin@admin.com', 'admin', '�v��I�k�!q�~Ϙ�U��F', 'cd68f4f9ff98f9abb1e5874d22a3693e');
+(1, 3, 1, 3, 'John', 'Smith', '2000-01-01', '-', 0, '-', 'admin@admin.com', 'admin', 'Åv´„I…k¨!q˙~œòÀU˙F', 'cd68f4f9ff98f9abb1e5874d22a3693e');
 
 --
 -- Constraints for dumped tables
@@ -350,7 +350,7 @@ ALTER TABLE `media`
   ADD CONSTRAINT `media_ibfk_6` FOREIGN KEY (`Report`) REFERENCES `reports` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `media_ibfk_1` FOREIGN KEY (`Child`) REFERENCES `children` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `media_ibfk_3` FOREIGN KEY (`ChildMessage`) REFERENCES `childmessages` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `media_ibfk_4` FOREIGN KEY (`StaffBoard`) REFERENCES `staffboard` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `media_ibfk_4` FOREIGN KEY (`Staffboard`) REFERENCES `staffboard` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `media_ibfk_5` FOREIGN KEY (`Author`) REFERENCES `users` (`Id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --

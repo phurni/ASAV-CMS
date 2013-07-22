@@ -1,5 +1,5 @@
 <?php
-/* @var $this StaffBoardController */
+/* @var $this StaffboardController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(

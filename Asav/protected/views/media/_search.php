@@ -11,7 +11,7 @@
 
 	<?php echo $form->textFieldRow($model,'ChildMessage',array('class'=>'span5')); ?>
 
-	<?php echo $form->textFieldRow($model,'StaffBoard',array('class'=>'span5')); ?>
+	<?php echo $form->textFieldRow($model,'Staffboard',array('class'=>'span5')); ?>
 
 	<?php echo $form->textFieldRow($model,'Path',array('class'=>'span5','maxlength'=>255)); ?>
 

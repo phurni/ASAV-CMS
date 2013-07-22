@@ -8,7 +8,7 @@
  * @property integer $Author
  * @property integer $Child
  * @property integer $ChildMessage
- * @property integer $StaffBoard
+ * @property integer $Staffboard
  * @property string $Path
  * @property string $Title
  * @property string $Description
@@ -56,7 +56,7 @@ class Media extends CActiveRecord {
 						'required' 
 				),
 				array (
-						'Author, Child, ChildMessage, StaffBoard',
+						'Author, Child, ChildMessage, Staffboard',
 						'numerical',
 						'integerOnly' => true 
 				),
@@ -72,7 +72,7 @@ class Media extends CActiveRecord {
 				// The following rule is used by search().
 				// Please remove those attributes that should not be searched.
 				array (
-						'Id, Author, Child, ChildMessage, StaffBoard, Path, Title, Description, Created, Modified',
+						'Id, Author, Child, ChildMessage, Staffboard, Path, Title, Description, Created, Modified',
 						'safe',
 						'on' => 'search' 
 				),
@@ -115,7 +115,7 @@ class Media extends CActiveRecord {
 				'staffBoard' => array (
 						self::BELONGS_TO,
 						'Staffboard',
-						'StaffBoard' 
+						'Staffboard' 
 				) 
 		);
 	}
@@ -130,7 +130,7 @@ class Media extends CActiveRecord {
 				'Author' => 'Auteur',
 				'Child' => 'Enfant',
 				'ChildMessage' => 'ChildMessage',
-				'StaffBoard' => 'Staff Board',
+				'Staffboard' => 'Staff Board',
 				'Path' => 'Fichier à charger',
 				'Title' => 'Titre',
 				'Description' => 'Description',
@@ -155,7 +155,7 @@ class Media extends CActiveRecord {
 		$criteria->compare ( 'Author', $this->Author );
 		$criteria->compare ( 'Child', $this->Child );
 		$criteria->compare ( 'ChildMessage', $this->ChildMessage );
-		$criteria->compare ( 'StaffBoard', $this->StaffBoard );
+		$criteria->compare ( 'Staffboard', $this->Staffboard );
 		$criteria->compare ( 'Path', $this->Path, true );
 		$criteria->compare ( 'Title', $this->Title, true );
 		$criteria->compare ( 'Description', $this->Description, true );
