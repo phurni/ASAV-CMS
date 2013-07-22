@@ -6,7 +6,6 @@ Yii::setPathOfAlias('bootstrap',realpath(dirname(__FILE__) . "/../extensions/boo
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
-	'basePath'=> realpath(dirname(__FILE__). "../../"),
 	'name'=>'ASAV Int',
 	'theme'=>'bootstrap',
 		
