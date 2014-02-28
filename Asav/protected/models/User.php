@@ -110,7 +110,7 @@ class User extends CActiveRecord
 			'Lastname' => 'Nom',
 			'Birthday' => 'Date de naissance',
 			'Address' => 'Adresse',
-			'ZipCode' => 'Zip Code',
+			'ZipCode' => 'NPA',
 			'Town' => 'Ville',
 			'Email' => 'Email',
 			'Username' => "Nom d'utilisateur",

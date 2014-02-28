@@ -20,8 +20,8 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 		'summaryText'=>'Displaying {start}-{end} of {count} results.',
 		'columns'=>array(
 
-				array('name'=>'Firstname','header'=>'Firstname'),
-				array('name'=>'Lastname','header'=>'Lastname'),
+				array('name'=>'Firstname','header'=>'Prénom'),
+				array('name'=>'Lastname','header'=>'Nom'),
 				array('name'=>'Genre', 'value'=>'$data->genre->Name'),
 				array('name'=>'Country','header'=>'Pays', 'value'=>'$data->country->Name'),
 				array('name'=>'Address', 'header'=>'Adresse'),
