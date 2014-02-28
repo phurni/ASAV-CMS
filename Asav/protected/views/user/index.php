@@ -50,10 +50,6 @@ $this->widget ( 'bootstrap.widgets.TbGridView', array (
 						'header' => 'Genre',
 						'value' => '$data->genre->Name'
 				),
-				array (
-						'name' => 'Birthday',
-						'header' => 'Date de naissance'
-				),
 
 				array (
 						'class' => 'bootstrap.widgets.TbButtonColumn',

@@ -42,11 +42,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'Birthday'); ?>
-		<?php echo $form->textField($model,'Birthday'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'Address'); ?>
 		<?php echo $form->textField($model,'Address',array('size'=>60,'maxlength'=>255)); ?>
 	</div>

@@ -100,7 +100,6 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			$model->Birthday = $_POST['User']['Birthday'];
 			
 			if(trim($model->Password) != ""){
 				$credentials = $model->encrypt($model->Password);
@@ -171,7 +170,6 @@ class UserController extends Controller
 			$tagList["genre"] = array("Genre", "affiche le genre de l'utilisateur");
 			$tagList["prénom"] = array("Firstname", "affiche le prénom de l'utilisateur");
 			$tagList["nom"] = array("Lastname", "affiche le nom de famille de l'utilisateur");
-			$tagList["date de naissance"] = array("Birthday", "affiche la date de naissance l'utilisateur");
 			$tagList["adresse"] = array("Address", "affiche l'adresse de l'utilisateur");
 			$tagList["NPA"] = array("ZipCode", "affiche le code postal de l'utilisateur");
 			$tagList["ville"] = array("Town", "affiche la ville de l'utilisateur");
@@ -268,9 +266,6 @@ class UserController extends Controller
 			$out = "Nom;Prénom;Date de naissance;Adresse;NPA;Ville;Pays;Email" . PHP_EOL;
 			
 			foreach($dp->getData() as $data){
-				
-				//Format the birthday stored in the US format to the Swiss format
-				$birthday = date("Y m d", strtotime($data->Birthday));
 				
 				$out .= $data->Firstname . ";"
 					  . $data->Lastname . ";"

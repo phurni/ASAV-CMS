@@ -10,7 +10,6 @@
  * @property integer $Group
  * @property string $Firstname
  * @property string $Lastname
- * @property string $Birthday
  * @property string $Address
  * @property integer $ZipCode
  * @property string $Town
@@ -63,7 +62,7 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Country, Genre, Group, Firstname, Lastname, Birthday, Address, Username, Password, Salt', 'required'),
+			array('Country, Genre, Group, Firstname, Lastname, Address, Username, Password, Salt', 'required'),
 			array('Country, Genre, Group, ZipCode', 'numerical', 'integerOnly'=>true),
 			array('Firstname, Lastname, Email', 'length', 'max'=>100),
 			array('Address', 'length', 'max'=>255),
@@ -73,7 +72,7 @@ class User extends CActiveRecord
 			array('Salt', 'length', 'max'=>32),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('Id, Country, Genre, Group, Firstname, Lastname, Birthday, Address, ZipCode, Town, Email, Username, Password, Salt', 'safe', 'on'=>'search'),
+			array('Id, Country, Genre, Group, Firstname, Lastname, Address, ZipCode, Town, Email, Username, Password, Salt', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -108,7 +107,6 @@ class User extends CActiveRecord
 			'Group' => 'Groupe',
 			'Firstname' => 'Prénom',
 			'Lastname' => 'Nom',
-			'Birthday' => 'Date de naissance',
 			'Address' => 'Adresse',
 			'ZipCode' => 'NPA',
 			'Town' => 'Ville',
@@ -139,7 +137,6 @@ class User extends CActiveRecord
 		$criteria->compare('Group',$this->Group);
 		$criteria->compare('Firstname',$this->Firstname,true);
 		$criteria->compare('Lastname',$this->Lastname,true);
-		$criteria->compare('Birthday',$this->Birthday,true);
 		$criteria->compare('Address',$this->Address,true);
 		$criteria->compare('ZipCode',$this->ZipCode);
 		$criteria->compare('Town',$this->Town,true);
@@ -168,7 +165,6 @@ class User extends CActiveRecord
 		$criteria->compare('Group',$this->Group);
 		$criteria->compare('Firstname',$this->Firstname,true);
 		$criteria->compare('Lastname',$this->Lastname,true);
-		$criteria->compare('Birthday',$this->Birthday,true);
 		$criteria->compare('Address',$this->Address,true);
 		$criteria->compare('ZipCode',$this->ZipCode);
 		$criteria->compare('Town',$this->Town,true);
