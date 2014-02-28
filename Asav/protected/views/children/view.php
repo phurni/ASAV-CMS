@@ -35,7 +35,7 @@ $this->menu = array (
 				'visible' => $isInTeam 
 		),
 		array (
-				'label' => 'Créer un enfant',
+				'label' => 'Ajouter un enfant',
 				'url' => array (
 						'create' 
 				),

@@ -14,7 +14,7 @@ $this->menu = array (
 				)
 		),
 		array (
-				'label' => 'Créer un enfant',
+				'label' => 'Ajouter un enfant',
 				'url' => array (
 						'create' 
 				),

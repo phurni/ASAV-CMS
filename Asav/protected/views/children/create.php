@@ -15,7 +15,7 @@ $this->menu=array(
 				)
 		),
 		array (
-				'label' => 'Créer un enfant',
+				'label' => 'Ajouter un enfant',
 				'url' => array (
 						'create' 
 				) 
@@ -29,6 +29,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Créer un enfant</h1>
+<h1>Ajouter un enfant</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
