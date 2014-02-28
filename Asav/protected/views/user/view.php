@@ -83,7 +83,7 @@ $this->menu=array(
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('Country')); ?>:
 		</b><br>
-		<?php echo CHtml::encode($model->Country); ?>		
+		<?php echo CHtml::encode($model->country->Name); ?>		
 	</div>
 	
 	<div class="span3">
