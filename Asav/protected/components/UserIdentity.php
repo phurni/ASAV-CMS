@@ -35,8 +35,8 @@ class UserIdentity extends CUserIdentity
 			$role = $auth->createRole('admin');
 			*/
 			
-			if(!$auth->isAssigned($record->group->Name,$this->_id)){
-				if($auth->assign($record->group->Name,$this->_id)){
+			if(!$auth->isAssigned($record->group->Code,$this->_id)){
+				if($auth->assign($record->group->Code,$this->_id)){
 					Yii::app()->authManager->save();
 				}
 			}
