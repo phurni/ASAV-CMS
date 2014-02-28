@@ -60,6 +60,11 @@ $this->widget ( 'bootstrap.widgets.TbGridView', array (
 						'name' => 'Genre',
 						'header' => 'Genre',
 						'value' => '$data->genre->Name'
+				),
+				array (
+						'name' => 'Group',
+						'header' => 'Groupe',
+						'value' => '$data->group->Name'
 				)
 		)
 ) );
