@@ -15,7 +15,7 @@ class ChildrenController extends Controller {
 	 */
 	public function actionIndex($sponsor = null) {
 		$sponsorized = false;
-		if (yii::app ()->user->hasState ( "user" ) && yii::app ()->user->user->group->Id == 1) {
+		if (yii::app ()->user->hasState ( "user" ) && yii::app ()->user->user->group->Name == 'sponsor') {
 			$sponsor = yii::app ()->user->id;
 		}
 		$criteria = new CDbCriteria ();
@@ -40,7 +40,7 @@ class ChildrenController extends Controller {
 		$model = new Child ( 'search' );
 		$criteria = new CDbCriteria ();
 		
-		if (yii::app ()->user->hasState ( "user" ) && yii::app ()->user->user->group->Id == 1) {
+		if (yii::app ()->user->hasState ( "user" ) && yii::app ()->user->user->group->Name == 'sponsor') {
 			$criteria->addCondition ( 'Sponsor IS NULL' );
 		}
 		

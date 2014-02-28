@@ -205,7 +205,7 @@ class User extends CActiveRecord
 	 */
 	public function IsSponsor()
 	{
-		return $this->group->Id == 1;
+		return $this->group->Name == 'sponsor';
 	}
 	
 	/**

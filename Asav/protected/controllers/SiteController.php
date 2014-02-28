@@ -31,7 +31,7 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		
 		if (yii::app()->user->hasState("user")){
-			if(yii::app()->user->user->group->Id == 1){
+			if(yii::app()->user->user->group->Name == 'sponsor'){
 				$this->redirect(Yii::app()->createUrl("children"));
 			}else{
 				$this->redirect(Yii::app()->createUrl("Dashboard"));
@@ -101,7 +101,7 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){
-				if (yii::app()->user->hasState("user") && yii::app()->user->user->group->Id == 1) {
+				if (yii::app()->user->hasState("user") && yii::app()->user->user->group->Name == 'sponsor') {
 					$this->redirect(Yii::app()->createUrl("children"));
 				}else{
 					$this->redirect(Yii::app()->createUrl("Dashboard"));

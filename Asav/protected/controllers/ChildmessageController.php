@@ -70,7 +70,7 @@ class ChildmessageController extends Controller {
 		$model = $this->loadModel ( $id );
 		$user = Yii::app ()->user->user;
 		
-		if ($user->group->Id == 1 && $model->Author != $user->Id) {
+		if ($user->group->Name == 'sponsor' && $model->Author != $user->Id) {
 			throw new CHttpException ( 403 );
 		} else {
 			$this->render ( 'view', array (
@@ -134,7 +134,7 @@ class ChildmessageController extends Controller {
 		
 		$child = new Child ( 'search' );
 		$criteria = new CDbCriteria ();
-		if ($user->group->Id == 1) {
+		if ($user->group->Name == 'sponsor') {
 			$criteria->join = 'INNER JOIN users ON t.Sponsor = users.Id';
 			$criteria->condition = 'users.Id = :id';
 			$criteria->params = array (
@@ -208,7 +208,7 @@ class ChildmessageController extends Controller {
 		
 		$child = new Child ( 'search' );
 		$criteria = new CDbCriteria ();
-		if ($user->group->Id == 1) {
+		if ($user->group->Name == 'sponsor') {
 			$criteria->join = 'INNER JOIN users ON t.Sponsor = users.Id';
 			$criteria->condition = 'users.Id = :id';
 			$criteria->params = array (
@@ -264,7 +264,7 @@ class ChildmessageController extends Controller {
 	 */
 	public function actionIndex($sponsor = null) {
 		$sponsorized = false;
-		if (yii::app ()->user->hasState ( "user" ) && yii::app ()->user->user->group->Id == 1) {
+		if (yii::app ()->user->hasState ( "user" ) && yii::app ()->user->user->group->Name == 'sponsor') {
 			$sponsor = yii::app ()->user->id;
 		}
 		$criteria = new CDbCriteria ();

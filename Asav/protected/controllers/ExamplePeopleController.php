@@ -25,7 +25,7 @@ class ExamplePeopleController extends Controller
 		 */
 	
 	
-		if(yii::app()->user->hasState("user") && yii::app()->user->user->group->Id == 1){
+		if(yii::app()->user->hasState("user") && yii::app()->user->user->group->Name == 'sponsor'){
 			$sponsor = yii::app()->user->id;
 		}
 		
