@@ -54,7 +54,6 @@ $this->menu=array(
 	<div class="row-fluid">	
 	
 	<div class="span3">
-		<div class="span3">
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('Email')); ?>:
 		</b><br>
