@@ -42,12 +42,12 @@ $isInTeam = (isset(Yii::app()->user->user) && Yii::app()->user->user->IsInTeam()
 							// additional javascript options for the date picker plugin
 							'options'=>array(
 									'showAnim'=>'fold',
-									'dateFormat' => 'dd mm yy',
+									'dateFormat' => 'dd.mm.yy',
 									'altFormat' => 'yy-mm-dd',
 									'altField' => "#Childmessage_DateCreated",
 							),
 							'model'=>$model,
-							'value'=>$model->DateCreated,
+							'value'=>$model->DateCreated ? date('d.m.Y', strtotime($model->DateCreated)) : '',
 					));
 					echo $form->textField($model,'DateCreated', array('style'=>"display:none"));
 				}

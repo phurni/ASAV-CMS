@@ -54,12 +54,12 @@ $type=CHtml::listData(Reporttypes::model()->findAll(), 'Id', 'Name');
 				// additional javascript options for the date picker plugin
 				'options'=>array(
 						'showAnim'=>'fold',
-						'dateFormat' => 'dd mm yy',
+						'dateFormat' => 'dd.mm.yy',
 						'altFormat' => 'yy-mm-dd',
 						'altField' => "#Report_VisitDate",
 				),
 				'model'=>$model,
-				'value'=>$model->VisitDate,
+				'value'=>$model->VisitDate ? date('d.m.Y', strtotime($model->VisitDate)) : '',
 			)); ?>
 			<?php echo $form->textField($model,'VisitDate', array('style'=>"display:none")); ?>
 		</div>

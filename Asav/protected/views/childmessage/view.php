@@ -41,7 +41,7 @@ $this->menu=array(
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('DateCreated')); ?>:
 		</b>
-		<?php echo CHtml::encode($model->DateCreated); ?>		
+		<?php echo CHtml::encode(date('d.m.Y', strtotime($model->DateCreated))); ?>
 		</div>
 		
 		<div class="span4">

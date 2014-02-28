@@ -42,8 +42,7 @@ $columns[] = array (
 				);
 $columns[] = array (
 						'name' => 'Created',
-				
-						'value' => '$data->Created'
+        		'value' => 'Yii::app()->dateFormatter->format("dd.MM.yyyy",strtotime($data->Created))'
 				);
 $columns[] = array (
 						'class' => 'bootstrap.widgets.TbButtonColumn',

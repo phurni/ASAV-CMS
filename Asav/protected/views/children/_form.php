@@ -68,13 +68,14 @@ if ($actionName != "create") {
 			// additional javascript options for the date picker plugin
 			'options' => array (
 					'showAnim' => 'fold',
-					'dateFormat' => 'dd mm yy',
+					'dateFormat' => 'dd.mm.yy',
 					'altFormat' => 'yy-mm-dd',
 					'altField' => "#Child_Birthday",
-					'changeYear' => 'true' 
+					'changeYear' => 'true' ,
+					'yearRange' => 'c-20:c+0'
 			),
 			'model' => $model,
-			'value' => $model->Birthday 
+			'value' => $model->Birthday ? date('d.m.Y', strtotime($model->Birthday)) : ''
 	) );
 	?>
 	<?php echo $form->textField($model,'Birthday', array('style'=>"display:none")); ?>

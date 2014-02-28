@@ -71,15 +71,18 @@ $this->widget ( 'bootstrap.widgets.TbGridView', array (
 				),
 				array (
 						'name' => 'CreationDate',
-						'header' => 'Création'
+						'header' => 'Création',
+          	'value' => 'Yii::app()->dateFormatter->format("dd.MM.yyyy",strtotime($data->CreationDate))'
 				),
 				array (
 						'name' => 'UpdateDate',
-						'header' => 'Modification'
+						'header' => 'Modification',
+          	'value' => 'Yii::app()->dateFormatter->format("dd.MM.yyyy",strtotime($data->UpdateDate))'
 				),
 				array (
 						'name' => 'VisitDate',
-						'header' => 'Visite' 
+						'header' => 'Visite',
+        		'value' => 'Yii::app()->dateFormatter->format("dd.MM.yyyy",strtotime($data->VisitDate))'
 				),
 				
 				array (

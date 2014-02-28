@@ -21,7 +21,7 @@
 		<br />
 		<!-- Author & Date -->
 		<?php 
-		echo $data->author->getFullname() .' - '. substr($data->DateCreated, 0, 10);
+		echo $data->author->getFullname() .' - '. date('d.m.Y', strtotime($data->DateCreated));
 		?>
 	</p>
 	<p class="justify">

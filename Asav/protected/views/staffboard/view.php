@@ -30,7 +30,7 @@ $this->menu=array(
 		<br />
 		<!-- Author & Date -->
 		<?php 
-		echo $model->author->getFullname() .' - '. substr($model->DateCreated, 0, 10);
+		echo $model->author->getFullname() .' - '. date('d.m.Y', strtotime($model->DateCreated));
 		?>
 	</p>
 	<p class="justify">

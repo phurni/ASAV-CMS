@@ -34,7 +34,8 @@ $this->widget ( 'bootstrap.widgets.TbGridView', array (
 				),
 				array (
 						'name' => 'DateCreated',
-						'header' => "date de création"
+						'header' => "Date de création",
+						'value' => 'Yii::app()->dateFormatter->format("dd.MM.yyyy",strtotime($data->DateCreated))'
 				),
 
 				array (

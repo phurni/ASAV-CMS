@@ -60,21 +60,21 @@ $this->menu=array(
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('CreationDate')); ?>:
 		</b>
-		<?php echo CHtml::encode($model->CreationDate); ?>		
+		<?php echo CHtml::encode(date('d.m.Y', strtotime($model->CreationDate))); ?>
 		</div>
 		
 		<div class="span4">
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('UpdateDate')); ?>:
 		</b>
-		<?php echo CHtml::encode($model->UpdateDate); ?>		
+		<?php echo CHtml::encode(date('d.m.Y', strtotime($model->UpdateDate))); ?>
 		</div>
 		
 		<div class="span4">
 		<b>
 		<?php echo CHtml::encode($model->getAttributeLabel('VisitDate')); ?>:
 		</b>
-		<?php echo CHtml::encode($model->VisitDate); ?>		
+		<?php echo CHtml::encode(date('d.m.Y', strtotime($model->VisitDate))); ?>
 		</div>
 		
 		

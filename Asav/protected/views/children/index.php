@@ -61,7 +61,8 @@ if (! $sponsorized) {
 // Add the rest of the columns
 $columns [] = array (
 		'name' => 'Birthday',
-		'header' => 'Date de naissance' 
+		'header' => 'Date de naissance' ,
+		'value' => 'Yii::app()->dateFormatter->format("dd.MM.yyyy",strtotime($data->Birthday))'
 );
 $columns [] = array (
 		'name' => 'Genre',

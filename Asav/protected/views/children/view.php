@@ -109,7 +109,7 @@ $this->menu = array (
 			<b>
 		<?php echo CHtml::encode($child->getAttributeLabel('Birthday')); ?>:
 		</b>
-		<?php echo CHtml::encode($child->Birthday); ?>		
+		<?php echo CHtml::encode(date('d.m.Y', strtotime($child->Birthday))); ?>		
 		</div>
 
 		<div class="span4">
