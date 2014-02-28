@@ -2,10 +2,10 @@
 /* @var $this DashboardController */
 
 $this->breadcrumbs = array (
-		'Dashboard' 
+		'Panneau de contrôle' 
 );
 ?>
-<h1>Dashboard</h1>
+<h1>Panneau de contrôle</h1>
 <p>
 	Vous êtes connecté en tant que <strong>
 	<?php echo Yii::app()->user->user->Firstname .' '. Yii::app()->user->user->Lastname; ?></strong> 

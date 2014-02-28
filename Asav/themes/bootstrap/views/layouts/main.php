@@ -28,7 +28,7 @@ $this->widget('bootstrap.widgets.TbNavbar', array(
             'items'=>array(
             	// Administration
             		array('label'=>'Administration', 'url'=>'#', 'visible'=>$isInTeam, 'items'=>array(
-            				array('label'=>'Dashboard', 'url'=>Yii::app()->createUrl("/dashboard")),
+            				array('label'=>'Panneau de contrôle', 'url'=>Yii::app()->createUrl("/dashboard")),
             				array('label'=>'Espace de communication', 'url'=>Yii::app()->createUrl("/staffboard")),
             		)),
             	// Enfants
