@@ -210,9 +210,11 @@ class UserController extends Controller
 			 * Clear the stored data and show the list of sponsors
 			 */
 			$_SESSION["list"] = null;
-			$criteria=new CDbCriteria();
-			$criteria->addCondition('t.Group=1');
-			$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+			$dp = new CActiveDataProvider($model, array('criteria'=>array(
+              'condition'=>"group.Code IN ('sponsor', 'staff')",
+              'with'=>array('group'),
+          ),			
+      ));
 			$this->render('sponsors',array(
 					'dp'=>$dp,
 					'action'=>'mailing',
@@ -224,8 +226,11 @@ class UserController extends Controller
 		 * Select the sponsors to contact
 		 */
 		}else{
-			$criteria->addCondition('t.Group=1');
-			$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+			$dp = new CActiveDataProvider($model, array('criteria'=>array(
+              'condition'=>"group.Code IN ('sponsor', 'staff')",
+              'with'=>array('group'),
+          ),			
+      ));
 			$this->render('sponsors',array(
 					'dp'=>$dp,
 					'action'=>'mailing'
@@ -285,8 +290,11 @@ class UserController extends Controller
 			
 			
 		}else{
-			$criteria->addCondition('t.Group=1');
-			$dp = new CActiveDataProvider($model, array('criteria'=>$criteria));
+			$dp = new CActiveDataProvider($model, array('criteria'=>array(
+              'condition'=>"group.Code IN ('sponsor', 'staff')",
+              'with'=>array('group'),
+          ),			
+      ));
 			$this->render('sponsors',array(
 					'dp'=>$dp,
 					'action'=>'publipostage'
