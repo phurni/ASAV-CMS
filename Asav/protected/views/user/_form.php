@@ -11,7 +11,7 @@
 	'enableAjaxValidation'=>false,
 	'htmlOptions'=>array('class'=>"wideFields"),
 )); 
-$genres=CHtml::listData(Genre::model()->findAll(), 'Id', 'Name');
+$genres=CHtml::listData(Genre::model()->findAll("Type = 'Person'"), 'Id', 'Name');
 $groups=CHtml::listData(Group::model()->findAll(), 'Id', 'Name');
 $countries=CHtml::listData(Country::model()->findAll(), 'Id', 'Name');
 ?>

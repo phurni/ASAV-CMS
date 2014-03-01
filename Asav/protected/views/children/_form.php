@@ -15,7 +15,7 @@ $form = $this->beginWidget ( 'bootstrap.widgets.TbActiveForm', array (
 ) );
 
 $sponsors = CHtml::listData ( User::model ()->findAll (), 'Id', 'Fullname' );
-$genres = CHtml::listData ( Genre::model ()->findAll (), 'Id', 'Name' );
+$genres = CHtml::listData ( Genre::model ()->findAll ("Type = 'Child'"), 'Id', 'Name' );
 $people = CHtml::listData ( Person::model ()->findAll (), 'Id', 'Fullname' );
 ?>
 
