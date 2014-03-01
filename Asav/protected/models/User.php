@@ -181,19 +181,11 @@ class User extends CActiveRecord
 	}
 	
 	/**
-	 * Gets if the user is an administrator.
-	 */
-	public function IsAdmin()
-	{
-		return $this->group->Id == 3;
-	}
-	
-	/**
 	 * Gets if the user is the team.
 	 */
 	public function IsInTeam()
 	{
-		return $this->IsAdmin() || $this->IsStaff();
+		return $this->IsStaff();
 	}
 	
 	/**
@@ -201,7 +193,7 @@ class User extends CActiveRecord
 	 */
 	public function IsSponsor()
 	{
-		return $this->group->Name == 'sponsor';
+		return $this->group->Code == 'sponsor';
 	}
 	
 	/**
@@ -209,7 +201,7 @@ class User extends CActiveRecord
 	 */
 	public function IsStaff()
 	{
-		return $this->group->Id == 2;
+		return $this->group->Code == 'staff';
 	}
 	
 	

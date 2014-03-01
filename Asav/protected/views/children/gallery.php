@@ -3,7 +3,7 @@
 
 $this->breadcrumbs=array(
 	'Enfants'=>array('index'),
-	'Trombinoscope',
+	$gallery_title,
 		
 );
 
@@ -22,14 +22,14 @@ $this->menu = array (
 				'visible' => $isInTeam
 		),
 		array (
-				'label' => 'Trombinoscope',
+				'label' => $gallery_title,
 				'url' => array (
 						'gallery'
 				)
 		)
 );
 ?>
-<h1>Trombinoscope</h1>
+<h1><?php echo $gallery_title ?></h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

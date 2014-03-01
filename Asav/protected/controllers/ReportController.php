@@ -74,7 +74,7 @@ class ReportController extends Controller {
 		$user = Yii::app()->user->user;
 		
 		$criteria = new CDbCriteria();
-		if($user->group->Name == 'sponsor'){
+		if($user->group->Code == 'sponsor'){
 			$criteria->join = 'INNER JOIN children ON t.Child = children.Id INNER JOIN users on children.Sponsor = users.Id';
 			$criteria->condition = 'users.Id = :id';
 			$criteria->params = array (
@@ -244,7 +244,7 @@ class ReportController extends Controller {
 		$model = new Report('search');
 		$user = Yii::app()->user->user;
 		$criteria = new CDbCriteria();
-		if($user->group->Name == 'sponsor'){
+		if($user->group->Code == 'sponsor'){
 			$criteria->join = 'INNER JOIN children ON t.Child = children.Id INNER JOIN users on children.Sponsor = users.Id';
 			$criteria->condition = 'users.Id = :id';
 			$criteria->params = array (

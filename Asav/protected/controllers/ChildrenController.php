@@ -15,8 +15,12 @@ class ChildrenController extends Controller {
 	 */
 	public function actionIndex($sponsor = null) {
 		$sponsorized = false;
-		if (yii::app ()->user->hasState ( "user" ) && yii::app ()->user->user->group->Name == 'sponsor') {
+		if (yii::app ()->user->hasState ( "user" ) && yii::app ()->user->user->group->Code == 'sponsor') {
 			$sponsor = yii::app ()->user->id;
+		  $gallery_title = "Enfants à parrainer";
+		}
+		else {
+		  $gallery_title = "Trombinoscope";
 		}
 		$criteria = new CDbCriteria ();
 		if ($sponsor != '') {
@@ -31,6 +35,7 @@ class ChildrenController extends Controller {
 		) );
 		
 		$this->render ( 'index', array (
+        'gallery_title' => $gallery_title,
 				'dp' => $dp,
 				'sponsorized' => $sponsorized,
 				'isInTeam' => (isset ( Yii::app ()->user->user ) && Yii::app ()->user->user->IsInTeam ()) 
@@ -40,8 +45,12 @@ class ChildrenController extends Controller {
 		$model = new Child ( 'search' );
 		$criteria = new CDbCriteria ();
 		
-		if (yii::app ()->user->hasState ( "user" ) && yii::app ()->user->user->group->Name == 'sponsor') {
+		if (yii::app ()->user->hasState ( "user" ) && yii::app ()->user->user->group->Code == 'sponsor') {
 			$criteria->addCondition ( 'Sponsor IS NULL' );
+		  $gallery_title = "Enfants à parrainer";
+		}
+		else {
+		  $gallery_title = "Trombinoscope";
 		}
 		
 		
@@ -49,6 +58,7 @@ class ChildrenController extends Controller {
 				'criteria' => $criteria 
 		) );
 		$this->render ( 'gallery', array (
+		    'gallery_title' => $gallery_title,
 				'dataProvider' => $dp,
 				'isInTeam' => (isset ( Yii::app ()->user->user ) && Yii::app ()->user->user->IsInTeam ()) 
 		) );

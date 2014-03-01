@@ -21,7 +21,7 @@ $this->menu = array (
 				'visible' => $isInTeam
 		),
 		array (
-				'label' => 'Trombinoscope',
+				'label' => $gallery_title,
 				'url' => array (
 						'gallery'
 				)
